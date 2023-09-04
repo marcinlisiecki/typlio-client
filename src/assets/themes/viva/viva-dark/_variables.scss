@@ -1,6 +1,6 @@
-$primaryColor: #3b82f6 !default;
-$primaryDarkColor: #2563eb !default;
-$primaryDarkerColor: #1d4ed8 !default;
+$primaryColor: #2563eb !default;
+$primaryDarkColor: #1d4ed8 !default;
+$primaryDarkerColor: #1e40af !default;
 $primaryTextColor: #fff !default;
 
 $highlightBg: rgba($primaryColor, 0.16) !default;
@@ -83,12 +83,12 @@ $actionIconHoverColor: $shade000 !default;
 $actionIconBorderRadius: 50% !default;
 
 //input field (e.g. inputtext, spinner, inputmask)
-$inputPadding: 0.5rem 0.75rem !default;
+$inputPadding: 0.6rem 0.9rem !default;
 $inputTextFontSize: 1rem !default;
-$inputBg: $shade900 !default;
+$inputBg: #0a0c14 !default;
 $inputTextColor: $shade000 !default;
 $inputIconColor: $shade100 !default;
-$inputBorder: 2px solid transparent !default;
+$inputBorder: 2px solid $shade900 !default;
 $inputHoverBorderColor: $shade700 !default;
 $inputFocusBorderColor: $primaryColor !default;
 $inputErrorBorderColor: $errorColor !default;

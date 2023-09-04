@@ -1,0 +1,33 @@
+<section class="w-auth-form mx-auto mt-28">
+  <form class="flex flex-col gap-y-8">
+    <header>
+      <h1 class="text-2xl mx-auto text-center font-semibold">Welcome back</h1>
+    </header>
+
+    <div class="input-box">
+      <label for="email">Email</label>
+      <input type="email" pInputText class="w-full" name="email" id="email" />
+    </div>
+
+    <div class="input-box">
+      <div class="flex justify-between items-center">
+        <label [htmlFor]="'password'">Password</label>
+        <app-link routerLink="/forgot-password">Forgot password?</app-link>
+      </div>
+      <p-password
+        inputId="password"
+        [toggleMask]="true"
+        [feedback]="true"
+        styleClass="w-full"
+        inputStyleClass="w-full"
+      ></p-password>
+    </div>
+
+    <p-button styleClass="w-full flex justify-center">Login</p-button>
+
+    <div class="bg-gray-900 w-1/2 mx-auto h-[2px]"></div>
+    <p class="mx-auto text-text-secondary font-medium">
+      Don't have an account? <app-link routerLink="/register">Create one</app-link>
+    </p>
+  </form>
+</section>

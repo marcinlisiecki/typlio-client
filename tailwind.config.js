@@ -13,6 +13,9 @@ module.exports = {
       padding: {
         page: '36px',
       },
+      width: {
+        'auth-form': '340px',
+      },
       maxWidth: {
         page: '1360px',
       },

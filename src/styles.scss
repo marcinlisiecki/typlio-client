@@ -12,3 +12,7 @@ body {
   background-color: #090a10;
   font-family: Poppins, sans-serif;
 }
+
+.input-box {
+  @apply flex flex-col gap-y-0.5;
+}

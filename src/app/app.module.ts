@@ -10,6 +10,7 @@ import { PasswordModule } from 'primeng/password';
 import { DropdownModule } from 'primeng/dropdown';
 import { LayoutModule } from './core/layout/layout.module';
 import { SharedModule } from './shared/shared.module';
+import { AuthModule } from './features/auth/auth.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -23,6 +24,7 @@ import { SharedModule } from './shared/shared.module';
     DropdownModule,
     LayoutModule,
     SharedModule,
+    AuthModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
