@@ -33,7 +33,7 @@
       formControlName="password"
       inputId="password"
       [toggleMask]="true"
-      [feedback]="true"
+      [feedback]="false"
       styleClass="w-full"
       inputStyleClass="w-full"
     ></p-password>
@@ -44,7 +44,12 @@
     </div>
   </div>
 
-  <p-button styleClass="button-wide" type="submit" [loading]="isLoading">Login</p-button>
+  <div class="flex flex-col">
+    <p-button styleClass="button-wide" type="submit" [loading]="isLoading">Login</p-button>
+    <div class="mt-1" *ngIf="apiError">
+      <app-validation-error>{{ apiError }}</app-validation-error>
+    </div>
+  </div>
 
   <div class="bg-gray-900 w-1/2 mx-auto h-[2px]"></div>
   <p class="mx-auto text-text-secondary font-medium">

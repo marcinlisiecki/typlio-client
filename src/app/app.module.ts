@@ -11,6 +11,7 @@ import { DropdownModule } from 'primeng/dropdown';
 import { LayoutModule } from './core/layout/layout.module';
 import { SharedModule } from './shared/shared.module';
 import { AuthModule } from './features/auth/auth.module';
+import { CookieModule } from 'ngx-cookie';
 
 @NgModule({
   declarations: [AppComponent],
@@ -25,6 +26,7 @@ import { AuthModule } from './features/auth/auth.module';
     LayoutModule,
     SharedModule,
     AuthModule,
+    CookieModule.withOptions(),
   ],
   providers: [],
   bootstrap: [AppComponent],
