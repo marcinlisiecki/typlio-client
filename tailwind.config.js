@@ -3,14 +3,15 @@ const colors = require('tailwindcss/colors');
 
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: [
-    "./src/**/*.{html,ts}",
-  ],
+  content: ['./src/**/*.{html,ts}'],
   theme: {
     extend: {
       fontFamily: {
         sans: ['Poppins', ...defaultTheme.fontFamily.sans],
         mono: ['Ubuntu Mono', ...defaultTheme.fontFamily.mono],
+      },
+      padding: {
+        page: '36px',
       },
       maxWidth: {
         page: '1360px',
@@ -47,5 +48,4 @@ module.exports = {
     },
   },
   plugins: [],
-}
-
+};

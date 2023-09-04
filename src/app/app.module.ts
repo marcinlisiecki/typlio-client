@@ -8,6 +8,8 @@ import { CardModule } from 'primeng/card';
 import { InputTextModule } from 'primeng/inputtext';
 import { PasswordModule } from 'primeng/password';
 import { DropdownModule } from 'primeng/dropdown';
+import { LayoutModule } from './core/layout/layout.module';
+import { SharedModule } from './shared/shared.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -19,6 +21,8 @@ import { DropdownModule } from 'primeng/dropdown';
     InputTextModule,
     PasswordModule,
     DropdownModule,
+    LayoutModule,
+    SharedModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
