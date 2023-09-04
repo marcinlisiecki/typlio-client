@@ -59,7 +59,7 @@ $inlineSpacing: 0.5rem !default; //spacing between inline elements
 $disabledOpacity: 0.4 !default; //opacity of a disabled item
 $maskBg: rgba(0, 0, 0, 0.4) !default; //modal mask bg color
 $loadingIconFontSize: 2rem !default;
-$errorColor: #f78c79 !default;
+$errorColor: #ef4444 !default;
 
 //scale
 $scaleSM: 0.875 !default;
@@ -374,9 +374,9 @@ $panelHeaderHoverBg: $hoverBg !default;
 $panelHeaderHoverBorderColor: $shade600 !default;
 $panelHeaderTextHoverColor: $shade000 !default;
 
-$panelContentBorderColor: $shade600 !default;
-$panelContentBorder: 2px solid $shade600 !default;
-$panelContentBg: $shade800 !default;
+$panelContentBorderColor: $shade800 !default;
+$panelContentBorder: 2px solid $shade800 !default;
+$panelContentBg: $shade900 !default;
 $panelContentEvenRowBg: rgba(255, 255, 255, 0.01) !default;
 $panelContentTextColor: $shade000 !default;
 $panelContentPadding: 1rem !default;
@@ -621,7 +621,7 @@ $errorMessageTextColor: $shade900 !default;
 $errorMessageIconColor: $shade900 !default;
 
 //overlays
-$overlayContentBorder: 2px solid $shade600 !default;
+$overlayContentBorder: 2px solid $shade800 !default;
 $overlayContentBg: $panelContentBg !default;
 $overlayContainerShadow:
   0px 11px 15px -7px rgba(0, 0, 0, 0.2),

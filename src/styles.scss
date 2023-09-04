@@ -16,3 +16,7 @@ body {
 .input-box {
   @apply flex flex-col gap-y-0.5;
 }
+
+.button-wide {
+  @apply w-full flex justify-center gap-x-2;
+}
