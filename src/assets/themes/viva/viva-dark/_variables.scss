@@ -61,6 +61,9 @@ $maskBg: rgba(0, 0, 0, 0.4) !default; //modal mask bg color
 $loadingIconFontSize: 2rem !default;
 $errorColor: #ef4444 !default;
 
+$bgSecondary: #0f172a;
+$bgSecondaryBorderColor: #1e293b;
+
 //scale
 $scaleSM: 0.875 !default;
 $scaleLG: 1.25 !default;
@@ -671,8 +674,8 @@ $progressBarValueTextColor: $primaryTextColor !default;
 
 //menu (e.g. menu, menubar, tieredmenu)
 $menuWidth: 12.5rem !default;
-$menuBg: $shade800 !default;
-$menuBorder: 2px solid $shade600 !default;
+$menuBg: $bgSecondary !default;
+$menuBorder: 2px solid $bgSecondaryBorderColor !default;
 $menuTextColor: $shade000 !default;
 $menuitemPadding: 0.75rem 1rem !default;
 $menuitemBorderRadius: 6px !default;
@@ -696,7 +699,7 @@ $submenuHeaderTextColor: $shade000 !default;
 $submenuHeaderBorderRadius: 0 !default;
 $submenuHeaderFontWeight: 600 !default;
 $overlayMenuBg: $menuBg !default;
-$overlayMenuBorder: 2px solid $shade600 !default;
+$overlayMenuBorder: 2px solid $bgSecondaryBorderColor !default;
 $overlayMenuShadow:
   0 2px 4px -1px rgba(0, 0, 0, 0.2),
   0 4px 5px 0 rgba(0, 0, 0, 0.14),
