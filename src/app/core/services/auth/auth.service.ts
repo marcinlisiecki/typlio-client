@@ -1,20 +1,38 @@
-import { Injectable } from '@angular/core';
+import { Injectable, OnDestroy } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { LoginCredentials } from '@core/interfaces/auth/login-credentials';
-import { Observable, tap } from 'rxjs';
+import { Observable, Subject, Subscription, tap } from 'rxjs';
 import { JwtResponse } from '@core/interfaces/auth/jwt-response';
 import { environment } from '@app/environments/environment';
 import { JwtService } from '@core/services/auth/jwt.service';
 import { RegisterCredentials } from '@core/interfaces/auth/register-credentials';
+import { NavigationStart, Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root',
 })
-export class AuthService {
+export class AuthService implements OnDestroy {
+  private authSubject!: Subject<boolean>;
+  routerEventsSub?: Subscription;
+
   constructor(
     private http: HttpClient,
     private jwtService: JwtService,
-  ) {}
+    private router: Router,
+  ) {
+    this.authSubject = new Subject<boolean>();
+    this.authSubject.next(this.isAuth());
+
+    this.routerEventsSub = this.router.events.subscribe((e) => {
+      if (e instanceof NavigationStart) {
+        this.authSubject.next(this.isAuth());
+      }
+    });
+  }
+
+  ngOnDestroy(): void {
+    this.routerEventsSub?.unsubscribe();
+  }
 
   login(credentials: LoginCredentials): Observable<JwtResponse> {
     return this.http
@@ -26,8 +44,24 @@ export class AuthService {
     return this.http.post<{}>(environment.apiUrl + '/auth/register', credentials);
   }
 
+  logout() {
+    this.jwtService.removeAccessToken();
+    this.jwtService.removeAccessToken();
+    this.authSubject.next(false);
+    this.router.navigateByUrl('/').then();
+  }
+
+  isAuthObservable(): Observable<boolean> {
+    return this.authSubject.asObservable();
+  }
+
+  isAuth(): boolean {
+    return this.jwtService.isTokenValid();
+  }
+
   private handleSetTokens(jwtResponse: JwtResponse) {
     this.jwtService.setAccessToken(jwtResponse.accessToken);
     this.jwtService.setRefreshToken(jwtResponse.refreshToken);
+    this.authSubject.next(this.isAuth());
   }
 }

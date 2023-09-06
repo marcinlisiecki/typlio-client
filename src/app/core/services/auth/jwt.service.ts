@@ -3,6 +3,7 @@ import jwtDecode from 'jwt-decode';
 import { CookieService } from 'ngx-cookie';
 import { ACCESS_TOKEN_COOKIE, REFRESH_TOKEN_COOKIE } from '@core/constants/cookies';
 import { AccessTokenPayload } from '@core/interfaces/auth/access-token-payload';
+import { RefreshTokenPayload } from '@core/interfaces/auth/refresh-token-payload';
 
 @Injectable({
   providedIn: 'root',
@@ -43,6 +44,15 @@ export class JwtService {
     return jwtDecode<AccessTokenPayload>(token);
   }
 
+  getDecodedRefreshToken(): RefreshTokenPayload | null {
+    const token: string | undefined = this.getRefreshToken();
+    if (!token) {
+      return null;
+    }
+
+    return jwtDecode<RefreshTokenPayload>(token);
+  }
+
   getUsername(): string | null {
     return this.getDecodedAccessToken()?.sub || null;
   }
@@ -55,15 +65,31 @@ export class JwtService {
     return this.getDecodedAccessToken()?.id || null;
   }
 
-  getExpiration(): number | null {
+  getAccessTokenExpiration(): number | null {
     return this.getDecodedAccessToken()?.exp || null;
   }
 
-  isTokenExpired() {
-    if (this.getExpiration() === null) {
+  getRefreshTokenExpiration(): number | null {
+    return this.getDecodedRefreshToken()?.exp || null;
+  }
+
+  isAccessTokenExpired() {
+    if (this.getAccessTokenExpiration() === null) {
       return true;
     }
 
-    return (this.getExpiration() as number) < Date.now() / 1000;
+    return (this.getAccessTokenExpiration() as number) < Date.now() / 1000;
+  }
+
+  isRefreshTokenExpired(): boolean {
+    if (this.getRefreshTokenExpiration() === null) {
+      return true;
+    }
+
+    return (this.getRefreshTokenExpiration() as number) < Date.now() / 1000;
+  }
+
+  isTokenValid(): boolean {
+    return !this.isRefreshTokenExpired();
   }
 }
