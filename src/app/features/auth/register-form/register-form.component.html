@@ -1,0 +1,91 @@
+<form
+  class="w-auth-form mx-auto mt-28 flex flex-col gap-y-8"
+  (ngSubmit)="onSubmit()"
+  [formGroup]="registerForm"
+>
+  <header>
+    <h1 class="text-2xl font-semibold">Nice to meet you</h1>
+    <p class="mt-1 text-text-secondary">
+      Lorem ipsum dolor sit amet, sit amet dolor sit dolor amet sit
+    </p>
+  </header>
+
+  <div class="input-box">
+    <label for="email">Email</label>
+    <input type="email" pInputText class="w-full" name="email" id="email" formControlName="email" />
+    <div *ngIf="email?.invalid && email?.touched">
+      <app-validation-error *ngIf="email?.errors?.['required']">
+        Email is required
+      </app-validation-error>
+      <app-validation-error *ngIf="email?.errors?.['email']">Invalid email</app-validation-error>
+    </div>
+  </div>
+
+  <div class="input-box">
+    <label for="username">Username</label>
+    <input
+      type="text"
+      pInputText
+      class="w-full"
+      name="username"
+      id="username"
+      formControlName="username"
+    />
+    <div *ngIf="username?.invalid && username?.touched">
+      <app-validation-error *ngIf="username?.errors?.['required']">
+        Username is required
+      </app-validation-error>
+      <app-validation-error *ngIf="username?.errors?.['minLength']">
+        Username has to be at least 3 characters long
+      </app-validation-error>
+      <app-validation-error *ngIf="username?.errors?.['maxLength']">
+        Username has to be at most 256 characters long
+      </app-validation-error>
+      <app-validation-error
+        *ngIf="username?.errors?.['whitespace'] && !username?.errors?.['required']"
+      >
+        Username cannot consist only of empty characters
+      </app-validation-error>
+    </div>
+  </div>
+
+  <div class="input-box">
+    <label [htmlFor]="'password'">Password</label>
+    <p-password
+      formControlName="password"
+      inputId="password"
+      [toggleMask]="true"
+      [feedback]="true"
+      styleClass="w-full"
+      inputStyleClass="w-full"
+    ></p-password>
+    <div *ngIf="password?.invalid && password?.touched">
+      <app-validation-error *ngIf="password?.errors?.['required']">
+        Password is required
+      </app-validation-error>
+      <app-validation-error *ngIf="password?.errors?.['minLength']">
+        Password has to be at least 8 characters long
+      </app-validation-error>
+      <app-validation-error *ngIf="password?.errors?.['maxLength']">
+        Password has to be at most 256 characters long
+      </app-validation-error>
+      <app-validation-error
+        *ngIf="password?.errors?.['whitespace'] && !password?.errors?.['required']"
+      >
+        Password cannot consist only of empty characters
+      </app-validation-error>
+    </div>
+  </div>
+
+  <div class="flex flex-col">
+    <p-button styleClass="button-wide" type="submit" [loading]="isLoading">Register</p-button>
+    <div class="mt-1" *ngIf="apiError">
+      <app-validation-error>{{ apiError }}</app-validation-error>
+    </div>
+  </div>
+
+  <div class="bg-gray-900 w-1/2 mx-auto h-[2px]"></div>
+  <p class="mx-auto text-text-secondary font-medium">
+    Already have an account? <app-link routerLink="/login">Login</app-link>
+  </p>
+</form>

@@ -3,8 +3,17 @@
   (ngSubmit)="onSubmit()"
   [formGroup]="loginForm"
 >
+  <p-messages *ngIf="registered" severity="success" styleClass="-mb-4">
+    <ng-template pTemplate>
+      <div>Registered successfully. You can now login.</div>
+    </ng-template>
+  </p-messages>
+
   <header>
-    <h1 class="text-2xl mx-auto text-center font-semibold">Welcome back</h1>
+    <h1 class="text-2xl font-semibold">Welcome back</h1>
+    <p class="mt-1 text-text-secondary">
+      Lorem ipsum dolor sit amet, sit amet dolor sit dolor amet sit
+    </p>
   </header>
 
   <div class="input-box">

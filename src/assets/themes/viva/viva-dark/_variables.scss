@@ -602,19 +602,22 @@ $toastOpacity: 0.9 !default;
 $toastTitleFontWeight: 600 !default;
 $toastDetailMargin: $inlineSpacing 0 0 0 !default;
 
-//severities
+// severities
 $infoMessageBg: #a3d7e6 !default;
 $infoMessageBorder: 4px solid #65bcd6 !default;
 $infoMessageTextColor: $shade900 !default;
 $infoMessageIconColor: $shade900 !default;
-$successMessageBg: #bfd47f !default;
-$successMessageBorder: 4px solid #a2c044 !default;
-$successMessageTextColor: $shade900 !default;
-$successMessageIconColor: $shade900 !default;
+
+$successMessageBg: #86efac !default;
+$successMessageBorder: 4px solid #166534 !default;
+$successMessageTextColor: #166534 !default;
+$successMessageIconColor: #166534 !default;
+
 $warningMessageBg: #ff9c3e !default;
 $warningMessageBorder: 4px solid #ff8817 !default;
 $warningMessageTextColor: $shade900 !default;
 $warningMessageIconColor: $shade900 !default;
+
 $errorMessageBg: #e6a3b2 !default;
 $errorMessageBorder: 4px solid #de8499 !default;
 $errorMessageTextColor: $shade900 !default;
