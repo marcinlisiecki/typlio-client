@@ -1,0 +1,23 @@
+<section>
+  <header>
+    <h1>Choose a mode</h1>
+  </header>
+
+  <section class="modes-wrapper" *ngIf="availableSpeedTestModes === null">
+    <p-skeleton size="100%"></p-skeleton>
+    <p-skeleton size="100%"></p-skeleton>
+    <p-skeleton size="100%"></p-skeleton>
+    <p-skeleton size="100%"></p-skeleton>
+    <p-skeleton size="100%"></p-skeleton>
+    <p-skeleton size="100%" class="w-full h-full aspect-square"></p-skeleton>
+  </section>
+
+  <section class="modes-wrapper" *ngIf="availableSpeedTestModes">
+    <div
+      *ngFor="let mode of availableSpeedTestModes"
+      class="border-2 border-gray-800 rounded-md shadow-md flex items-center justify-center aspect-square cursor-pointer hover:border-primary-500 transition transform hover:scale-[1.02]"
+    >
+      {{ mode }}
+    </div>
+  </section>
+</section>

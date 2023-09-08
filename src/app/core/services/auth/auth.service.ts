@@ -44,9 +44,21 @@ export class AuthService implements OnDestroy {
     return this.http.post<{}>(environment.apiUrl + '/auth/register', credentials);
   }
 
+  refreshToken(): Observable<JwtResponse> {
+    const refreshToken = this.jwtService.getRefreshToken();
+
+    return this.http
+      .post<JwtResponse>(
+        environment.apiUrl + '/auth/refresh-token',
+        {},
+        { headers: { Authorization: `Bearer ${refreshToken}` } },
+      )
+      .pipe(tap((response: JwtResponse) => this.handleSetTokens(response)));
+  }
+
   logout() {
     this.jwtService.removeAccessToken();
-    this.jwtService.removeAccessToken();
+    this.jwtService.removeRefreshToken();
     this.authSubject.next(false);
     this.router.navigateByUrl('/').then();
   }
