@@ -3,20 +3,43 @@
     <h1 class="text-xl font-semibold">Type as fast as you can</h1>
   </header>
 
-  <section
-    class="mt-from-page-heading flex flex-wrap font-mono text-xl font-bold text-text-secondary tracking-wider leading-relaxed"
-  >
-    <p class="whitespace-pre" *ngFor="let word of words">
-      <span
-        *ngFor="let letter of word.letters"
-        class="relative"
-        [ngClass]="{
-          'text-text-tertiary': activeLetterIndex > letter.index,
-          'bg-white text-black': activeLetterIndex === letter.index,
-          '!text-red-500': mistakes.includes(letter)
-        }"
-        >{{ letter.text }}</span
-      >
-    </p>
+  <section class="flex gap-x-10 mt-from-page-heading">
+    <section
+      class="flex flex-wrap font-mono text-xl font-bold text-text-secondary tracking-wider leading-relaxed flex-[3]"
+    >
+      <p class="whitespace-pre" *ngFor="let word of words">
+        <span
+          *ngFor="let letter of word.letters"
+          class="relative"
+          [ngClass]="{
+            'text-text-tertiary': activeLetterIndex > letter.index,
+            'bg-white text-black': activeLetterIndex === letter.index,
+            '!text-red-500': mistakes.includes(letter)
+          }"
+          >{{ letter.text }}</span
+        >
+      </p>
+    </section>
+
+    <section class="flex-1">
+      <header>
+        <h2 class="font-medium">Statistics</h2>
+      </header>
+
+      <div class="font-medium mt-2">
+        <p>60 <span class="text-text-secondary">seconds</span></p>
+        <p>87 <span class="text-text-secondary">wpm</span></p>
+        <p>99.5% <span class="text-text-secondary">accuracy</span></p>
+      </div>
+
+      <p-messages severity="info">
+        <ng-template pTemplate>
+          <p class="font-medium text-sm">
+            You can use <strong class="text-primary-500">ctrl + backspace</strong> to erase entire
+            word.
+          </p>
+        </ng-template>
+      </p-messages>
+    </section>
   </section>
 </section>

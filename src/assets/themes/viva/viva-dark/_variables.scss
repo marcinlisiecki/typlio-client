@@ -581,8 +581,8 @@ $organizationChartConnectorColor: $shade600 !default;
 
 //message
 $messageMargin: 1rem 0 !default;
-$messagePadding: 1rem 1.5rem !default;
-$messageBorderWidth: 0 0 0 6px !default;
+$messagePadding: 0.75rem !default;
+$messageBorderWidth: 2px !default;
 $messageIconFontSize: 1.5rem !default;
 $messageTextFontSize: 1rem !default;
 $messageTextFontWeight: 400 !default;
@@ -606,10 +606,10 @@ $toastTitleFontWeight: 600 !default;
 $toastDetailMargin: $inlineSpacing 0 0 0 !default;
 
 // severities
-$infoMessageBg: #a3d7e6 !default;
-$infoMessageBorder: 4px solid #65bcd6 !default;
-$infoMessageTextColor: $shade900 !default;
-$infoMessageIconColor: $shade900 !default;
+$infoMessageBg: rgba(59, 130, 246, 0.05) !default;
+$infoMessageBorder: 2px solid rgba(59, 130, 246, 0.25) !default;
+$infoMessageTextColor: #3b82f6 !default;
+$infoMessageIconColor: #3b82f6 !default;
 
 $successMessageBg: #86efac !default;
 $successMessageBorder: 4px solid #166534 !default;
