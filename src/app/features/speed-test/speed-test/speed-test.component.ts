@@ -3,6 +3,8 @@ import { MOCK_SPEED_TEST_TEXT } from '@core/mock/speed-test';
 import { Word } from '@core/interfaces/speed-test/word';
 import { Letter } from '@core/interfaces/speed-test/letter';
 import { ALLOWED_CHARACTERS } from '@core/constants/speed-test';
+import { generateWords } from '@core/utils/speed-test-generator/word-generator';
+import { generateLettersFromWords } from '@core/utils/speed-test-generator/letter-generator';
 
 @Component({
   selector: 'app-speed-test',
@@ -20,37 +22,72 @@ export class SpeedTestComponent implements OnInit, OnDestroy {
 
   constructor() {
     this.text = MOCK_SPEED_TEST_TEXT;
-    this.generateWords();
 
-    this.letters = this.letters.sort((a, b) => a.index - b.index);
+    this.words = generateWords(this.text);
+    this.letters = generateLettersFromWords(this.words);
   }
 
   ngOnInit(): void {
-    document.addEventListener('keydown', (e: KeyboardEvent) => {
-      const key = e.key;
-      let activeLetter: Letter = this.letters[this.activeLetterIndex];
-
-      if (key === 'Backspace') {
-        this.handleBackspace();
-        return;
-      }
-
-      if (!ALLOWED_CHARACTERS.includes(key.toLowerCase())) {
-        return;
-      }
-
-      if (key !== activeLetter.text) {
-        this.mistakes.push(activeLetter);
-      }
-
-      this.activeLetterIndex++;
-    });
+    document.addEventListener('keydown', this.handleKeyDown);
   }
 
-  ngOnDestroy(): void {}
+  ngOnDestroy(): void {
+    document.removeEventListener('keydown', this.handleKeyDown);
+  }
 
-  handleBackspace() {
+  handleKeyDown = (e: KeyboardEvent) => {
+    if (e.key === 'Backspace') {
+      this.handleBackspace(e.ctrlKey);
+      return;
+    }
+
+    this.handleTypeLetter(e.key);
+  };
+
+  handleTypeLetter(letter: string) {
+    if (!this.isTypedLetterValid(letter)) {
+      return;
+    }
+
+    let activeLetter: Letter = this.letters[this.activeLetterIndex];
+
+    if (letter !== activeLetter.text) {
+      this.mistakes.push(activeLetter);
+    }
+
+    this.activeLetterIndex++;
+  }
+
+  isTypedLetterValid(letter: string): boolean {
+    return ALLOWED_CHARACTERS.includes(letter.toLowerCase());
+  }
+
+  removeMistake(index: number) {
+    this.mistakes = this.mistakes.filter((mistake) => mistake.index !== index);
+  }
+
+  handleBackspace(withCtrl: boolean = false) {
     if (this.activeLetterIndex === 0) {
+      return;
+    }
+
+    if (withCtrl) {
+      let newActiveLetterIndex = this.activeLetterIndex;
+
+      // If active index is on first letter of a word, go back to previous word first.
+      if (this.letters[this.activeLetterIndex - 1].text === ' ') {
+        newActiveLetterIndex = this.activeLetterIndex - 2;
+        this.removeMistake(this.activeLetterIndex - 1);
+        this.removeMistake(this.activeLetterIndex - 2);
+      }
+
+      for (let i = newActiveLetterIndex - 1; i >= 0; i--) {
+        if (this.letters[i].text === ' ') break;
+        newActiveLetterIndex = i;
+        this.removeMistake(i);
+      }
+
+      this.activeLetterIndex = newActiveLetterIndex;
       return;
     }
 
@@ -58,33 +95,7 @@ export class SpeedTestComponent implements OnInit, OnDestroy {
     const activeLetter: Letter = this.letters[this.activeLetterIndex];
 
     if (this.mistakes.includes(activeLetter)) {
-      this.mistakes = this.mistakes.filter((mistake) => mistake.index !== activeLetter.index);
+      this.removeMistake(activeLetter.index);
     }
-  }
-
-  generateWords() {
-    this.letters = [];
-    let letterIndex = -1;
-
-    this.words = this.text.split(' ').map((wordText, wordIndex) => {
-      if (wordIndex + 1 < this.text.split(' ').length) {
-        wordText += ' ';
-      }
-
-      const newWord: Word = {
-        index: wordIndex,
-        text: wordText,
-        letters: wordText.split('').map((letterText) => {
-          letterIndex++;
-          return {
-            text: letterText,
-            index: letterIndex,
-          };
-        }),
-      };
-      this.letters.push(...newWord.letters);
-
-      return newWord;
-    });
   }
 }
