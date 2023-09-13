@@ -33,7 +33,7 @@ $shade700: #334155 !default; //unused
 $shade800: #1e293b !default; //elevated surface
 $shade900: #0f172a !default; //ground surface
 
-$hoverBg: rgba($primaryColor, 0.08) !default;
+$hoverBg: rgba($primaryColor, 0.05) !default;
 
 //global
 $fontFamily: Poppins, sans-serif !default;
@@ -61,8 +61,8 @@ $maskBg: rgba(0, 0, 0, 0.4) !default; //modal mask bg color
 $loadingIconFontSize: 2rem !default;
 $errorColor: #ef4444 !default;
 
-$bgSecondary: #0f172a;
-$bgSecondaryBorderColor: #1e293b;
+$bgSecondary: #0a0c14;
+$bgSecondaryBorderColor: $shade900;
 
 //scale
 $scaleSM: 0.875 !default;
@@ -686,7 +686,7 @@ $menuitemIconHoverColor: $shade000 !default;
 $menuitemHoverBg: $hoverBg !default;
 $menuitemTextFocusColor: $shade000 !default;
 $menuitemIconFocusColor: $shade000 !default;
-$menuitemFocusBg: rgba($primaryColor, 0.1) !default;
+$menuitemFocusBg: rgba($primaryColor, 0.05) !default;
 $menuitemTextActiveColor: $shade000 !default;
 $menuitemIconActiveColor: $shade000 !default;
 $menuitemActiveBg: $hoverBg !default;
