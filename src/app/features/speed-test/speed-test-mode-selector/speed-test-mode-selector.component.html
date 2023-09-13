@@ -13,12 +13,13 @@
   </section>
 
   <section class="modes-wrapper mt-from-page-heading" *ngIf="availableSpeedTestModes">
-    <div
+    <a
+      routerLink="/speed-test/{{ mode }}"
       *ngFor="let mode of availableSpeedTestModes"
       class="border-2 border-gray-800 rounded-md shadow-md flex items-center justify-center aspect-square cursor-pointer hover:border-primary-500 transition transform hover:scale-[1.02] text-lg font-medium"
     >
       {{ speedTestModeToLabel[mode] }}
-    </div>
+    </a>
   </section>
 
   <section class="mt-section text-center text-text-secondary">

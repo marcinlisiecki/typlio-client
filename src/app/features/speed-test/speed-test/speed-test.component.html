@@ -1,0 +1,22 @@
+<section class="mt-from-header">
+  <header>
+    <h1 class="text-xl font-semibold">Type as fast as you can</h1>
+  </header>
+
+  <section
+    class="mt-from-page-heading flex flex-wrap font-mono text-xl font-bold text-text-secondary tracking-wider leading-relaxed"
+  >
+    <p class="whitespace-pre" *ngFor="let word of words">
+      <span
+        *ngFor="let letter of word.letters"
+        class="relative"
+        [ngClass]="{
+          'text-text-tertiary': activeLetterIndex > letter.index,
+          'bg-white text-black': activeLetterIndex === letter.index,
+          '!text-red-500': mistakes.includes(letter)
+        }"
+        >{{ letter.text }}</span
+      >
+    </p>
+  </section>
+</section>
