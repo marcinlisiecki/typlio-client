@@ -11,7 +11,7 @@ import { AuthService } from '@core/services/auth/auth.service';
 import { Router } from '@angular/router';
 import { RegisterCredentials } from '@core/interfaces/auth/register-credentials';
 import { HttpErrorResponse } from '@angular/common/http';
-import { extractMessage } from '@core/utils/apiErrors';
+import { extractMessage } from '@core/utils/api-errors';
 
 @Component({
   selector: 'app-register-form',

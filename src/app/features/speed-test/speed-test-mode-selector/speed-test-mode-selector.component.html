@@ -1,9 +1,9 @@
-<section>
+<section class="mt-from-header">
   <header>
-    <h1>Choose a mode</h1>
+    <h1 class="text-xl font-semibold">Choose a mode</h1>
   </header>
 
-  <section class="modes-wrapper" *ngIf="availableSpeedTestModes === null">
+  <section class="modes-wrapper mt-from-page-heading" *ngIf="availableSpeedTestModes === null">
     <p-skeleton size="100%"></p-skeleton>
     <p-skeleton size="100%"></p-skeleton>
     <p-skeleton size="100%"></p-skeleton>
@@ -12,12 +12,16 @@
     <p-skeleton size="100%" class="w-full h-full aspect-square"></p-skeleton>
   </section>
 
-  <section class="modes-wrapper" *ngIf="availableSpeedTestModes">
+  <section class="modes-wrapper mt-from-page-heading" *ngIf="availableSpeedTestModes">
     <div
       *ngFor="let mode of availableSpeedTestModes"
-      class="border-2 border-gray-800 rounded-md shadow-md flex items-center justify-center aspect-square cursor-pointer hover:border-primary-500 transition transform hover:scale-[1.02]"
+      class="border-2 border-gray-800 rounded-md shadow-md flex items-center justify-center aspect-square cursor-pointer hover:border-primary-500 transition transform hover:scale-[1.02] text-lg font-medium"
     >
-      {{ mode }}
+      {{ speedTestModeToLabel[mode] }}
     </div>
+  </section>
+
+  <section class="mt-section text-center text-text-secondary">
+    <p>Missing a mode? <app-link routerLink="/">Make a suggestion</app-link></p>
   </section>
 </section>

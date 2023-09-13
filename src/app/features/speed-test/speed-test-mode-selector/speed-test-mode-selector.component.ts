@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { SpeedTestMode } from '@core/interfaces/speed-test/speed-test-mode';
 import { SpeedTestService } from '@core/services/speed-test/speed-test.service';
+import { speedTestModeToLabel } from '@core/utils/speed-test';
 
 @Component({
   selector: 'app-speed-test-mode-selector',
@@ -23,4 +24,6 @@ export class SpeedTestModeSelectorComponent implements OnInit {
       },
     });
   }
+
+  protected readonly speedTestModeToLabel = speedTestModeToLabel;
 }

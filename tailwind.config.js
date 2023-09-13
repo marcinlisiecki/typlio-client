@@ -10,6 +10,11 @@ module.exports = {
         sans: ['Poppins', ...defaultTheme.fontFamily.sans],
         mono: ['Ubuntu Mono', ...defaultTheme.fontFamily.mono],
       },
+      margin: {
+        'from-header': '2rem',
+        'from-page-heading': '1rem',
+        section: '2rem',
+      },
       padding: {
         page: '36px',
       },

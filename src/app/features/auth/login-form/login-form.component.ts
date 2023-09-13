@@ -3,7 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '@core/services/auth/auth.service';
 import { LoginCredentials } from '@core/interfaces/auth/login-credentials';
 import { HttpErrorResponse } from '@angular/common/http';
-import { extractMessage } from '@core/utils/apiErrors';
+import { extractMessage } from '@core/utils/api-errors';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 
