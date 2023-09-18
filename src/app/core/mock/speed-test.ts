@@ -1,2 +1,1 @@
-export const MOCK_SPEED_TEST_TEXT =
-  'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed cursus vehicula placerat. Etiam sollicitudin orci a lobortis porttitor. Ut vitae dolor tortor. Pellentesque pellentesque mattis mi, a venenatis augue mattis quis. Aliquam scelerisque quam sit amet sollicitudin ultricies. Quisque nec leo sodales, cursus sem a, sodales enim. Curabitur sit amet varius diam. Morbi purus ante, pretium nec auctor vitae, scelerisque in metus.';
+export const MOCK_SPEED_TEST_TEXT = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.';

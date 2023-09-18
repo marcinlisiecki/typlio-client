@@ -5,6 +5,9 @@ import { Letter } from '@core/interfaces/speed-test/letter';
 import { ALLOWED_CHARACTERS } from '@core/constants/speed-test';
 import { generateWords } from '@core/utils/speed-test-generator/word-generator';
 import { generateLettersFromWords } from '@core/utils/speed-test-generator/letter-generator';
+import { SpeedTestState } from '@core/interfaces/speed-test/speed-test-state';
+import { ActivatedRoute } from '@angular/router';
+import { SpeedTestMode } from '@core/interfaces/speed-test/speed-test-mode';
 
 @Component({
   selector: 'app-speed-test',
@@ -13,6 +16,12 @@ import { generateLettersFromWords } from '@core/utils/speed-test-generator/lette
 })
 export class SpeedTestComponent implements OnInit, OnDestroy {
   text!: string;
+  state: SpeedTestState = SpeedTestState.WAITING;
+  timer?: any;
+  time: number = 0;
+  cpm: number = 0;
+  accuracy: number = 100;
+  mode!: SpeedTestMode;
 
   words: Word[] = [];
   letters: Letter[] = [];
@@ -20,8 +29,10 @@ export class SpeedTestComponent implements OnInit, OnDestroy {
   activeLetterIndex: number = 0;
   mistakes: Letter[] = [];
 
-  constructor() {
+  constructor(private route: ActivatedRoute) {
     this.text = MOCK_SPEED_TEST_TEXT;
+
+    this.mode = route.snapshot.params['mode'];
 
     this.words = generateWords(this.text);
     this.letters = generateLettersFromWords(this.words);
@@ -36,13 +47,53 @@ export class SpeedTestComponent implements OnInit, OnDestroy {
   }
 
   handleKeyDown = (e: KeyboardEvent) => {
+    if (this.state === SpeedTestState.FINISHED) {
+      return;
+    }
+
     if (e.key === 'Backspace') {
       this.handleBackspace(e.ctrlKey);
       return;
     }
 
+    if (this.state === SpeedTestState.WAITING) {
+      this.handleStart();
+    }
+
     this.handleTypeLetter(e.key);
+    this.checkIfFinished();
   };
+
+  handleStart() {
+    this.state = SpeedTestState.RUNNING;
+    this.timer = setInterval(() => this.tick(), 1000);
+  }
+
+  tick() {
+    this.time++;
+
+    this.cpm = Math.round(((this.activeLetterIndex - this.mistakes.length) / this.time) * 60);
+    this.accuracy = parseFloat(
+      (100 - (this.mistakes.length / this.activeLetterIndex) * 100).toFixed(2),
+    );
+
+    this.checkIfFinished();
+  }
+
+  checkIfFinished() {
+    if (this.state !== SpeedTestState.RUNNING) {
+      return;
+    }
+
+    if (this.mode.includes('W') && this.activeLetterIndex >= this.text.length) {
+      this.finish();
+    }
+  }
+
+  finish() {
+    clearInterval(this.timer);
+    alert('end');
+  }
 
   handleTypeLetter(letter: string) {
     if (!this.isTypedLetterValid(letter)) {
