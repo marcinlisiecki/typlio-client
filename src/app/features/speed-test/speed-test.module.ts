@@ -9,6 +9,7 @@ import { MessagesModule } from 'primeng/messages';
 import { SharedModule as PrimeSharedModule } from 'primeng/api';
 import { SpeedTestStatsComponent } from './speed-test-stats/speed-test-stats.component';
 import { SpeedTestTextComponent } from './speed-test-text/speed-test-text.component';
+import { SpeedTestResultsComponent } from './speed-test-results/speed-test-results.component';
 
 @NgModule({
   declarations: [
@@ -16,6 +17,7 @@ import { SpeedTestTextComponent } from './speed-test-text/speed-test-text.compon
     SpeedTestComponent,
     SpeedTestStatsComponent,
     SpeedTestTextComponent,
+    SpeedTestResultsComponent,
   ],
   imports: [
     CommonModule,

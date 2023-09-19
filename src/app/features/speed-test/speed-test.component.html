@@ -1,4 +1,4 @@
-<section class="mt-from-header">
+<section class="mt-from-header" *ngIf="!finished">
   <header>
     <h1 class="text-xl font-semibold">Type as fast as you can</h1>
   </header>
@@ -13,3 +13,11 @@
     <app-speed-test-stats class="flex-1" [time]="time" [stats]="stats"></app-speed-test-stats>
   </section>
 </section>
+
+<app-speed-test-results
+  *ngIf="finished"
+  [stats]="stats"
+  [time]="5"
+  (nextSpeedTest)="nextSpeedTest()"
+  (repeatSameSpeedTest)="repeatSameSpeedTest()"
+></app-speed-test-results>

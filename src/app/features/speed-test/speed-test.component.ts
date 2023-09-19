@@ -7,6 +7,7 @@ import { SpeedTestMode } from '@core/interfaces/speed-test/speed-test-mode';
 import { TypingService } from '@core/services/typing/typing.service';
 import { TypingType } from '@core/interfaces/typing/typing-type';
 import { TypingStats } from '@core/interfaces/typing/typing-stats';
+import { DEFAULT_TYPING_STATS } from '@core/constants/typing';
 
 @Component({
   selector: 'app-speed-test',
@@ -16,6 +17,7 @@ import { TypingStats } from '@core/interfaces/typing/typing-stats';
 export class SpeedTestComponent implements OnInit, OnDestroy {
   text!: string;
   mode!: SpeedTestMode;
+  finished: boolean = false;
 
   constructor(
     route: ActivatedRoute,
@@ -23,18 +25,31 @@ export class SpeedTestComponent implements OnInit, OnDestroy {
   ) {
     this.text = MOCK_SPEED_TEST_TEXT;
     this.mode = route.snapshot.params['mode'];
+    this.finished = false;
   }
 
   ngOnInit(): void {
-    this.typingService.init(this.text, TypingType.TEXT, this.onFinish);
+    this.typingService.init(this.text, TypingType.TEXT, () => this.onFinish());
   }
 
   ngOnDestroy(): void {
     this.typingService.quitTyping();
   }
 
+  nextSpeedTest() {
+    // TODO: Generate new text
+    this.text = MOCK_SPEED_TEST_TEXT + ' XD';
+    this.typingService.init(this.text, TypingType.TEXT, () => this.onFinish());
+    this.finished = false;
+  }
+
+  repeatSameSpeedTest() {
+    this.typingService.init(this.text, TypingType.TEXT, () => this.onFinish());
+    this.finished = false;
+  }
+
   onFinish() {
-    alert('finished');
+    this.finished = true;
   }
 
   get stats(): TypingStats {
@@ -56,4 +71,6 @@ export class SpeedTestComponent implements OnInit, OnDestroy {
   get mistakes(): Letter[] {
     return this.typingService.mistakes;
   }
+
+  protected readonly DEFAULT_TYPING_STATS = DEFAULT_TYPING_STATS;
 }

@@ -1,0 +1,67 @@
+<section class="mt-from-header">
+  <header>
+    <h1 class="text-xl font-semibold">Typing speed test results</h1>
+  </header>
+
+  <section class="mt-20">
+    <div class="flex gap-x-16">
+      <div class="flex-[2]">
+        <div class="flex justify-between items-center">
+          <div class="flex items-end gap-x-2">
+            <p class="text-4xl text-primary-500 font-semibold">
+              {{ Math.round(stats.cpm / 5) }}
+            </p>
+            <p class="text-text-secondary font-bold font-mono tracking-wide pb-px">WPM</p>
+          </div>
+
+          <div class="flex items-end gap-x-2">
+            <p class="text-4xl text-primary-500 font-semibold">
+              {{ stats.cpm }}
+            </p>
+            <p class="text-text-secondary font-bold font-mono tracking-wide pb-px">CPM</p>
+          </div>
+
+          <div class="flex items-end gap-x-2">
+            <p class="text-4xl text-primary-500 font-semibold">{{ stats.accuracy }}%</p>
+            <p class="text-text-secondary font-bold font-mono tracking-wide pb-px">ACCURACY</p>
+          </div>
+
+          <div class="flex items-end gap-x-2">
+            <p class="text-4xl text-primary-500 font-semibold">{{ time }}s</p>
+            <p class="text-text-secondary font-bold font-mono tracking-wide pb-px">TIME</p>
+          </div>
+        </div>
+
+        <div class="w-full h-64 bg-gray-900/50 rounded-lg mt-6"></div>
+
+        <div class="mt-6 flex gap-x-4 items-center">
+          <app-icon-button
+            (click)="nextSpeedTest.emit()"
+            icon="pi pi-angle-double-right"
+            helpText="Next speed test"
+          ></app-icon-button>
+          <app-icon-button
+            (click)="repeatSameSpeedTest.emit()"
+            icon="pi pi-refresh"
+            helpText="Repeat the same"
+          ></app-icon-button>
+          <a routerLink="/speed-test">
+            <app-icon-button
+              icon="pi pi-arrow-right-arrow-left"
+              helpText="Change mode"
+            ></app-icon-button>
+          </a>
+        </div>
+      </div>
+
+      <div class="flex w-px bg-gray-900 min-h-full"></div>
+
+      <div class="flex-[1]">
+        <div>
+          <p class="text-text-secondary font-bold font-mono tracking-wide pb-px">MODE</p>
+          <p>{{ modeLabel }}</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</section>

@@ -1,0 +1,13 @@
+<div class="group relative cursor-pointer">
+  <i
+    class="{{
+      icon
+    }} text-text-secondary group-hover:text-text-primary transition transform group-hover:-translate-y-0.5"
+  ></i>
+  <div
+    *ngIf="helpText"
+    class="whitespace-nowrap absolute left-1/2 -top-10 -translate-y-1 group-hover:translate-y-0 transition transform -translate-x-1/2 p-1 text-sm opacity-0 pointer-events-none group-hover:opacity-100 bg-light rounded-md border border-gray-900 text-text-secondary"
+  >
+    {{ helpText }}
+  </div>
+</div>
