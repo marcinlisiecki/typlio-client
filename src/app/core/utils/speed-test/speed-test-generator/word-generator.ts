@@ -1,4 +1,4 @@
-import { Word } from '@core/interfaces/speed-test/word';
+import { Word } from '@core/interfaces/typing/word';
 
 export const generateWords = (text: string): Word[] => {
   let letterIndex = -1;

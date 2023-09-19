@@ -1,5 +1,5 @@
-import { Word } from '@core/interfaces/speed-test/word';
-import { Letter } from '@core/interfaces/speed-test/letter';
+import { Word } from '@core/interfaces/typing/word';
+import { Letter } from '@core/interfaces/typing/letter';
 
 export const generateLettersFromWords = (words: Word[]): Letter[] => {
   let index = -1;
