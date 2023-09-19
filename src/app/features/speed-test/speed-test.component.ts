@@ -7,7 +7,6 @@ import { SpeedTestMode } from '@core/interfaces/speed-test/speed-test-mode';
 import { TypingService } from '@core/services/typing/typing.service';
 import { TypingType } from '@core/interfaces/typing/typing-type';
 import { TypingStats } from '@core/interfaces/typing/typing-stats';
-import { DEFAULT_TYPING_STATS } from '@core/constants/typing';
 
 @Component({
   selector: 'app-speed-test',
@@ -38,7 +37,7 @@ export class SpeedTestComponent implements OnInit, OnDestroy {
 
   nextSpeedTest() {
     // TODO: Generate new text
-    this.text = MOCK_SPEED_TEST_TEXT + ' XD';
+    this.text = MOCK_SPEED_TEST_TEXT;
     this.typingService.init(this.text, TypingType.TEXT, () => this.onFinish());
     this.finished = false;
   }
@@ -71,6 +70,4 @@ export class SpeedTestComponent implements OnInit, OnDestroy {
   get mistakes(): Letter[] {
     return this.typingService.mistakes;
   }
-
-  protected readonly DEFAULT_TYPING_STATS = DEFAULT_TYPING_STATS;
 }
