@@ -3,13 +3,20 @@ import { CommonModule } from '@angular/common';
 import { SpeedTestModeSelectorComponent } from './speed-test-mode-selector/speed-test-mode-selector.component';
 import { SkeletonModule } from 'primeng/skeleton';
 import { SharedModule } from '@app/shared/shared.module';
-import { SpeedTestComponent } from './speed-test/speed-test.component';
+import { SpeedTestComponent } from './speed-test.component';
 import { RouterLink } from '@angular/router';
 import { MessagesModule } from 'primeng/messages';
 import { SharedModule as PrimeSharedModule } from 'primeng/api';
+import { SpeedTestStatsComponent } from './speed-test-stats/speed-test-stats.component';
+import { SpeedTestTextComponent } from './speed-test-text/speed-test-text.component';
 
 @NgModule({
-  declarations: [SpeedTestModeSelectorComponent, SpeedTestComponent],
+  declarations: [
+    SpeedTestModeSelectorComponent,
+    SpeedTestComponent,
+    SpeedTestStatsComponent,
+    SpeedTestTextComponent,
+  ],
   imports: [
     CommonModule,
     SkeletonModule,

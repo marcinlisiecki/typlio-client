@@ -34,6 +34,9 @@ export class TypingService {
   constructor() {}
 
   public init(text: string, type: TypingType, onFinish?: () => void) {
+    this.time = 0;
+    this.activeLetterIndex = 0;
+    this.mistakes = [];
     this.text = text;
     this.stats = DEFAULT_TYPING_STATS;
     this.type = type;
@@ -85,6 +88,11 @@ export class TypingService {
     if (this.onFinish) {
       this.onFinish();
     }
+  }
+
+  public quitTyping() {
+    clearInterval(this.timer);
+    document.removeEventListener('keydown', this.handleKeyDown);
   }
 
   private handleTypeLetter(letter: string) {

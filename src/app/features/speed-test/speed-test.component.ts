@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { MOCK_SPEED_TEST_TEXT } from '@core/mock/speed-test';
 import { Word } from '@core/interfaces/typing/word';
 import { Letter } from '@core/interfaces/typing/letter';
@@ -13,7 +13,7 @@ import { TypingStats } from '@core/interfaces/typing/typing-stats';
   templateUrl: './speed-test.component.html',
   styleUrls: ['./speed-test.component.scss'],
 })
-export class SpeedTestComponent implements OnInit {
+export class SpeedTestComponent implements OnInit, OnDestroy {
   text!: string;
   mode!: SpeedTestMode;
 
@@ -27,6 +27,10 @@ export class SpeedTestComponent implements OnInit {
 
   ngOnInit(): void {
     this.typingService.init(this.text, TypingType.TEXT, this.onFinish);
+  }
+
+  ngOnDestroy(): void {
+    this.typingService.quitTyping();
   }
 
   onFinish() {

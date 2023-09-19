@@ -1,0 +1,15 @@
+<section class="mt-from-header">
+  <header>
+    <h1 class="text-xl font-semibold">Type as fast as you can</h1>
+  </header>
+
+  <section class="flex gap-x-10 mt-from-page-heading">
+    <app-speed-test-text
+      class="flex-[3]"
+      [activeLetterIndex]="activeLetterIndex"
+      [words]="words"
+      [mistakes]="mistakes"
+    ></app-speed-test-text>
+    <app-speed-test-stats class="flex-1" [time]="time" [stats]="stats"></app-speed-test-stats>
+  </section>
+</section>

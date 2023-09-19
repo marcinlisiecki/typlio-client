@@ -1,0 +1,17 @@
+<section
+  class="flex flex-wrap font-mono text-xl font-bold text-text-secondary tracking-wider leading-relaxed"
+  *ngIf="words && mistakes"
+>
+  <p class="whitespace-pre" *ngFor="let word of words">
+    <span
+      *ngFor="let letter of word.letters"
+      class="relative"
+      [ngClass]="{
+        'text-text-tertiary': activeLetterIndex > letter.index,
+        'bg-white text-black': activeLetterIndex === letter.index,
+        '!text-red-500': mistakes.includes(letter)
+      }"
+      >{{ letter.text }}</span
+    >
+  </p>
+</section>

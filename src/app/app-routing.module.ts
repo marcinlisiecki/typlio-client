@@ -3,7 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { LoginFormComponent } from './features/auth/login-form/login-form.component';
 import { RegisterFormComponent } from '@app/features/auth/register-form/register-form.component';
 import { SpeedTestModeSelectorComponent } from '@app/features/speed-test/speed-test-mode-selector/speed-test-mode-selector.component';
-import { SpeedTestComponent } from '@app/features/speed-test/speed-test/speed-test.component';
+import { SpeedTestComponent } from '@app/features/speed-test/speed-test.component';
 
 const routes: Routes = [
   {
