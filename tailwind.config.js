@@ -12,7 +12,7 @@ module.exports = {
       },
       margin: {
         'from-header': '2rem',
-        'from-page-heading': '1rem',
+        'from-page-heading': '2rem',
         section: '2rem',
       },
       padding: {
