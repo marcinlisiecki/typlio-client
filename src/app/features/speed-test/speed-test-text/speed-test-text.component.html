@@ -9,9 +9,10 @@
       [ngClass]="{
         'text-text-tertiary': activeLetterIndex > letter.index,
         'bg-white text-black': activeLetterIndex === letter.index,
-        '!text-red-500': mistakes.includes(letter)
+        '!text-red-500': mistakes.includes(letter),
+        'text-transparent': letter.text === ' ' && !mistakes.includes(letter)
       }"
-      >{{ letter.text }}</span
+      >{{ letter.text === ' ' ? '␣\u200B' : letter.text }}</span
     >
   </p>
 </section>
