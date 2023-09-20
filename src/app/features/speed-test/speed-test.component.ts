@@ -1,5 +1,4 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { MOCK_SPEED_TEST_TEXT } from '@core/mock/speed-test';
 import { Word } from '@core/interfaces/typing/word';
 import { Letter } from '@core/interfaces/typing/letter';
 import { ActivatedRoute } from '@angular/router';
@@ -7,6 +6,7 @@ import { SpeedTestMode } from '@core/interfaces/speed-test/speed-test-mode';
 import { TypingService } from '@core/services/typing/typing.service';
 import { TypingType } from '@core/interfaces/typing/typing-type';
 import { TypingStats } from '@core/interfaces/typing/typing-stats';
+import { generateText } from '@core/utils/speed-test/speed-test-generator/text-generator';
 
 @Component({
   selector: 'app-speed-test',
@@ -22,8 +22,8 @@ export class SpeedTestComponent implements OnInit, OnDestroy {
     route: ActivatedRoute,
     private typingService: TypingService,
   ) {
-    this.text = MOCK_SPEED_TEST_TEXT;
     this.mode = route.snapshot.params['mode'];
+    this.generateNewText();
     this.finished = false;
   }
 
@@ -35,9 +35,13 @@ export class SpeedTestComponent implements OnInit, OnDestroy {
     this.typingService.quitTyping();
   }
 
+  generateNewText() {
+    const wordsCount: number = parseInt(this.mode.replace('WORDS_', ''));
+    this.text = generateText(wordsCount);
+  }
+
   nextSpeedTest() {
-    // TODO: Generate new text
-    this.text = MOCK_SPEED_TEST_TEXT;
+    this.generateNewText();
     this.typingService.init(this.text, TypingType.TEXT, () => this.onFinish());
     this.finished = false;
   }
