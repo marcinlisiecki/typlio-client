@@ -42,7 +42,7 @@ export class TypingService {
     this.activeLetterIndex = 0;
     this.mistakes = [];
     this.text = text;
-    this.stats = DEFAULT_TYPING_STATS;
+    this.stats = { ...DEFAULT_TYPING_STATS, wpmHistory: [...DEFAULT_TYPING_STATS.wpmHistory] };
     this.type = type;
     this.state = TypingState.WAITING;
     this.onFinish = onFinish;
