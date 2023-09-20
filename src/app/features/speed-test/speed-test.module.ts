@@ -10,6 +10,7 @@ import { SharedModule as PrimeSharedModule } from 'primeng/api';
 import { SpeedTestStatsComponent } from './speed-test-stats/speed-test-stats.component';
 import { SpeedTestTextComponent } from './speed-test-text/speed-test-text.component';
 import { SpeedTestResultsComponent } from './speed-test-results/speed-test-results.component';
+import { NgChartsModule } from 'ng2-charts';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { SpeedTestResultsComponent } from './speed-test-results/speed-test-resul
     MessagesModule,
     SharedModule,
     PrimeSharedModule,
+    NgChartsModule,
   ],
 })
 export class SpeedTestModule {}

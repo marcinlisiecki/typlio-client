@@ -12,9 +12,17 @@ export const calculateStats = (
   letterIndex: number,
   mistakesCount: number,
   time: number,
+  currentWpmHistory: number[],
 ): TypingStats => {
+  const cpm = calculateCpm(letterIndex, mistakesCount, time);
+  const wpm = Math.round(cpm / 5);
+
+  const newWpmHistory = currentWpmHistory;
+  newWpmHistory[time - 1] = isNaN(wpm) ? newWpmHistory[time] : Math.round(cpm / 5);
+
   return {
-    cpm: calculateCpm(letterIndex, mistakesCount, time),
+    cpm,
     accuracy: calculateAccuracy(letterIndex, mistakesCount),
+    wpmHistory: newWpmHistory,
   };
 };

@@ -17,10 +17,7 @@ export class TypingService {
   text: string = '';
   type?: TypingType;
   state: TypingState = TypingState.WAITING;
-  stats: TypingStats = {
-    cpm: 0,
-    accuracy: 100.0,
-  };
+  stats: TypingStats = DEFAULT_TYPING_STATS;
   timer?: any;
   time: number = 0;
 
@@ -76,7 +73,12 @@ export class TypingService {
 
   private tick() {
     this.time++;
-    this.stats = calculateStats(this.activeLetterIndex, this.mistakes.length, this.time);
+    this.stats = calculateStats(
+      this.activeLetterIndex,
+      this.mistakes.length,
+      this.time,
+      this.stats.wpmHistory,
+    );
     this.checkIfFinished();
   }
 
@@ -88,7 +90,12 @@ export class TypingService {
   }
 
   private finish() {
-    this.stats = calculateStats(this.activeLetterIndex, this.mistakes.length, this.time);
+    this.stats = calculateStats(
+      this.activeLetterIndex,
+      this.mistakes.length,
+      this.time,
+      this.stats.wpmHistory,
+    );
     clearInterval(this.timer);
     document.removeEventListener('keydown', this.handleKeyDown);
 

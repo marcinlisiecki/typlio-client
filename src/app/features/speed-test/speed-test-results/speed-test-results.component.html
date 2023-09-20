@@ -32,7 +32,17 @@
           </div>
         </div>
 
-        <div class="w-full h-64 bg-gray-900/50 rounded-lg mt-6"></div>
+        <div class="mt-6" *ngIf="chartData !== null">
+          <canvas
+            class="w-full h-64"
+            height="300px"
+            baseChart
+            [type]="'line'"
+            [data]="chartData"
+            [options]="DEFAULT_LINE_CHART_OPTIONS"
+            [legend]="false"
+          ></canvas>
+        </div>
 
         <div class="mt-6 flex gap-x-4 items-center">
           <app-icon-button

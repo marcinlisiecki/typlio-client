@@ -77,7 +77,4 @@ export class SpeedTestComponent implements OnInit, OnDestroy {
   get mistakes(): Letter[] {
     return this.typingService.mistakes;
   }
-
-  protected readonly speedTestModeToLabel = speedTestModeToLabel;
-  protected readonly SpeedTestMode = SpeedTestMode;
 }
