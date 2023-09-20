@@ -8,6 +8,11 @@ import { TypingType } from '@core/interfaces/typing/typing-type';
 import { TypingStats } from '@core/interfaces/typing/typing-stats';
 import { generateText } from '@core/utils/speed-test/speed-test-generator/text-generator';
 import { speedTestModeToLabel } from '@core/utils/speed-test';
+import {
+  modeQueryToTypingType,
+  getWordCountFromModeQuery,
+  getTimeFromModeQuery,
+} from '@core/utils/speed-test/mode';
 
 @Component({
   selector: 'app-speed-test',
@@ -18,6 +23,7 @@ export class SpeedTestComponent implements OnInit, OnDestroy {
   text!: string;
   mode!: SpeedTestMode;
   modeLabel!: string;
+  type!: TypingType;
   finished: boolean = false;
 
   constructor(
@@ -25,13 +31,15 @@ export class SpeedTestComponent implements OnInit, OnDestroy {
     private typingService: TypingService,
   ) {
     this.mode = route.snapshot.params['mode'];
+    this.type = modeQueryToTypingType(this.mode);
     this.modeLabel = speedTestModeToLabel[this.mode].toUpperCase();
+
     this.generateNewText();
-    this.finished = false;
   }
 
   ngOnInit(): void {
-    this.typingService.init(this.text, TypingType.TEXT, () => this.onFinish());
+    const time = parseInt(this.mode.replace('TIME_', ''));
+    this.typingService.init(this.text, this.type, () => this.onFinish(), time);
   }
 
   ngOnDestroy(): void {
@@ -39,18 +47,19 @@ export class SpeedTestComponent implements OnInit, OnDestroy {
   }
 
   generateNewText() {
-    const wordsCount: number = parseInt(this.mode.replace('WORDS_', ''));
+    const wordsCount: number = getWordCountFromModeQuery(this.mode);
     this.text = generateText(wordsCount);
   }
 
   nextSpeedTest() {
     this.generateNewText();
-    this.typingService.init(this.text, TypingType.TEXT, () => this.onFinish());
+    const time = getTimeFromModeQuery(this.mode);
+    this.typingService.init(this.text, this.type, () => this.onFinish(), time);
     this.finished = false;
   }
 
   repeatSameSpeedTest() {
-    this.typingService.init(this.text, TypingType.TEXT, () => this.onFinish());
+    this.typingService.init(this.text, this.type, () => this.onFinish());
     this.finished = false;
   }
 

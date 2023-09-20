@@ -20,6 +20,7 @@ export class TypingService {
   stats: TypingStats = DEFAULT_TYPING_STATS;
   timer?: any;
   time: number = 0;
+  finishTime: number = 0;
 
   words: Word[] = [];
   letters: Letter[] = [];
@@ -30,7 +31,13 @@ export class TypingService {
 
   constructor() {}
 
-  public init(text: string, type: TypingType, onFinish?: () => void) {
+  public init(text: string, type: TypingType, onFinish?: () => void, time?: number) {
+    if (type === TypingType.TEXT) {
+      this.finishTime = 0;
+    } else {
+      this.finishTime = time || 30;
+    }
+
     this.time = 0;
     this.activeLetterIndex = 0;
     this.mistakes = [];
@@ -84,7 +91,10 @@ export class TypingService {
 
   private checkIfFinished() {
     if (this.state !== TypingState.RUNNING) return;
-    if (this.type === TypingType.TEXT && this.activeLetterIndex >= this.text.length) {
+    if (
+      (this.type === TypingType.TEXT && this.activeLetterIndex >= this.text.length) ||
+      (this.type === TypingType.TIME && this.time >= this.finishTime)
+    ) {
       this.finish();
     }
   }
