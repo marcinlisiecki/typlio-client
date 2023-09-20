@@ -64,8 +64,15 @@ export class TypingService {
     }
 
     this.handleTypeLetter(e.key);
+    this.scrollText();
     this.checkIfFinished();
   };
+
+  scrollText() {
+    const activeLetterRef = document.getElementById('letter-' + this.activeLetterIndex);
+    activeLetterRef?.scrollIntoView();
+    document.getElementsByClassName('no-scrollbar')[0].scrollBy(0, -50);
+  }
 
   private tick() {
     this.time++;
