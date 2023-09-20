@@ -7,6 +7,7 @@ import { TypingService } from '@core/services/typing/typing.service';
 import { TypingType } from '@core/interfaces/typing/typing-type';
 import { TypingStats } from '@core/interfaces/typing/typing-stats';
 import { generateText } from '@core/utils/speed-test/speed-test-generator/text-generator';
+import { speedTestModeToLabel } from '@core/utils/speed-test';
 
 @Component({
   selector: 'app-speed-test',
@@ -16,6 +17,7 @@ import { generateText } from '@core/utils/speed-test/speed-test-generator/text-g
 export class SpeedTestComponent implements OnInit, OnDestroy {
   text!: string;
   mode!: SpeedTestMode;
+  modeLabel!: string;
   finished: boolean = false;
 
   constructor(
@@ -23,6 +25,7 @@ export class SpeedTestComponent implements OnInit, OnDestroy {
     private typingService: TypingService,
   ) {
     this.mode = route.snapshot.params['mode'];
+    this.modeLabel = speedTestModeToLabel[this.mode].toUpperCase();
     this.generateNewText();
     this.finished = false;
   }
@@ -74,4 +77,7 @@ export class SpeedTestComponent implements OnInit, OnDestroy {
   get mistakes(): Letter[] {
     return this.typingService.mistakes;
   }
+
+  protected readonly speedTestModeToLabel = speedTestModeToLabel;
+  protected readonly SpeedTestMode = SpeedTestMode;
 }

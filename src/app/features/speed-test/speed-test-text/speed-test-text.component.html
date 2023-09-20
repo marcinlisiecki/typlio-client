@@ -1,12 +1,12 @@
 <section
-  class="font-semibold text-text-secondary tracking-wider leading-relaxed relative"
+  class="font-semibold text-text-tertiary tracking-wider leading-relaxed relative"
   *ngIf="words && mistakes"
 >
   <div
     class="absolute bottom-0 w-full h-16 z-10 bg-gradient-to-t from-bg-dark to-transparent"
   ></div>
   <div
-    class="font-mono text-2xl leading-relaxed tracking-wide max-h-[200px] overflow-y-scroll no-scrollbar pb-32 flex flex-wrap"
+    class="font-mono text-2xl leading-[1.8] tracking-wide max-h-[200px] overflow-y-scroll no-scrollbar pb-32 flex flex-wrap"
   >
     <p class="whitespace-pre" *ngFor="let word of words">
       <span

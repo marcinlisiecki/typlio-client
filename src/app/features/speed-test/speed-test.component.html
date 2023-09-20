@@ -1,11 +1,11 @@
 <section class="mt-from-header" *ngIf="!finished">
   <header>
-    <h1 class="text-xl font-semibold">Type as fast as you can</h1>
+    <app-page-heading [steps]="['SPEED TEST', modeLabel]">Type as fast as you can</app-page-heading>
   </header>
 
-  <section class="flex gap-x-20 mt-from-page-heading">
+  <section class="flex gap-x-24 mt-from-page-heading">
     <app-speed-test-text
-      class="flex-[3]"
+      class="flex-[2]"
       [activeLetterIndex]="activeLetterIndex"
       [words]="words"
       [mistakes]="mistakes"
