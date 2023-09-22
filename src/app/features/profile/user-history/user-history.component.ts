@@ -19,13 +19,13 @@ export class UserHistoryComponent implements OnInit, OnDestroy {
   paramsSub?: Subscription;
 
   speedTests: SpeedTest[] | null = null;
-  speedTestsError: string | null = null;
   modes: SpeedTestMode[] = [];
   selectedModes: SpeedTestMode[] = [];
 
   userId?: number;
   user: User | null = null;
-  userError: string | null = null;
+
+  error: string | null = null;
 
   constructor(
     private speedTestService: SpeedTestService,
@@ -39,6 +39,7 @@ export class UserHistoryComponent implements OnInit, OnDestroy {
     this.paramsSub = this.route.params.subscribe((params) => {
       this.userId = params['userId'];
 
+      this.error = null;
       this.fetchUser();
       this.fetchUserSpeedTests();
       this.fetchModes();
@@ -50,7 +51,6 @@ export class UserHistoryComponent implements OnInit, OnDestroy {
   }
 
   fetchUser() {
-    this.userError = null;
     this.user = null;
 
     if (!this.userId) {
@@ -62,14 +62,13 @@ export class UserHistoryComponent implements OnInit, OnDestroy {
         this.user = user;
       },
       error: (err: HttpErrorResponse) => {
-        this.userError = extractMessage(err);
+        this.error = extractMessage(err);
       },
     });
   }
 
   fetchUserSpeedTests() {
     this.speedTests = null;
-    this.speedTestsError = null;
 
     if (!this.userId) {
       return;
@@ -80,7 +79,7 @@ export class UserHistoryComponent implements OnInit, OnDestroy {
         this.speedTests = speedTests;
       },
       error: (err: HttpErrorResponse) => {
-        this.speedTestsError = extractMessage(err);
+        this.error = extractMessage(err);
       },
     });
   }
@@ -92,7 +91,7 @@ export class UserHistoryComponent implements OnInit, OnDestroy {
         this.selectedModes = modes;
       },
       error: (err: HttpErrorResponse) => {
-        console.log(err);
+        this.error = extractMessage(err);
       },
     });
   }

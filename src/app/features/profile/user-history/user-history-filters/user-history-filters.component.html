@@ -11,6 +11,14 @@
 
   <div class="mt-6">
     <p>Mode</p>
+    <div class="flex flex-col gap-y-2 mt-1" *ngIf="modes.length === 0">
+      <p-skeleton width="100px" height="20px"></p-skeleton>
+      <p-skeleton width="120px" height="20px"></p-skeleton>
+      <p-skeleton width="110px" height="20px"></p-skeleton>
+      <p-skeleton width="100px" height="20px"></p-skeleton>
+      <p-skeleton width="120px" height="20px"></p-skeleton>
+      <p-skeleton width="110px" height="20px"></p-skeleton>
+    </div>
     <div class="flex flex-col gap-y-2 mt-1">
       <div class="flex items-center gap-x-2" *ngFor="let mode of modes">
         <p-checkbox

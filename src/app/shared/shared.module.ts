@@ -7,6 +7,7 @@ import { ValidationErrorComponent } from './validation-error/validation-error.co
 import { IconButtonComponent } from './icon-button/icon-button.component';
 import { PageHeadingComponent } from './page-heading/page-heading.component';
 import { SpinnerComponent } from './spinner/spinner.component';
+import { PageErrorComponent } from './page-error/page-error.component';
 
 @NgModule({
   declarations: [
@@ -16,6 +17,7 @@ import { SpinnerComponent } from './spinner/spinner.component';
     IconButtonComponent,
     PageHeadingComponent,
     SpinnerComponent,
+    PageErrorComponent,
   ],
   exports: [
     LogoComponent,
@@ -24,6 +26,7 @@ import { SpinnerComponent } from './spinner/spinner.component';
     IconButtonComponent,
     PageHeadingComponent,
     SpinnerComponent,
+    PageErrorComponent,
   ],
   imports: [CommonModule, RouterLink],
 })
