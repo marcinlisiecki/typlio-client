@@ -1,0 +1,28 @@
+<div class="w-full bg-light p-4 rounded-lg">
+  <div class="flex items-center justify-between gap-x-2">
+    <p-badge [value]="speedTestModeToLabel[speedTest.mode]"></p-badge>
+    <p class="text-sm text-text-tertiary font-medium">
+      {{ speedTest.createdAt | date: DISPLAY_DATE_FORMAT }}
+    </p>
+  </div>
+  <div class="mt-6 flex justify-between items-center">
+    <div class="flex items-center gap-x-8">
+      <p class="font-medium">
+        {{ speedTest.cpm / 5 | number: '1.0-0' }}
+        <span class="text-text-tertiary text-sm font-semibold">WPM</span>
+      </p>
+
+      <p class="font-medium">
+        {{ speedTest.cpm }}
+        <span class="text-text-tertiary text-sm font-semibold">CPM</span>
+      </p>
+
+      <p class="font-medium">
+        {{ speedTest.accuracy }}%
+        <span class="text-text-tertiary text-sm font-semibold">Accuracy</span>
+      </p>
+    </div>
+
+    <app-link routerLink="/">Show details</app-link>
+  </div>
+</div>

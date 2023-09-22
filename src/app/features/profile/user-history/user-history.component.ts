@@ -6,10 +6,8 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { extractMessage } from '@core/utils/api-errors';
 import { User } from '@core/interfaces/user/user';
 import { UserService } from '@core/services/user/user.service';
-import { speedTestModeToLabel } from '@core/utils/speed-test';
 import { Subscription } from 'rxjs';
 import { SpeedTestMode } from '@core/interfaces/speed-test/speed-test-mode';
-import { DISPLAY_DATE_FORMAT } from '@core/constants/date';
 
 @Component({
   selector: 'app-user-history',
@@ -96,7 +94,4 @@ export class UserHistoryComponent implements OnInit, OnDestroy {
       },
     });
   }
-
-  protected readonly speedTestModeToLabel = speedTestModeToLabel;
-  protected readonly DISPLAY_DATE_FORMAT = DISPLAY_DATE_FORMAT;
 }

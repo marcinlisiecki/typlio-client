@@ -9,9 +9,10 @@ import { BadgeModule } from 'primeng/badge';
 import { ButtonModule } from 'primeng/button';
 import { CheckboxModule } from 'primeng/checkbox';
 import { UserHistoryFiltersComponent } from './user-history/user-history-filters/user-history-filters.component';
+import { UserHistoryItemComponent } from './user-history/user-history-item/user-history-item.component';
 
 @NgModule({
-  declarations: [UserHistoryComponent, UserHistoryFiltersComponent],
+  declarations: [UserHistoryComponent, UserHistoryFiltersComponent, UserHistoryItemComponent],
   imports: [
     CommonModule,
     SharedModule,
