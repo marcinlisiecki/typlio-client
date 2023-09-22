@@ -1,6 +1,8 @@
 <section class="mt-from-header">
   <header>
-    <h1 class="text-xl font-semibold">Typing speed test results</h1>
+    <app-page-heading [steps]="['SPEED TEST', modeLabel.toUpperCase(), 'RESULTS']"
+      >Typing speed test results</app-page-heading
+    >
   </header>
 
   <section class="mt-20">
@@ -66,10 +68,27 @@
 
       <div class="flex w-px bg-gray-900 min-h-full"></div>
 
-      <div class="flex-[1]">
+      <div class="flex-[1] flex flex-col justify-between">
         <div>
           <p class="text-text-secondary font-bold font-mono tracking-wide pb-px">MODE</p>
           <p>{{ modeLabel }}</p>
+        </div>
+
+        <div>
+          <div class="flex items-center gap-x-2" *ngIf="!saved && !savingError">
+            <app-spinner></app-spinner>
+            <p class="text-text-secondary ml-1">Saving results.</p>
+          </div>
+
+          <div class="flex items-center gap-x-2" *ngIf="saved">
+            <i class="pi pi-check-circle text-green-500"></i>
+            <p class="text-green-500">Results saved.</p>
+          </div>
+
+          <div class="flex items-center gap-x-2" *ngIf="savingError">
+            <i class="pi pi-exclamation-circle text-red-500"></i>
+            <p class="text-red-500">{{ savingError }}</p>
+          </div>
         </div>
       </div>
     </div>

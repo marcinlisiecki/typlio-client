@@ -13,6 +13,11 @@ import {
   getWordCountFromModeQuery,
   getTimeFromModeQuery,
 } from '@core/utils/speed-test/mode';
+import { SpeedTestService } from '@core/services/speed-test/speed-test.service';
+import { NewSpeedTest } from '@core/interfaces/speed-test/new-speed-test';
+import { SpeedTest } from '@core/interfaces/speed-test/speed-test';
+import { HttpErrorResponse } from '@angular/common/http';
+import { extractMessage } from '@core/utils/api-errors';
 
 @Component({
   selector: 'app-speed-test',
@@ -26,9 +31,13 @@ export class SpeedTestComponent implements OnInit, OnDestroy {
   type!: TypingType;
   finished: boolean = false;
 
+  saved: boolean = false;
+  savingError: string | null = null;
+
   constructor(
     route: ActivatedRoute,
     private typingService: TypingService,
+    private speedTestService: SpeedTestService,
   ) {
     this.mode = route.snapshot.params['mode'];
     this.type = modeQueryToTypingType(this.mode);
@@ -65,6 +74,27 @@ export class SpeedTestComponent implements OnInit, OnDestroy {
 
   onFinish() {
     this.finished = true;
+    this.saveSpeedTest();
+  }
+
+  saveSpeedTest() {
+    const newSpeedTest: NewSpeedTest = {
+      cpm: this.stats.cpm,
+      time: this.time,
+      mode: this.mode,
+      accuracy: this.stats.accuracy,
+      mistakes: this.mistakes.length,
+      wpmHistory: this.stats.wpmHistory,
+    };
+
+    this.speedTestService.saveSpeedTest(newSpeedTest).subscribe({
+      next: (_: SpeedTest) => {
+        this.saved = true;
+      },
+      error: (err: HttpErrorResponse) => {
+        this.savingError = extractMessage(err);
+      },
+    });
   }
 
   get stats(): TypingStats {

@@ -11,6 +11,8 @@ import { SpeedTestStatsComponent } from './speed-test-stats/speed-test-stats.com
 import { SpeedTestTextComponent } from './speed-test-text/speed-test-text.component';
 import { SpeedTestResultsComponent } from './speed-test-results/speed-test-results.component';
 import { NgChartsModule } from 'ng2-charts';
+import { SpinnerModule } from 'primeng/spinner';
+import { ProgressSpinnerModule } from 'primeng/progressspinner';
 
 @NgModule({
   declarations: [
@@ -29,6 +31,8 @@ import { NgChartsModule } from 'ng2-charts';
     SharedModule,
     PrimeSharedModule,
     NgChartsModule,
+    SpinnerModule,
+    ProgressSpinnerModule,
   ],
 })
 export class SpeedTestModule {}

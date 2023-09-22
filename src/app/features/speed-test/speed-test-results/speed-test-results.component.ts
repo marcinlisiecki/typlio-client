@@ -14,6 +14,8 @@ import { DEFAULT_DATASET_STYLES, DEFAULT_LINE_CHART_OPTIONS } from '@core/consta
 export class SpeedTestResultsComponent implements OnInit {
   @Input({ required: true }) stats!: TypingStats;
   @Input({ required: true }) time!: number;
+  @Input({ required: true }) saved!: boolean;
+  @Input({ required: true }) savingError!: string | null;
 
   @Output() nextSpeedTest: EventEmitter<null> = new EventEmitter<null>();
   @Output() repeatSameSpeedTest: EventEmitter<null> = new EventEmitter<null>();
@@ -27,8 +29,6 @@ export class SpeedTestResultsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log(this.stats);
-
     this.chartData = {
       labels: [...this.stats.wpmHistory.map((_, index) => index + 1)],
       datasets: [

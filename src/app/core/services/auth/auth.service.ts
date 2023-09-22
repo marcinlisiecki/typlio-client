@@ -63,6 +63,10 @@ export class AuthService implements OnDestroy {
     this.router.navigateByUrl('/').then();
   }
 
+  getId(): number | null {
+    return this.jwtService.getId();
+  }
+
   isAuthObservable(): Observable<boolean> {
     return this.authSubject.asObservable();
   }
