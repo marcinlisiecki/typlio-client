@@ -9,4 +9,5 @@ export interface SpeedTest {
   accuracy: number;
   userId: number;
   wpmHistory: number[];
+  createdAt: Date;
 }
