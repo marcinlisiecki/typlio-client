@@ -27,4 +27,8 @@ export class SpeedTestService {
       newSpeedTest,
     );
   }
+
+  getAllUserSpeedTest(userId: number): Observable<SpeedTest[]> {
+    return this.http.get<SpeedTest[]>(environment.apiUrl + `/users/${userId}/speed-tests`);
+  }
 }

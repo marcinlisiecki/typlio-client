@@ -1,0 +1,54 @@
+<section class="mt-from-header">
+  <header *ngIf="user">
+    <app-page-heading [steps]="[user.username.toUpperCase(), 'HISTORY']">History</app-page-heading>
+  </header>
+  <div *ngIf="!user && !userError">
+    <p-skeleton width="150px" height="20px"></p-skeleton>
+    <p-skeleton width="200px" height="32px" styleClass="mt-1"></p-skeleton>
+  </div>
+
+  <section class="flex gap-x-16 mt-from-page-heading">
+    <app-user-history-filters
+      [modes]="modes"
+      [selectedModes]="selectedModes"
+    ></app-user-history-filters>
+    <section class="flex-1">
+      <div *ngIf="!speedTests && !speedTestsError">
+        <p-skeleton width="100%" height="120px"></p-skeleton>
+        <p-skeleton width="100%" height="120px" styleClass="mt-2"></p-skeleton>
+        <p-skeleton width="100%" height="120px" styleClass="mt-2"></p-skeleton>
+        <p-skeleton width="100%" height="120px" styleClass="mt-2"></p-skeleton>
+        <p-skeleton width="100%" height="120px" styleClass="mt-2"></p-skeleton>
+      </div>
+
+      <div *ngIf="speedTests" class="flex flex-col gap-y-2">
+        <div *ngFor="let speedTest of speedTests" class="w-full bg-light p-4 rounded-lg">
+          <div class="flex items-center justify-between gap-x-2">
+            <p-badge [value]="speedTestModeToLabel[speedTest.mode]"></p-badge>
+            <p class="text-sm text-text-tertiary font-medium">20/09/2023, 16:45:34</p>
+          </div>
+          <div class="mt-6 flex justify-between items-center">
+            <div class="flex items-center gap-x-8">
+              <p class="font-medium">
+                {{ speedTest.cpm / 5 | number: '1.0-0' }}
+                <span class="text-text-tertiary text-sm font-semibold">WPM</span>
+              </p>
+
+              <p class="font-medium">
+                {{ speedTest.cpm }}
+                <span class="text-text-tertiary text-sm font-semibold">CPM</span>
+              </p>
+
+              <p class="font-medium">
+                {{ speedTest.accuracy }}%
+                <span class="text-text-tertiary text-sm font-semibold">Accuracy</span>
+              </p>
+            </div>
+
+            <app-link routerLink="/">Show details</app-link>
+          </div>
+        </div>
+      </div>
+    </section>
+  </section>
+</section>

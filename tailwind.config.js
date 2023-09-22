@@ -27,7 +27,7 @@ module.exports = {
       backgroundColor: {
         ...colors,
         dark: '#090A10',
-        light: '#0A0C14',
+        light: '#0e101a',
         gray: colors.slate,
         primary: colors.blue,
         success: colors.green,

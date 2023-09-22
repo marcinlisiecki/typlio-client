@@ -61,7 +61,7 @@ $maskBg: rgba(0, 0, 0, 0.4) !default; //modal mask bg color
 $loadingIconFontSize: 2rem !default;
 $errorColor: #ef4444 !default;
 
-$bgSecondary: #0a0c14;
+$bgSecondary: #0e101a;
 $bgSecondaryBorderColor: $shade900;
 
 //scale
@@ -106,7 +106,9 @@ $inputGroupTextColor: $shade100 !default;
 $inputGroupAddOnMinWidth: 2.857rem !default;
 
 //input lists (e.g. dropdown, autocomplete, multiselect, orderlist)
-$inputListBg: $shade800 !default;
+//$menuBorder: 2px solid $bgSecondaryBorderColor !default;
+
+$inputListBg: $bgSecondary !default;
 $inputListTextColor: $shade000 !default;
 $inputListBorder: $inputBorder !default;
 $inputListPadding: 0.5rem 0.5rem !default;
@@ -128,7 +130,7 @@ $inputListHeaderBorder: 0 none !default;
 //inputs with overlays (e.g. autocomplete, dropdown, multiselect)
 $inputOverlayBg: $inputListBg !default;
 $inputOverlayHeaderBg: $inputListHeaderBg !default;
-$inputOverlayBorder: 1px solid $shade600 !default;
+$inputOverlayBorder: 2px solid $bgSecondaryBorderColor !default;
 $inputOverlayShadow:
   0 2px 4px -1px rgba(0, 0, 0, 0.2),
   0 4px 5px 0 rgba(0, 0, 0, 0.14),

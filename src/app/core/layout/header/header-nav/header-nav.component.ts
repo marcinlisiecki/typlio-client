@@ -15,6 +15,7 @@ export class HeaderNavComponent implements OnInit, OnDestroy {
 
   isLoggedIn: boolean = false;
   username: string | null = null;
+  userId: number | null = null;
   usernameFirstLetter: string | null = null;
 
   constructor(
@@ -29,6 +30,11 @@ export class HeaderNavComponent implements OnInit, OnDestroy {
 
   handleSetUserDropdownItems() {
     this.userDropdownItems = [
+      {
+        label: 'History',
+        icon: 'pi pi-history',
+        routerLink: `/users/${this.userId}/history`,
+      },
       {
         label: 'Logout',
         icon: 'pi pi-sign-out',
@@ -54,9 +60,11 @@ export class HeaderNavComponent implements OnInit, OnDestroy {
   setUsername() {
     if (this.isLoggedIn) {
       this.username = this.jwtService.getUsername();
+      this.userId = this.jwtService.getId();
       this.usernameFirstLetter = this.username?.charAt(0) || null;
     } else {
       this.username = null;
+      this.userId = null;
       this.usernameFirstLetter = null;
     }
   }

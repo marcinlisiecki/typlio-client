@@ -1,0 +1,28 @@
+<section class="w-64 h-full">
+  <div>
+    <label [htmlFor]="'sort-by'">Sort by</label>
+    <p-dropdown
+      inputId="sort-by"
+      [options]="sortBy"
+      optionLabel="label"
+      styleClass="w-full mt-1"
+    ></p-dropdown>
+  </div>
+
+  <div class="mt-6">
+    <p>Mode</p>
+    <div class="flex flex-col gap-y-2 mt-1">
+      <div class="flex items-center gap-x-2" *ngFor="let mode of modes">
+        <p-checkbox
+          [inputId]="mode"
+          name="mode"
+          [value]="mode"
+          [(ngModel)]="selectedModes"
+        ></p-checkbox>
+        <label class="text-text-secondary text-sm font-medium" [htmlFor]="mode">{{
+          speedTestModeToLabel[mode]
+        }}</label>
+      </div>
+    </div>
+  </div>
+</section>
