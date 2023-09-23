@@ -74,7 +74,7 @@
           <p>{{ modeLabel }}</p>
         </div>
 
-        <div>
+        <div *ngIf="isAuth">
           <div class="flex items-center gap-x-2" *ngIf="!saved && !savingError">
             <app-spinner></app-spinner>
             <p class="text-text-secondary ml-1">Saving results.</p>

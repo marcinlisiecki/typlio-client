@@ -18,6 +18,7 @@ import { NewSpeedTest } from '@core/interfaces/speed-test/new-speed-test';
 import { SpeedTest } from '@core/interfaces/speed-test/speed-test';
 import { HttpErrorResponse } from '@angular/common/http';
 import { extractMessage } from '@core/utils/api-errors';
+import { AuthService } from '@core/services/auth/auth.service';
 
 @Component({
   selector: 'app-speed-test',
@@ -38,6 +39,7 @@ export class SpeedTestComponent implements OnInit, OnDestroy {
     route: ActivatedRoute,
     private typingService: TypingService,
     private speedTestService: SpeedTestService,
+    private authService: AuthService,
   ) {
     this.mode = route.snapshot.params['mode'];
     this.type = modeQueryToTypingType(this.mode);
@@ -74,7 +76,10 @@ export class SpeedTestComponent implements OnInit, OnDestroy {
 
   onFinish() {
     this.finished = true;
-    this.saveSpeedTest();
+
+    if (this.authService.isAuth()) {
+      this.saveSpeedTest();
+    }
   }
 
   saveSpeedTest() {

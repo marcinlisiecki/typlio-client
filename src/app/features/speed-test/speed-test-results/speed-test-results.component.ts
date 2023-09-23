@@ -5,6 +5,7 @@ import { speedTestModeToLabel } from '@core/utils/speed-test';
 import { SpeedTestMode } from '@core/interfaces/speed-test/speed-test-mode';
 import { ChartConfiguration } from 'chart.js';
 import { DEFAULT_DATASET_STYLES, DEFAULT_LINE_CHART_OPTIONS } from '@core/constants/chart';
+import { AuthService } from '@core/services/auth/auth.service';
 
 @Component({
   selector: 'app-speed-test-results',
@@ -22,10 +23,12 @@ export class SpeedTestResultsComponent implements OnInit {
 
   modeLabel!: string;
   chartData: ChartConfiguration<'line'>['data'] | null = null;
+  isAuth!: boolean;
 
-  constructor(route: ActivatedRoute) {
+  constructor(route: ActivatedRoute, authService: AuthService) {
     const mode: SpeedTestMode = route.snapshot.params['mode'];
     this.modeLabel = speedTestModeToLabel[mode];
+    this.isAuth = authService.isAuth();
   }
 
   ngOnInit(): void {

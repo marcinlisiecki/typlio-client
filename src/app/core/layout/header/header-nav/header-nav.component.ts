@@ -51,6 +51,7 @@ export class HeaderNavComponent implements OnInit, OnDestroy {
       next: (isAuth) => {
         this.isLoggedIn = isAuth;
         this.setUsername();
+        this.handleSetUserDropdownItems();
       },
     });
 
