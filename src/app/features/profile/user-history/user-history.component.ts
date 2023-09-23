@@ -39,9 +39,9 @@ export class UserHistoryComponent implements OnInit, OnDestroy {
       this.userId = params['userId'];
 
       this.error = null;
+      this.fetchModes();
       this.fetchUser();
       this.fetchUserSpeedTests();
-      this.fetchModes();
     });
   }
 

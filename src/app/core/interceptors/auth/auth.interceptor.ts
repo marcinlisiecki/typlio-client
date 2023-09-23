@@ -59,9 +59,10 @@ export class AuthInterceptor implements HttpInterceptor {
             return throwError(() => error);
           }),
         );
+      } else {
+        this.isRefreshing = false;
+        this.router.navigateByUrl('/login').then();
       }
-    } else {
-      this.router.navigateByUrl('/login').then();
     }
 
     return this.refreshTokenSubject.pipe(
