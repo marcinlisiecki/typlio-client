@@ -15,7 +15,7 @@ import { CookieModule } from 'ngx-cookie';
 import { SpeedTestModule } from './features/speed-test/speed-test.module';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptor } from '@core/interceptors/auth/auth.interceptor';
-import { ProfileModule } from './features/profile/profile.module';
+import { UserModule } from './features/user/user.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -32,7 +32,7 @@ import { ProfileModule } from './features/profile/profile.module';
     AuthModule,
     CookieModule.withOptions(),
     SpeedTestModule,
-    ProfileModule,
+    UserModule,
   ],
   providers: [
     {

@@ -4,7 +4,7 @@ import { LoginFormComponent } from './features/auth/login-form/login-form.compon
 import { RegisterFormComponent } from '@app/features/auth/register-form/register-form.component';
 import { SpeedTestModeSelectorComponent } from '@app/features/speed-test/speed-test-mode-selector/speed-test-mode-selector.component';
 import { SpeedTestComponent } from '@app/features/speed-test/speed-test.component';
-import { UserHistoryComponent } from '@app/features/profile/user-history/user-history.component';
+import { UserHistoryComponent } from '@app/features/user/user-history/user-history.component';
 
 const routes: Routes = [
   {

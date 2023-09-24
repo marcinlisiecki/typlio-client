@@ -24,4 +24,4 @@ import { UserHistoryItemComponent } from './user-history/user-history-item/user-
     CheckboxModule,
   ],
 })
-export class ProfileModule {}
+export class UserModule {}
