@@ -17,6 +17,9 @@ export class UserHistoryFiltersComponent {
 
   @Output() changeSortBy: EventEmitter<SpeedTestHistorySort> =
     new EventEmitter<SpeedTestHistorySort>();
+  @Output() changeSelectedModes: EventEmitter<SpeedTestMode[]> = new EventEmitter<
+    SpeedTestMode[]
+  >();
 
   sortByItems: Sort[] = SPEED_TEST_HISTORY;
 

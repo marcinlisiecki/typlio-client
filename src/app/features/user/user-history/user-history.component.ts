@@ -67,6 +67,11 @@ export class UserHistoryComponent implements OnInit, OnDestroy {
     this.fetchUserSpeedTests();
   }
 
+  changeSelectedModes(newModes: SpeedTestMode[]) {
+    this.selectedModes = newModes;
+    this.fetchUserSpeedTests();
+  }
+
   fetchUser() {
     this.user = null;
 
@@ -92,7 +97,13 @@ export class UserHistoryComponent implements OnInit, OnDestroy {
     }
 
     this.speedTestService
-      .getAllUserSpeedTest(this.userId, this.currentPage, HISTORY_SPEED_TESTS_PER_PAGE, this.sortBy)
+      .getAllUserSpeedTest(
+        this.userId,
+        this.currentPage,
+        HISTORY_SPEED_TESTS_PER_PAGE,
+        this.sortBy,
+        this.selectedModes,
+      )
       .subscribe({
         next: (speedTests: PagedResponse<SpeedTest>) => {
           this.speedTests = speedTests.content;

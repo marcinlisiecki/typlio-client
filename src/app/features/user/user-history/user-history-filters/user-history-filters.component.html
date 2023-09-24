@@ -28,7 +28,8 @@
           [inputId]="mode"
           name="mode"
           [value]="mode"
-          [(ngModel)]="selectedModes"
+          (onChange)="changeSelectedModes.emit($event.checked)"
+          [ngModel]="selectedModes"
         ></p-checkbox>
         <label class="text-text-secondary text-sm font-medium" [htmlFor]="mode">{{
           speedTestModeToLabel[mode]
