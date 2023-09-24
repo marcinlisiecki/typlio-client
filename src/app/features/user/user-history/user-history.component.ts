@@ -6,8 +6,10 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { extractMessage } from '@core/utils/api-errors';
 import { User } from '@core/interfaces/user/user';
 import { UserService } from '@core/services/user/user.service';
-import { Subscription } from 'rxjs';
+import { first, Subscription } from 'rxjs';
 import { SpeedTestMode } from '@core/interfaces/speed-test/speed-test-mode';
+import { PagedResponse } from '@core/interfaces/common/paged-response';
+import { HISTORY_SPEED_TESTS_PER_PAGE } from '@core/constants/speed-test';
 
 @Component({
   selector: 'app-user-history',
@@ -18,6 +20,7 @@ export class UserHistoryComponent implements OnInit, OnDestroy {
   paramsSub?: Subscription;
 
   speedTests: SpeedTest[] | null = null;
+  totalSpeedTests: number = 0;
   modes: SpeedTestMode[] = [];
   selectedModes: SpeedTestMode[] = [];
 
@@ -25,6 +28,9 @@ export class UserHistoryComponent implements OnInit, OnDestroy {
   user: User | null = null;
 
   error: string | null = null;
+
+  firstSpeedTestIndex: number = 0;
+  currentPage: number = 0;
 
   constructor(
     private speedTestService: SpeedTestService,
@@ -47,6 +53,11 @@ export class UserHistoryComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     this.paramsSub?.unsubscribe();
+  }
+
+  onPageChange(event: any) {
+    this.currentPage = event.page;
+    this.fetchUserSpeedTests();
   }
 
   fetchUser() {
@@ -73,14 +84,23 @@ export class UserHistoryComponent implements OnInit, OnDestroy {
       return;
     }
 
-    this.speedTestService.getAllUserSpeedTest(this.userId).subscribe({
-      next: (speedTests: SpeedTest[]) => {
-        this.speedTests = speedTests;
-      },
-      error: (err: HttpErrorResponse) => {
-        this.error = extractMessage(err);
-      },
-    });
+    this.speedTestService
+      .getAllUserSpeedTest(
+        this.userId,
+        this.currentPage,
+        HISTORY_SPEED_TESTS_PER_PAGE,
+        '-createdAt',
+      )
+      .subscribe({
+        next: (speedTests: PagedResponse<SpeedTest>) => {
+          this.speedTests = speedTests.content;
+          this.totalSpeedTests = speedTests.totalItems;
+          this.firstSpeedTestIndex = speedTests.currentPage * HISTORY_SPEED_TESTS_PER_PAGE;
+        },
+        error: (err: HttpErrorResponse) => {
+          this.error = extractMessage(err);
+        },
+      });
   }
 
   fetchModes() {
@@ -94,4 +114,7 @@ export class UserHistoryComponent implements OnInit, OnDestroy {
       },
     });
   }
+
+  protected readonly first = first;
+  protected readonly HISTORY_SPEED_TESTS_PER_PAGE = HISTORY_SPEED_TESTS_PER_PAGE;
 }

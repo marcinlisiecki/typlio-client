@@ -6,6 +6,7 @@ import { environment } from '@app/environments/environment';
 import { SpeedTest } from '@core/interfaces/speed-test/speed-test';
 import { NewSpeedTest } from '@core/interfaces/speed-test/new-speed-test';
 import { AuthService } from '@core/services/auth/auth.service';
+import { PagedResponse } from '@core/interfaces/common/paged-response';
 
 @Injectable({
   providedIn: 'root',
@@ -28,7 +29,21 @@ export class SpeedTestService {
     );
   }
 
-  getAllUserSpeedTest(userId: number): Observable<SpeedTest[]> {
-    return this.http.get<SpeedTest[]>(environment.apiUrl + `/users/${userId}/speed-tests`);
+  getAllUserSpeedTest(
+    userId: number,
+    page: number,
+    size: number,
+    sortBy: string,
+    modes?: SpeedTestMode[],
+  ): Observable<PagedResponse<SpeedTest>> {
+    let params: any = { page, sortBy, size };
+    if (modes) {
+      params = { page, sortBy, modes, size };
+    }
+
+    return this.http.get<PagedResponse<SpeedTest>>(
+      environment.apiUrl + `/users/${userId}/speed-tests`,
+      { params },
+    );
   }
 }

@@ -476,10 +476,10 @@ $editorContentBorder: $panelContentBorder !default;
 $editorContentBg: $panelContentBg !default;
 
 //paginator
-$paginatorBg: $shade800 !default;
+$paginatorBg: transparent !default;
 $paginatorTextColor: $shade100 !default;
 $paginatorBorder: solid $shade600 !default;
-$paginatorBorderWidth: 2px !default;
+$paginatorBorderWidth: 0 !default;
 $paginatorPadding: 0.5rem 1rem !default;
 $paginatorElementWidth: $buttonIconOnlyWidth !default;
 $paginatorElementHeight: $buttonIconOnlyWidth !default;
