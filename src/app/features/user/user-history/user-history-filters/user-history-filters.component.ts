@@ -1,8 +1,9 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { speedTestModeToLabel } from '@core/utils/speed-test';
-import { USER_HISTORY_SORT } from '@core/constants/user-history';
+import { SPEED_TEST_HISTORY } from '@core/constants/speed-test-history';
 import { SpeedTestMode } from '@core/interfaces/speed-test/speed-test-mode';
 import { Sort } from '@core/interfaces/common/sort';
+import { SpeedTestHistorySort } from '@core/interfaces/speed-test/speed-test-history-sort';
 
 @Component({
   selector: 'app-user-history-filters',
@@ -12,8 +13,12 @@ import { Sort } from '@core/interfaces/common/sort';
 export class UserHistoryFiltersComponent {
   @Input() modes: SpeedTestMode[] = [];
   @Input() selectedModes: SpeedTestMode[] = [];
+  @Input({ required: true }) sortBy!: SpeedTestHistorySort;
 
-  sortBy: Sort[] = USER_HISTORY_SORT;
+  @Output() changeSortBy: EventEmitter<SpeedTestHistorySort> =
+    new EventEmitter<SpeedTestHistorySort>();
+
+  sortByItems: Sort[] = SPEED_TEST_HISTORY;
 
   protected readonly speedTestModeToLabel = speedTestModeToLabel;
 }

@@ -3,8 +3,11 @@
     <label [htmlFor]="'sort-by'">Sort by</label>
     <p-dropdown
       inputId="sort-by"
-      [options]="sortBy"
+      [options]="sortByItems"
+      (onChange)="changeSortBy.emit($event.value)"
+      [ngModel]="sortBy"
       optionLabel="label"
+      optionValue="value"
       styleClass="w-full mt-1"
     ></p-dropdown>
   </div>

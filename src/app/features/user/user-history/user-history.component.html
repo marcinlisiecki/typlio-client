@@ -11,6 +11,8 @@
     <app-user-history-filters
       [modes]="modes"
       [selectedModes]="selectedModes"
+      [sortBy]="sortBy"
+      (changeSortBy)="changeSortBy($event)"
     ></app-user-history-filters>
     <section class="flex-1">
       <div *ngIf="!speedTests && !error">

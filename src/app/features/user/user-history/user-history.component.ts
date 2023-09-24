@@ -10,6 +10,7 @@ import { first, Subscription } from 'rxjs';
 import { SpeedTestMode } from '@core/interfaces/speed-test/speed-test-mode';
 import { PagedResponse } from '@core/interfaces/common/paged-response';
 import { HISTORY_SPEED_TESTS_PER_PAGE } from '@core/constants/speed-test';
+import { SpeedTestHistorySort } from '@core/interfaces/speed-test/speed-test-history-sort';
 
 @Component({
   selector: 'app-user-history',
@@ -23,6 +24,7 @@ export class UserHistoryComponent implements OnInit, OnDestroy {
   totalSpeedTests: number = 0;
   modes: SpeedTestMode[] = [];
   selectedModes: SpeedTestMode[] = [];
+  sortBy: SpeedTestHistorySort = SpeedTestHistorySort.CREATED_AT_DESC;
 
   userId?: number;
   user: User | null = null;
@@ -60,6 +62,11 @@ export class UserHistoryComponent implements OnInit, OnDestroy {
     this.fetchUserSpeedTests();
   }
 
+  changeSortBy(newSortBy: SpeedTestHistorySort) {
+    this.sortBy = newSortBy;
+    this.fetchUserSpeedTests();
+  }
+
   fetchUser() {
     this.user = null;
 
@@ -85,12 +92,7 @@ export class UserHistoryComponent implements OnInit, OnDestroy {
     }
 
     this.speedTestService
-      .getAllUserSpeedTest(
-        this.userId,
-        this.currentPage,
-        HISTORY_SPEED_TESTS_PER_PAGE,
-        '-createdAt',
-      )
+      .getAllUserSpeedTest(this.userId, this.currentPage, HISTORY_SPEED_TESTS_PER_PAGE, this.sortBy)
       .subscribe({
         next: (speedTests: PagedResponse<SpeedTest>) => {
           this.speedTests = speedTests.content;
