@@ -3,13 +3,22 @@
     <app-header-nav-link routerLink="/speed-test">Speed Test</app-header-nav-link>
     <app-header-nav-link routerLink="/login" *ngIf="!isLoggedIn">Login</app-header-nav-link>
 
-    <button
-      *ngIf="isLoggedIn && username && usernameFirstLetter"
-      class="flex items-center gap-x-1"
-      (click)="userDropdown.toggle($event)"
-    >
-      <p-avatar [label]="usernameFirstLetter" shape="circle" icon="pi pi-user"></p-avatar>
-    </button>
+    <li class="relative">
+      <button
+        *ngIf="isLoggedIn && username && usernameFirstLetter"
+        class="flex items-center gap-x-1"
+        (click)="userDropdown.toggle($event)"
+      >
+        <p-avatar [label]="usernameFirstLetter" shape="circle" icon="pi pi-user"></p-avatar>
+      </button>
+      <div class="absolute right-0">
+        <p-menu
+          #userDropdown
+          [popup]="true"
+          [model]="userDropdownItems"
+          styleClass="!sticky mt-2"
+        ></p-menu>
+      </div>
+    </li>
   </ul>
-  <p-menu #userDropdown [popup]="true" [model]="userDropdownItems"></p-menu>
 </nav>

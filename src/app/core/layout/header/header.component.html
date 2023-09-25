@@ -1,5 +1,10 @@
-<header class="h-28 flex items-center">
-  <div class="max-w-page px-page w-full mx-auto flex items-center justify-between">
+<header
+  class="h-28 sticky left-0 top-0 transition-[height]"
+  [ngClass]="{
+    'bg-dark/50 border-b border-b-gray-900 shadow-lg !h-16 backdrop-blur-xl': isHeaderSmall
+  }"
+>
+  <div class="max-w-page px-page w-full mx-auto h-full flex items-center justify-between">
     <app-logo></app-logo>
     <app-header-nav></app-header-nav>
   </div>
