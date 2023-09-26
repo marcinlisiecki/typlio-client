@@ -1,0 +1,10 @@
+<canvas
+  *ngIf="chartData"
+  class="w-full h-64"
+  height="300px"
+  baseChart
+  [type]="'line'"
+  [data]="chartData"
+  [options]="DEFAULT_LINE_CHART_OPTIONS"
+  [legend]="false"
+></canvas>

@@ -8,6 +8,10 @@ import { IconButtonComponent } from './icon-button/icon-button.component';
 import { PageHeadingComponent } from './page-heading/page-heading.component';
 import { SpinnerComponent } from './spinner/spinner.component';
 import { PageErrorComponent } from './page-error/page-error.component';
+import { NgChartsModule } from 'ng2-charts';
+import { SpeedTestChartComponent } from './speed-test/speed-test-chart/speed-test-chart.component';
+import { SpeedTestBasicStatsComponent } from './speed-test/speed-test-basic-stats/speed-test-basic-stats.component';
+import { BackLinkComponent } from './back-link/back-link.component';
 
 @NgModule({
   declarations: [
@@ -18,6 +22,9 @@ import { PageErrorComponent } from './page-error/page-error.component';
     PageHeadingComponent,
     SpinnerComponent,
     PageErrorComponent,
+    SpeedTestChartComponent,
+    SpeedTestBasicStatsComponent,
+    BackLinkComponent,
   ],
   exports: [
     LogoComponent,
@@ -27,7 +34,10 @@ import { PageErrorComponent } from './page-error/page-error.component';
     PageHeadingComponent,
     SpinnerComponent,
     PageErrorComponent,
+    SpeedTestChartComponent,
+    SpeedTestBasicStatsComponent,
+    BackLinkComponent,
   ],
-  imports: [CommonModule, RouterLink],
+  imports: [CommonModule, RouterLink, NgChartsModule],
 })
 export class SharedModule {}

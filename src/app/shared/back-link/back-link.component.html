@@ -1,0 +1,21 @@
+<a
+  [routerLink]="routerLink"
+  class="text-primary-500 group font-medium items-center gap-x-1 inline-flex"
+>
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 20 20"
+    fill="currentColor"
+    class="w-5 h-5 transition transform group-hover:-translate-x-0.5"
+  >
+    <path
+      fill-rule="evenodd"
+      d="M18 10a.75.75 0 01-.75.75H4.66l2.1 1.95a.75.75 0 11-1.02 1.1l-3.5-3.25a.75.75 0 010-1.1l3.5-3.25a.75.75 0 111.02 1.1l-2.1 1.95h12.59A.75.75 0 0118 10z"
+      clip-rule="evenodd"
+    />
+  </svg>
+
+  <p class="group-hover:underline">
+    <ng-content></ng-content>
+  </p>
+</a>

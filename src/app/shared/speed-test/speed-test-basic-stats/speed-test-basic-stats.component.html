@@ -1,0 +1,25 @@
+<div class="flex justify-between items-center">
+  <div class="flex items-end gap-x-2">
+    <p class="text-4xl text-primary-500 font-semibold">
+      {{ Math.round(cpm / 5) }}
+    </p>
+    <p class="text-text-secondary font-bold font-mono tracking-wide pb-px">WPM</p>
+  </div>
+
+  <div class="flex items-end gap-x-2">
+    <p class="text-4xl text-primary-500 font-semibold">
+      {{ cpm }}
+    </p>
+    <p class="text-text-secondary font-bold font-mono tracking-wide pb-px">CPM</p>
+  </div>
+
+  <div class="flex items-end gap-x-2">
+    <p class="text-4xl text-primary-500 font-semibold">{{ accuracy }}%</p>
+    <p class="text-text-secondary font-bold font-mono tracking-wide pb-px">ACCURACY</p>
+  </div>
+
+  <div class="flex items-end gap-x-2">
+    <p class="text-4xl text-primary-500 font-semibold">{{ time }}s</p>
+    <p class="text-text-secondary font-bold font-mono tracking-wide pb-px">TIME</p>
+  </div>
+</div>

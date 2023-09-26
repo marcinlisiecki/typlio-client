@@ -9,11 +9,11 @@ import { MessagesModule } from 'primeng/messages';
 import { SharedModule as PrimeSharedModule } from 'primeng/api';
 import { SpeedTestStatsComponent } from './speed-test-stats/speed-test-stats.component';
 import { SpeedTestTextComponent } from './speed-test-text/speed-test-text.component';
-import { SpeedTestResultsComponent } from './speed-test-results/speed-test-results.component';
 import { NgChartsModule } from 'ng2-charts';
 import { SpinnerModule } from 'primeng/spinner';
 import { ProgressSpinnerModule } from 'primeng/progressspinner';
 import { SpeedTestRoutingModule } from '@app/features/speed-test/speed-test-routing.module';
+import { SpeedTestResultsComponent } from '@app/features/speed-test/speed-test-results/speed-test-results.component';
 
 @NgModule({
   declarations: [
