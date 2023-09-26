@@ -12,9 +12,10 @@ import { HttpClientModule } from '@angular/common/http';
 import { RegisterFormComponent } from './register-form/register-form.component';
 import { MessageModule } from 'primeng/message';
 import { MessagesModule } from 'primeng/messages';
+import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 
 @NgModule({
-  declarations: [LoginFormComponent, RegisterFormComponent],
+  declarations: [LoginFormComponent, RegisterFormComponent, ForgotPasswordComponent],
   imports: [
     CommonModule,
     CardModule,

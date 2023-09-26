@@ -5,6 +5,7 @@ import { RegisterFormComponent } from '@app/features/auth/register-form/register
 import { SpeedTestModeSelectorComponent } from '@app/features/speed-test/speed-test-mode-selector/speed-test-mode-selector.component';
 import { SpeedTestComponent } from '@app/features/speed-test/speed-test.component';
 import { UserHistoryComponent } from '@app/features/user/user-history/user-history.component';
+import { ForgotPasswordComponent } from '@app/features/auth/forgot-password/forgot-password.component';
 
 const routes: Routes = [
   {
@@ -18,6 +19,10 @@ const routes: Routes = [
   {
     path: 'register',
     component: RegisterFormComponent,
+  },
+  {
+    path: 'forgot-password',
+    component: ForgotPasswordComponent,
   },
   {
     path: 'speed-test',
