@@ -1,7 +1,7 @@
 <nav>
   <ul class="list-none flex gap-x-8 items-center">
     <app-header-nav-link routerLink="/speed-test">Speed Test</app-header-nav-link>
-    <app-header-nav-link routerLink="/login" *ngIf="!isLoggedIn">Login</app-header-nav-link>
+    <app-header-nav-link routerLink="/auth/login" *ngIf="!isLoggedIn">Login</app-header-nav-link>
 
     <li class="relative">
       <button

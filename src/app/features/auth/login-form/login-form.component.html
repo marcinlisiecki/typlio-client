@@ -36,7 +36,7 @@
   <div class="input-box">
     <div class="flex justify-between items-center">
       <label [htmlFor]="'password'">Password</label>
-      <app-link routerLink="/forgot-password">Forgot password?</app-link>
+      <app-link routerLink="/auth/forgot-password">Forgot password?</app-link>
     </div>
     <p-password
       formControlName="password"
@@ -62,6 +62,6 @@
 
   <div class="bg-gray-900 w-1/2 mx-auto h-[2px]"></div>
   <p class="mx-auto text-text-secondary font-medium">
-    Don't have an account? <app-link routerLink="/register">Create one</app-link>
+    Don't have an account? <app-link routerLink="/auth/register">Create one</app-link>
   </p>
 </form>

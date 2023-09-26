@@ -10,6 +10,7 @@ import { ButtonModule } from 'primeng/button';
 import { CheckboxModule } from 'primeng/checkbox';
 import { UserHistoryFiltersComponent } from './user-history/user-history-filters/user-history-filters.component';
 import { UserHistoryItemComponent } from './user-history/user-history-item/user-history-item.component';
+import { UserRoutingModule } from '@app/features/user/user-routing.module';
 
 @NgModule({
   declarations: [UserHistoryComponent, UserHistoryFiltersComponent, UserHistoryItemComponent],
@@ -22,6 +23,7 @@ import { UserHistoryItemComponent } from './user-history/user-history-item/user-
     BadgeModule,
     ButtonModule,
     CheckboxModule,
+    UserRoutingModule,
   ],
 })
 export class UserModule {}

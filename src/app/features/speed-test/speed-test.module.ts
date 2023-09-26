@@ -13,6 +13,7 @@ import { SpeedTestResultsComponent } from './speed-test-results/speed-test-resul
 import { NgChartsModule } from 'ng2-charts';
 import { SpinnerModule } from 'primeng/spinner';
 import { ProgressSpinnerModule } from 'primeng/progressspinner';
+import { SpeedTestRoutingModule } from '@app/features/speed-test/speed-test-routing.module';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { ProgressSpinnerModule } from 'primeng/progressspinner';
   imports: [
     CommonModule,
     SkeletonModule,
+    SpeedTestRoutingModule,
     SharedModule,
     RouterLink,
     MessagesModule,

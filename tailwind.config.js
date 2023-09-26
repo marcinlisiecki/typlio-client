@@ -17,6 +17,7 @@ module.exports = {
       },
       padding: {
         page: '36px',
+        card: '1rem',
       },
       width: {
         'auth-form': '340px',
