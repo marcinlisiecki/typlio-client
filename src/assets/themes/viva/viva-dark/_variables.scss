@@ -137,7 +137,7 @@ $inputOverlayShadow:
   0 1px 10px 0 rgba(0, 0, 0, 0.12) !default;
 
 //password
-$passwordMeterBg: $shade600 !default;
+$passwordMeterBg: $shade800 !default;
 $passwordWeakBg: #e693a9 !default;
 $passwordMediumBg: #ffe08a !default;
 $passwordStrongBg: #cede9c !default;
@@ -381,7 +381,7 @@ $panelHeaderTextHoverColor: $shade000 !default;
 
 $panelContentBorderColor: $shade800 !default;
 $panelContentBorder: 2px solid $shade800 !default;
-$panelContentBg: $shade900 !default;
+$panelContentBg: $bgSecondary !default;
 $panelContentEvenRowBg: rgba(255, 255, 255, 0.01) !default;
 $panelContentTextColor: $shade000 !default;
 $panelContentPadding: 1rem !default;
@@ -583,11 +583,11 @@ $organizationChartConnectorColor: $shade600 !default;
 
 //message
 $messageMargin: 1rem 0 !default;
-$messagePadding: 0.75rem !default;
-$messageBorderWidth: 2px !default;
+$messagePadding: 1rem !default;
+$messageBorderWidth: 0px !default;
 $messageIconFontSize: 1.5rem !default;
 $messageTextFontSize: 1rem !default;
-$messageTextFontWeight: 400 !default;
+$messageTextFontWeight: 500 !default;
 
 //inline message
 $inlineMessagePadding: $inputPadding !default;
@@ -613,10 +613,10 @@ $infoMessageBorder: 2px solid rgba(59, 130, 246, 0.25) !default;
 $infoMessageTextColor: #3b82f6 !default;
 $infoMessageIconColor: #3b82f6 !default;
 
-$successMessageBg: #86efac !default;
+$successMessageBg: transparentize(#86efac, 0.2) !default;
 $successMessageBorder: 4px solid #166534 !default;
-$successMessageTextColor: #166534 !default;
-$successMessageIconColor: #166534 !default;
+$successMessageTextColor: #14532d !default;
+$successMessageIconColor: #14532d !default;
 
 $warningMessageBg: #ff9c3e !default;
 $warningMessageBorder: 4px solid #ff8817 !default;
@@ -629,7 +629,7 @@ $errorMessageTextColor: $shade900 !default;
 $errorMessageIconColor: $shade900 !default;
 
 //overlays
-$overlayContentBorder: 2px solid $shade800 !default;
+$overlayContentBorder: 2px solid $bgSecondaryBorderColor !default;
 $overlayContentBg: $panelContentBg !default;
 $overlayContainerShadow:
   0px 11px 15px -7px rgba(0, 0, 0, 0.2),
