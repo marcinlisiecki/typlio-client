@@ -15,7 +15,7 @@ export class ForgotPasswordComponent {
   });
 
   isLoading: boolean = false;
-  success: boolean = false;
+  isSuccess: boolean = false;
   apiError: string | null = null;
 
   constructor(private forgotPasswordService: ForgotPasswordService) {}
@@ -32,7 +32,9 @@ export class ForgotPasswordComponent {
 
     this.forgotPasswordService.requestResetPasswordLink(this.email?.value || '').subscribe({
       next: () => {
-        this.success = true;
+        this.isSuccess = true;
+        this.email?.setValue('');
+        this.email?.markAsUntouched();
         this.isLoading = false;
       },
       error: (err: HttpErrorResponse) => {

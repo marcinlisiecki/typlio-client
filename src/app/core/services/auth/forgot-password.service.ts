@@ -12,4 +12,8 @@ export class ForgotPasswordService {
   requestResetPasswordLink(email: string): Observable<{}> {
     return this.http.post<{}>(environment.apiUrl + '/users/password', { email });
   }
+
+  resetPassword(token: string, newPassword: string): Observable<{}> {
+    return this.http.put<{}>(environment.apiUrl + '/users/password', { token, newPassword });
+  }
 }

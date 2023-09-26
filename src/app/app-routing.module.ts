@@ -6,6 +6,7 @@ import { SpeedTestModeSelectorComponent } from '@app/features/speed-test/speed-t
 import { SpeedTestComponent } from '@app/features/speed-test/speed-test.component';
 import { UserHistoryComponent } from '@app/features/user/user-history/user-history.component';
 import { ForgotPasswordComponent } from '@app/features/auth/forgot-password/forgot-password.component';
+import { ResetPasswordComponent } from '@app/features/auth/reset-password/reset-password.component';
 
 const routes: Routes = [
   {
@@ -23,6 +24,10 @@ const routes: Routes = [
   {
     path: 'forgot-password',
     component: ForgotPasswordComponent,
+  },
+  {
+    path: 'reset-password/:token',
+    component: ResetPasswordComponent,
   },
   {
     path: 'speed-test',

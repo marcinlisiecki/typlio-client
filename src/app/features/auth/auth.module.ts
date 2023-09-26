@@ -13,9 +13,10 @@ import { RegisterFormComponent } from './register-form/register-form.component';
 import { MessageModule } from 'primeng/message';
 import { MessagesModule } from 'primeng/messages';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
+import { ResetPasswordComponent } from './reset-password/reset-password.component';
 
 @NgModule({
-  declarations: [LoginFormComponent, RegisterFormComponent, ForgotPasswordComponent],
+  declarations: [LoginFormComponent, RegisterFormComponent, ForgotPasswordComponent, ResetPasswordComponent],
   imports: [
     CommonModule,
     CardModule,
