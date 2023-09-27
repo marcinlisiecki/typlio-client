@@ -19,7 +19,6 @@ export class UserSettingsPasswordComponent {
   @Input({ required: true }) user!: MeUser;
 
   apiError: string | null = null;
-  isSuccess: boolean = false;
   isLoading: boolean = false;
 
   changePasswordForm: FormGroup = new FormGroup({
@@ -39,7 +38,6 @@ export class UserSettingsPasswordComponent {
 
   onSubmit() {
     this.apiError = null;
-    this.isSuccess = false;
 
     if (!this.changePasswordForm.valid) {
       this.changePasswordForm.markAllAsTouched();

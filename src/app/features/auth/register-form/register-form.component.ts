@@ -62,7 +62,7 @@ export class RegisterFormComponent {
     this.authService.register(registerCredentials).subscribe({
       next: (_) => {
         this.isLoading = false;
-        this.router.navigateByUrl('/login?registered=true');
+        this.router.navigateByUrl('/auth/login?registered=true');
       },
       error: (err: HttpErrorResponse) => {
         this.apiError = extractMessage(err);

@@ -1,6 +1,17 @@
-<app-user-settings-section
+<p-confirmPopup></p-confirmPopup
+><app-user-settings-section
   heading="Delete account"
   subheading="This action is not reversible. All information related to this account will be deleted permanently."
 >
-  <p-button styleClass="p-button-sm p-button-danger">Delete my account</p-button>
+  <div>
+    <p-button
+      styleClass="p-button-sm p-button-danger"
+      label="Delete my account"
+      [loading]="isLoading"
+      (click)="confirmDelete($event)"
+    ></p-button>
+    <div class="mt-1" *ngIf="apiError">
+      <app-validation-error>{{ apiError }}</app-validation-error>
+    </div>
+  </div>
 </app-user-settings-section>

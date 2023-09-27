@@ -40,4 +40,8 @@ export class UserService {
       newPassword,
     });
   }
+
+  deleteUser(userId: number): Observable<{}> {
+    return this.http.delete<{}>(environment.apiUrl + `/users/${userId}`);
+  }
 }

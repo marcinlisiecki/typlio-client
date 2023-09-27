@@ -21,6 +21,8 @@ import { UserSettingsDeleteComponent } from './user-settings/user-settings-delet
 import { UserSettingsSectionComponent } from './user-settings/user-settings-section/user-settings-section.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { PasswordModule } from 'primeng/password';
+import { ConfirmPopupModule } from 'primeng/confirmpopup';
+import { ConfirmationService } from 'primeng/api';
 
 @NgModule({
   declarations: [
@@ -48,6 +50,8 @@ import { PasswordModule } from 'primeng/password';
     AvatarModule,
     ReactiveFormsModule,
     PasswordModule,
+    ConfirmPopupModule,
   ],
+  providers: [ConfirmationService],
 })
 export class UserModule {}
