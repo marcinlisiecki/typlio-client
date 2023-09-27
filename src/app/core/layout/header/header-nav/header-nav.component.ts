@@ -36,6 +36,11 @@ export class HeaderNavComponent implements OnInit, OnDestroy {
         routerLink: `/users/${this.userId}/history`,
       },
       {
+        label: 'Settings',
+        icon: 'pi pi-cog',
+        routerLink: `/users/${this.userId}/settings`,
+      },
+      {
         label: 'Logout',
         icon: 'pi pi-sign-out',
         command: (_) => {

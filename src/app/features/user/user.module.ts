@@ -12,9 +12,10 @@ import { UserHistoryFiltersComponent } from './user-history/user-history-filters
 import { UserHistoryItemComponent } from './user-history/user-history-item/user-history-item.component';
 import { UserRoutingModule } from '@app/features/user/user-routing.module';
 import { UserHistoryDetailsComponent } from './user-history/user-history-details/user-history-details.component';
+import { UserSettingsComponent } from './user-settings/user-settings.component';
 
 @NgModule({
-  declarations: [UserHistoryComponent, UserHistoryFiltersComponent, UserHistoryItemComponent, UserHistoryDetailsComponent],
+  declarations: [UserHistoryComponent, UserHistoryFiltersComponent, UserHistoryItemComponent, UserHistoryDetailsComponent, UserSettingsComponent],
   imports: [
     CommonModule,
     SharedModule,
