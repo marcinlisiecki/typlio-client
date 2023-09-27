@@ -14,6 +14,7 @@ import { SpinnerModule } from 'primeng/spinner';
 import { ProgressSpinnerModule } from 'primeng/progressspinner';
 import { SpeedTestRoutingModule } from '@app/features/speed-test/speed-test-routing.module';
 import { SpeedTestResultsComponent } from '@app/features/speed-test/speed-test-results/speed-test-results.component';
+import { TranslateModule } from '@ngx-translate/core';
 
 @NgModule({
   declarations: [
@@ -35,6 +36,7 @@ import { SpeedTestResultsComponent } from '@app/features/speed-test/speed-test-r
     NgChartsModule,
     SpinnerModule,
     ProgressSpinnerModule,
+    TranslateModule,
   ],
 })
 export class SpeedTestModule {}

@@ -1,6 +1,6 @@
 <section class="mt-from-header">
   <header>
-    <app-page-heading [steps]="['SPEED TEST']">Choose a mode</app-page-heading>
+    <app-page-heading>{{ 'speedTest.chooseMode' | translate }}</app-page-heading>
   </header>
 
   <section class="modes-wrapper mt-from-page-heading" *ngIf="availableSpeedTestModes === null">
@@ -18,11 +18,14 @@
       *ngFor="let mode of availableSpeedTestModes"
       class="border-2 border-gray-900 rounded-md shadow-md flex items-center justify-center aspect-square cursor-pointer hover:border-primary-500 transition transform hover:scale-[1.02] text-lg font-medium"
     >
-      {{ speedTestModeToLabel[mode] }}
+      {{ 'speedTest.mode.' + mode | translate }}
     </a>
   </section>
 
   <section class="mt-section text-center text-text-secondary">
-    <p>Missing a mode? <app-link routerLink="/">Make a suggestion</app-link></p>
+    <p>
+      {{ 'speedTest.suggestion.question' | translate }}
+      <app-link routerLink="/">{{ 'speedTest.suggestion.action' | translate }}</app-link>
+    </p>
   </section>
 </section>
