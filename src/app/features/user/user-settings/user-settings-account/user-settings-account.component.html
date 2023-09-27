@@ -1,0 +1,52 @@
+<app-user-settings-section heading="Account" subheading="Basic account settings">
+  <p-toast></p-toast>
+  <form
+    action=""
+    class="flex flex-col gap-y-6"
+    (ngSubmit)="onSubmit()"
+    [formGroup]="accountSettingsForm"
+  >
+    <div class="flex items-center gap-x-6">
+      <p-avatar label="M" size="xlarge" styleClass="w-16 h-16"></p-avatar>
+      <p-button styleClass="p-button-secondary p-button-sm">Change avatar</p-button>
+    </div>
+    <div class="input-box">
+      <label for="username">Username</label>
+      <input
+        type="text"
+        pInputText
+        class="w-full"
+        name="username"
+        id="username"
+        formControlName="username"
+      />
+      <div *ngIf="username?.invalid && username?.touched">
+        <app-validation-error *ngIf="username?.errors?.['required']">
+          Username is required
+        </app-validation-error>
+        <app-validation-error *ngIf="username?.errors?.['minlength']">
+          Username has to be at least 3 characters long
+        </app-validation-error>
+        <app-validation-error *ngIf="username?.errors?.['maxlength']">
+          Username has to be at most 256 characters long
+        </app-validation-error>
+        <app-validation-error
+          *ngIf="username?.errors?.['whitespace'] && !username?.errors?.['required']"
+        >
+          Username cannot consist only of empty characters
+        </app-validation-error>
+      </div>
+    </div>
+    <div>
+      <p-button
+        styleClass="p-button-sm"
+        type="ngSubmit"
+        [loading]="isLoading"
+        label="Save account settings"
+      ></p-button>
+      <div class="mt-1" *ngIf="apiError">
+        <app-validation-error>{{ apiError }}</app-validation-error>
+      </div>
+    </div>
+  </form>
+</app-user-settings-section>

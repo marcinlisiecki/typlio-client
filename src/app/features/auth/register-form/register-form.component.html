@@ -35,10 +35,10 @@
       <app-validation-error *ngIf="username?.errors?.['required']">
         Username is required
       </app-validation-error>
-      <app-validation-error *ngIf="username?.errors?.['minLength']">
+      <app-validation-error *ngIf="username?.errors?.['minlength']">
         Username has to be at least 3 characters long
       </app-validation-error>
-      <app-validation-error *ngIf="username?.errors?.['maxLength']">
+      <app-validation-error *ngIf="username?.errors?.['maxlength']">
         Username has to be at most 256 characters long
       </app-validation-error>
       <app-validation-error
@@ -63,10 +63,10 @@
       <app-validation-error *ngIf="password?.errors?.['required']">
         Password is required
       </app-validation-error>
-      <app-validation-error *ngIf="password?.errors?.['minLength']">
+      <app-validation-error *ngIf="password?.errors?.['minlength']">
         Password has to be at least 8 characters long
       </app-validation-error>
-      <app-validation-error *ngIf="password?.errors?.['maxLength']">
+      <app-validation-error *ngIf="password?.errors?.['maxlength']">
         Password has to be at most 256 characters long
       </app-validation-error>
       <app-validation-error

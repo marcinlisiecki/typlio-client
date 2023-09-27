@@ -19,7 +19,7 @@ body {
 }
 
 .button-wide {
-  @apply w-full flex justify-center gap-x-2;
+  @apply w-full flex flex-row-reverse justify-center gap-x-2;
 }
 
 .no-scrollbar::-webkit-scrollbar {

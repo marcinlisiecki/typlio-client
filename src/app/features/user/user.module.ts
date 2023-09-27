@@ -15,6 +15,15 @@ import { UserHistoryDetailsComponent } from './user-history/user-history-details
 import { UserSettingsComponent } from './user-settings/user-settings.component';
 import { InputTextModule } from 'primeng/inputtext';
 import { AvatarModule } from 'primeng/avatar';
+import { UserSettingsAccountComponent } from './user-settings/user-settings-account/user-settings-account.component';
+import { UserSettingsPasswordComponent } from './user-settings/user-settings-password/user-settings-password.component';
+import { UserSettingsDeleteComponent } from './user-settings/user-settings-delete/user-settings-delete.component';
+import { UserSettingsSectionComponent } from './user-settings/user-settings-section/user-settings-section.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { MessageModule } from 'primeng/message';
+import { ToastModule } from 'primeng/toast';
+import { MessageService } from 'primeng/api';
+import { MessagesModule } from 'primeng/messages';
 
 @NgModule({
   declarations: [
@@ -23,6 +32,10 @@ import { AvatarModule } from 'primeng/avatar';
     UserHistoryItemComponent,
     UserHistoryDetailsComponent,
     UserSettingsComponent,
+    UserSettingsAccountComponent,
+    UserSettingsPasswordComponent,
+    UserSettingsDeleteComponent,
+    UserSettingsSectionComponent,
   ],
   imports: [
     CommonModule,
@@ -36,6 +49,11 @@ import { AvatarModule } from 'primeng/avatar';
     UserRoutingModule,
     InputTextModule,
     AvatarModule,
+    ReactiveFormsModule,
+    ToastModule,
+    MessageModule,
+    MessagesModule,
   ],
+  providers: [MessageService],
 })
 export class UserModule {}
