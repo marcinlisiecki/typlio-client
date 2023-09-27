@@ -1,1 +1,66 @@
-<p>user-settings works!</p>
+<section class="mt-from-header">
+  <header>
+    <app-page-heading [steps]="['MARCIN', 'SETTINGS']">Settings</app-page-heading>
+  </header>
+
+  <section class="mt-from-page-heading flex flex-col gap-y-8">
+    <section class="flex rounded-lg p-8 mb-2 bg-light">
+      <section class="flex-1">
+        <header>
+          <h1 class="text-lg font-medium">Account</h1>
+          <p class="text-text-secondary max-w-[300px] text-sm leading-relaxed mt-1">
+            Basic account settings
+          </p>
+        </header>
+      </section>
+      <section class="flex-1 flex flex-col gap-y-6">
+        <div class="flex items-center gap-x-6">
+          <p-avatar label="M" size="xlarge" styleClass="w-16 h-16"></p-avatar>
+          <p-button styleClass="p-button-secondary p-button-sm">Change avatar</p-button>
+        </div>
+        <div class="input-box">
+          <label for="">Username</label>
+          <input type="text" pInputText />
+        </div>
+        <p-button styleClass="p-button-sm">Save account settings</p-button>
+      </section>
+    </section>
+  </section>
+  <section class="flex rounded-lg p-8 mb-2 bg-light">
+    <section class="flex-1">
+      <header>
+        <h1 class="text-lg font-medium">Password</h1>
+        <p class="text-text-secondary max-w-[300px] text-sm leading-relaxed mt-1">
+          Update your password to keep you account safe
+        </p>
+      </header>
+    </section>
+    <section class="flex-1 flex flex-col gap-y-6">
+      <div class="flex gap-x-6">
+        <div class="input-box flex-1">
+          <label for="">Old password</label>
+          <input type="text" pInputText />
+        </div>
+        <div class="input-box flex-1">
+          <label for="">New password</label>
+          <input type="text" pInputText />
+        </div>
+      </div>
+      <p-button styleClass="p-button-sm">Change password</p-button>
+    </section>
+  </section>
+  <section class="flex rounded-lg p-8 mb-2 bg-light">
+    <section class="flex-1">
+      <header>
+        <h1 class="text-lg font-medium">Delete account</h1>
+        <p class="text-text-secondary max-w-[300px] text-sm leading-relaxed mt-1">
+          This action is not reversible. All information related to this account will be deleted
+          permanently.
+        </p>
+      </header>
+    </section>
+    <section class="flex-1 flex flex-col gap-y-6">
+      <p-button styleClass="p-button-sm p-button-danger">Delete my account</p-button>
+    </section>
+  </section>
+</section>

@@ -6,6 +6,7 @@
   font-size: $fontSize;
   transition: $formElementTransition;
   border-radius: $borderRadius;
+  font-weight: 500;
 
   &:enabled:hover {
     background: $buttonHoverBg;
@@ -494,10 +495,6 @@
     background: $dangerButtonHoverBg;
     color: $dangerButtonTextHoverColor;
     border-color: $dangerButtonHoverBorderColor;
-  }
-
-  &:enabled:focus {
-    box-shadow: $dangerButtonFocusShadow;
   }
 
   &:enabled:active {

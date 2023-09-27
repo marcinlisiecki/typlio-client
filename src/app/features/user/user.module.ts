@@ -13,9 +13,17 @@ import { UserHistoryItemComponent } from './user-history/user-history-item/user-
 import { UserRoutingModule } from '@app/features/user/user-routing.module';
 import { UserHistoryDetailsComponent } from './user-history/user-history-details/user-history-details.component';
 import { UserSettingsComponent } from './user-settings/user-settings.component';
+import { InputTextModule } from 'primeng/inputtext';
+import { AvatarModule } from 'primeng/avatar';
 
 @NgModule({
-  declarations: [UserHistoryComponent, UserHistoryFiltersComponent, UserHistoryItemComponent, UserHistoryDetailsComponent, UserSettingsComponent],
+  declarations: [
+    UserHistoryComponent,
+    UserHistoryFiltersComponent,
+    UserHistoryItemComponent,
+    UserHistoryDetailsComponent,
+    UserSettingsComponent,
+  ],
   imports: [
     CommonModule,
     SharedModule,
@@ -26,6 +34,8 @@ import { UserSettingsComponent } from './user-settings/user-settings.component';
     ButtonModule,
     CheckboxModule,
     UserRoutingModule,
+    InputTextModule,
+    AvatarModule,
   ],
 })
 export class UserModule {}

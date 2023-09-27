@@ -168,8 +168,8 @@ $plainButtonTextColor: $textSecondaryColor !default;
 $plainButtonHoverBgColor: $hoverBg !default;
 $plainButtonActiveBgColor: rgba(255, 255, 255, 0.16) !default;
 
-$secondaryButtonBg: #b4bfcd !default;
-$secondaryButtonTextColor: $shade900 !default;
+$secondaryButtonBg: #1e293b !default;
+$secondaryButtonTextColor: $shade100 !default;
 $secondaryButtonBorder: 1px solid $secondaryButtonBg !default;
 $secondaryButtonHoverBg: scale-color($secondaryButtonBg, $lightness: -10%) !default;
 $secondaryButtonTextHoverColor: $secondaryButtonTextColor !default;
@@ -223,8 +223,8 @@ $helpButtonTextActiveColor: $helpButtonTextColor !default;
 $helpButtonActiveBorderColor: scale-color($helpButtonBg, $lightness: -20%) !default;
 $helpButtonFocusShadow: 0 0 0 1px scale-color($helpButtonBg, $lightness: 60%) !default;
 
-$dangerButtonBg: #e693a9 !default;
-$dangerButtonTextColor: $shade900 !default;
+$dangerButtonBg: #ef4444 !default;
+$dangerButtonTextColor: $shade100 !default;
 $dangerButtonBorder: 1px solid $dangerButtonBg !default;
 $dangerButtonHoverBg: scale-color($dangerButtonBg, $lightness: -10%) !default;
 $dangerButtonTextHoverColor: $dangerButtonTextColor !default;
