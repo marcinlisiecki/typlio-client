@@ -3,6 +3,7 @@ import { AuthService } from '@core/services/auth/auth.service';
 import { Subscription } from 'rxjs';
 import { JwtService } from '@core/services/auth/jwt.service';
 import { MenuItem } from 'primeng/api';
+import { LanguageService } from '@core/services/language/language.service';
 
 @Component({
   selector: 'app-header-nav',
@@ -21,11 +22,16 @@ export class HeaderNavComponent implements OnInit, OnDestroy {
   constructor(
     private authService: AuthService,
     private jwtService: JwtService,
+    private languageService: LanguageService,
   ) {}
 
   ngOnInit(): void {
     this.handleAuth();
     this.handleSetUserDropdownItems();
+  }
+
+  setLanguage(lang: string) {
+    this.languageService.setLanguage(lang);
   }
 
   handleSetUserDropdownItems() {

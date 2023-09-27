@@ -5,19 +5,19 @@
 >
   <p-messages *ngIf="registered" severity="success" styleClass="-mb-4">
     <ng-template pTemplate>
-      <p class="font-medium">Registered successfully. You can now login.</p>
+      <p class="font-medium">{{ 'login.registerSuccess' | translate }}</p>
     </ng-template>
   </p-messages>
 
   <header>
-    <h1 class="text-2xl font-semibold">Welcome back</h1>
+    <h1 class="text-2xl font-semibold">{{ 'login.heading' | translate }}</h1>
     <p class="mt-1 text-text-secondary">
-      Lorem ipsum dolor sit amet, sit amet dolor sit dolor amet sit
+      {{ 'login.subheading' | translate }}
     </p>
   </header>
 
   <div class="input-box">
-    <label for="username">Username</label>
+    <label for="username">{{ 'username.label' | translate }}</label>
     <input
       type="text"
       pInputText
@@ -28,15 +28,17 @@
     />
     <div *ngIf="username?.invalid && username?.touched">
       <app-validation-error *ngIf="username?.errors?.['required']">
-        Username is required
+        {{ 'username.validation.required' | translate }}
       </app-validation-error>
     </div>
   </div>
 
   <div class="input-box">
     <div class="flex justify-between items-center">
-      <label [htmlFor]="'password'">Password</label>
-      <app-link routerLink="/auth/forgot-password">Forgot password?</app-link>
+      <label [htmlFor]="'password'">{{ 'password.label' | translate }}</label>
+      <app-link routerLink="/auth/forgot-password">{{
+        'login.forgotPassword' | translate
+      }}</app-link>
     </div>
     <p-password
       formControlName="password"
@@ -48,13 +50,15 @@
     ></p-password>
     <div *ngIf="password?.invalid && password?.touched">
       <app-validation-error *ngIf="password?.errors?.['required']">
-        Password is required
+        {{ 'password.validation.required' | translate }}
       </app-validation-error>
     </div>
   </div>
 
   <div class="flex flex-col">
-    <p-button styleClass="button-wide" type="submit" [loading]="isLoading">Login</p-button>
+    <p-button styleClass="button-wide" type="submit" [loading]="isLoading">{{
+      'login.loginButton' | translate
+    }}</p-button>
     <div class="mt-1" *ngIf="apiError">
       <app-validation-error>{{ apiError }}</app-validation-error>
     </div>
@@ -62,6 +66,7 @@
 
   <div class="bg-gray-900 w-1/2 mx-auto h-[2px]"></div>
   <p class="mx-auto text-text-secondary font-medium">
-    Don't have an account? <app-link routerLink="/auth/register">Create one</app-link>
+    {{ 'login.noAccount.question' | translate }}
+    <app-link routerLink="/auth/register">{{ 'login.noAccount.action' | translate }}</app-link>
   </p>
 </form>

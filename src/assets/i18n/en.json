@@ -1,0 +1,19 @@
+{
+  "password.label": "Password",
+  "password.feedback.prompt": "Enter a password",
+  "password.feedback.weak": "Weak",
+  "password.feedback.medium": "Medium",
+  "password.feedback.strong": "Strong",
+  "password.validation.required": "Password is required",
+
+  "username.label": "Username",
+  "username.validation.required": "Username is required",
+
+  "login.heading": "Welcome back",
+  "login.subheading": "Please enter log in details below",
+  "login.forgotPassword": "Forgot password?",
+  "login.loginButton": "login",
+  "login.noAccount.question": "Don't have an account?",
+  "login.noAccount.action": "Create one",
+  "login.registerSuccess": "Registered successfully. You can login now."
+}

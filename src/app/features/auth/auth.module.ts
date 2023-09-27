@@ -12,6 +12,7 @@ import { MessagesModule } from 'primeng/messages';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
 import { AuthRoutingModule } from '@app/features/auth/auth-routing.module';
+import { TranslateModule } from '@ngx-translate/core';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { AuthRoutingModule } from '@app/features/auth/auth-routing.module';
     ReactiveFormsModule,
     MessageModule,
     MessagesModule,
+    TranslateModule,
   ],
 })
 export class AuthModule {}
