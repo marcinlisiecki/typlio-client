@@ -4,25 +4,27 @@
   [formGroup]="registerForm"
 >
   <header>
-    <h1 class="text-2xl font-semibold">Nice to meet you</h1>
+    <h1 class="text-2xl font-semibold">{{ 'register.heading' | translate }}</h1>
     <p class="mt-1 text-text-secondary">
-      Lorem ipsum dolor sit amet, sit amet dolor sit dolor amet sit
+      {{ 'register.subheading' | translate }}
     </p>
   </header>
 
   <div class="input-box">
-    <label for="email">Email</label>
+    <label for="email">{{ 'email.label' | translate }}</label>
     <input type="email" pInputText class="w-full" name="email" id="email" formControlName="email" />
     <div *ngIf="email?.invalid && email?.touched">
       <app-validation-error *ngIf="email?.errors?.['required']">
-        Email is required
+        {{ 'email.validation.required' | translate }}
       </app-validation-error>
-      <app-validation-error *ngIf="email?.errors?.['email']">Invalid email</app-validation-error>
+      <app-validation-error *ngIf="email?.errors?.['email']">{{
+        'email.validation.invalid' | translate
+      }}</app-validation-error>
     </div>
   </div>
 
   <div class="input-box">
-    <label for="username">Username</label>
+    <label for="username">{{ 'username.label' | translate }}</label>
     <input
       type="text"
       pInputText
@@ -33,24 +35,24 @@
     />
     <div *ngIf="username?.invalid && username?.touched">
       <app-validation-error *ngIf="username?.errors?.['required']">
-        Username is required
+        {{ 'username.validation.required' | translate }}
       </app-validation-error>
       <app-validation-error *ngIf="username?.errors?.['minlength']">
-        Username has to be at least 3 characters long
+        {{ 'username.validation.minLength' | translate }}
       </app-validation-error>
       <app-validation-error *ngIf="username?.errors?.['maxlength']">
-        Username has to be at most 256 characters long
+        {{ 'username.validation.maxLength' | translate }}
       </app-validation-error>
       <app-validation-error
         *ngIf="username?.errors?.['whitespace'] && !username?.errors?.['required']"
       >
-        Username cannot consist only of empty characters
+        {{ 'username.validation.blank' | translate }}
       </app-validation-error>
     </div>
   </div>
 
   <div class="input-box">
-    <label [htmlFor]="'password'">Password</label>
+    <label [htmlFor]="'password'">{{ 'password.label' | translate }}</label>
     <p-password
       formControlName="password"
       inputId="password"
@@ -58,27 +60,33 @@
       [feedback]="true"
       styleClass="w-full"
       inputStyleClass="w-full"
+      promptLabel="{{ 'password.feedback.prompt' | translate }}"
+      weakLabel="{{ 'password.feedback.weak' | translate }}"
+      mediumLabel="{{ 'password.feedback.medium' | translate }}"
+      strongLabel="{{ 'password.feedback.strong' | translate }}"
     ></p-password>
     <div *ngIf="password?.invalid && password?.touched">
       <app-validation-error *ngIf="password?.errors?.['required']">
-        Password is required
+        {{ 'password.validation.required' | translate }}
       </app-validation-error>
       <app-validation-error *ngIf="password?.errors?.['minlength']">
-        Password has to be at least 8 characters long
+        {{ 'password.validation.minLength' | translate }}
       </app-validation-error>
       <app-validation-error *ngIf="password?.errors?.['maxlength']">
-        Password has to be at most 256 characters long
+        {{ 'password.validation.maxLength' | translate }}
       </app-validation-error>
       <app-validation-error
         *ngIf="password?.errors?.['whitespace'] && !password?.errors?.['required']"
       >
-        Password cannot consist only of empty characters
+        {{ 'password.validation.blank' | translate }}
       </app-validation-error>
     </div>
   </div>
 
   <div class="flex flex-col">
-    <p-button styleClass="button-wide" type="submit" [loading]="isLoading">Register</p-button>
+    <p-button styleClass="button-wide" type="submit" [loading]="isLoading">{{
+      'register.registerButton' | translate
+    }}</p-button>
     <div class="mt-1" *ngIf="apiError">
       <app-validation-error>{{ apiError }}</app-validation-error>
     </div>
@@ -86,6 +94,7 @@
 
   <div class="bg-gray-900 w-1/2 mx-auto h-[2px]"></div>
   <p class="mx-auto text-text-secondary font-medium">
-    Already have an account? <app-link routerLink="/auth/login">Login</app-link>
+    {{ 'register.haveAccount.question' | translate }}
+    <app-link routerLink="/auth/login">{{ 'register.haveAccount.action' | translate }}</app-link>
   </p>
 </form>
