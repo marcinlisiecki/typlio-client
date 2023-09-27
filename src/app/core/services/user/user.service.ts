@@ -33,4 +33,11 @@ export class UserService {
         }),
       );
   }
+
+  changePassword(userId: number, oldPassword: string, newPassword: string): Observable<{}> {
+    return this.http.put<{}>(environment.apiUrl + `/users/${userId}/password`, {
+      oldPassword,
+      newPassword,
+    });
+  }
 }

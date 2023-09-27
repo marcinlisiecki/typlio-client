@@ -1,5 +1,4 @@
 <app-user-settings-section heading="Account" subheading="Basic account settings">
-  <p-toast></p-toast>
   <form
     action=""
     class="flex flex-col gap-y-6"
@@ -7,7 +6,7 @@
     [formGroup]="accountSettingsForm"
   >
     <div class="flex items-center gap-x-6">
-      <p-avatar label="M" size="xlarge" styleClass="w-16 h-16"></p-avatar>
+      <p-avatar [label]="firstUsernameLetter" size="xlarge" styleClass="w-16 h-16"></p-avatar>
       <p-button styleClass="p-button-secondary p-button-sm">Change avatar</p-button>
     </div>
     <div class="input-box">

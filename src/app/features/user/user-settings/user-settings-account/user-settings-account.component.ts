@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { MeUser } from '@core/interfaces/user/me-user';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { USERNAME_MAX_LENGTH, USERNAME_MIN_LENGTH } from '@core/constants/validators';
@@ -14,12 +14,14 @@ import { DEFAULT_TOAST_LIFETIME } from '@core/constants/toast';
   templateUrl: './user-settings-account.component.html',
   styleUrls: ['./user-settings-account.component.scss'],
 })
-export class UserSettingsAccountComponent {
+export class UserSettingsAccountComponent implements OnInit {
   @Input({ required: true }) user!: MeUser;
 
   apiError: string | null = null;
   isSuccess: boolean = false;
   isLoading: boolean = false;
+
+  firstUsernameLetter: string = '';
 
   accountSettingsForm: FormGroup = new FormGroup({
     username: new FormControl('', [
@@ -34,6 +36,10 @@ export class UserSettingsAccountComponent {
     private userService: UserService,
     private messageService: MessageService,
   ) {}
+
+  ngOnInit() {
+    this.firstUsernameLetter = this.user.username[0];
+  }
 
   onSubmit() {
     this.apiError = null;

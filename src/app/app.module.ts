@@ -8,6 +8,8 @@ import { CookieModule } from 'ngx-cookie';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { AuthInterceptor } from '@core/interceptors/auth/auth.interceptor';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastModule } from 'primeng/toast';
+import { MessageService } from 'primeng/api';
 
 @NgModule({
   declarations: [AppComponent],
@@ -18,6 +20,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     LayoutModule,
     CookieModule.withOptions(),
     HttpClientModule,
+    ToastModule,
   ],
   providers: [
     {
@@ -25,6 +28,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
       useClass: AuthInterceptor,
       multi: true,
     },
+    MessageService,
   ],
   bootstrap: [AppComponent],
 })

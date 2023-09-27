@@ -20,10 +20,7 @@ import { UserSettingsPasswordComponent } from './user-settings/user-settings-pas
 import { UserSettingsDeleteComponent } from './user-settings/user-settings-delete/user-settings-delete.component';
 import { UserSettingsSectionComponent } from './user-settings/user-settings-section/user-settings-section.component';
 import { ReactiveFormsModule } from '@angular/forms';
-import { MessageModule } from 'primeng/message';
-import { ToastModule } from 'primeng/toast';
-import { MessageService } from 'primeng/api';
-import { MessagesModule } from 'primeng/messages';
+import { PasswordModule } from 'primeng/password';
 
 @NgModule({
   declarations: [
@@ -50,10 +47,7 @@ import { MessagesModule } from 'primeng/messages';
     InputTextModule,
     AvatarModule,
     ReactiveFormsModule,
-    ToastModule,
-    MessageModule,
-    MessagesModule,
+    PasswordModule,
   ],
-  providers: [MessageService],
 })
 export class UserModule {}

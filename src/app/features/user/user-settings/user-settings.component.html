@@ -11,7 +11,7 @@
 
   <section class="mt-from-page-heading flex flex-col gap-y-2" *ngIf="user">
     <app-user-settings-account [user]="user"></app-user-settings-account>
-    <app-user-settings-password></app-user-settings-password>
+    <app-user-settings-password [user]="user"></app-user-settings-password>
     <app-user-settings-delete></app-user-settings-delete>
   </section>
 
