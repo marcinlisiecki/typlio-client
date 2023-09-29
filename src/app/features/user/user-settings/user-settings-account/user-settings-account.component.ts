@@ -8,6 +8,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { extractMessage } from '@core/utils/api-errors';
 import { MessageService } from 'primeng/api';
 import { DEFAULT_TOAST_LIFETIME } from '@core/constants/toast';
+import { LanguageService } from '@core/services/language/language.service';
 
 @Component({
   selector: 'app-user-settings-account',
@@ -35,6 +36,7 @@ export class UserSettingsAccountComponent implements OnInit {
   constructor(
     private userService: UserService,
     private messageService: MessageService,
+    private languageService: LanguageService,
   ) {}
 
   ngOnInit() {
@@ -56,7 +58,7 @@ export class UserSettingsAccountComponent implements OnInit {
       next: (_) => {
         this.messageService.add({
           severity: 'success',
-          summary: 'Account settings successfully saved',
+          summary: this.languageService.instant('user.settings.account.success'),
           life: DEFAULT_TOAST_LIFETIME,
         });
         this.isLoading = false;

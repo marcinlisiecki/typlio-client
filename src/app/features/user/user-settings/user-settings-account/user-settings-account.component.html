@@ -1,4 +1,7 @@
-<app-user-settings-section heading="Account" subheading="Basic account settings">
+<app-user-settings-section
+  heading="{{ 'user.settings.account.heading' | translate }}"
+  subheading="{{ 'user.settings.account.subheading' | translate }}"
+>
   <form
     action=""
     class="flex flex-col gap-y-6"
@@ -7,10 +10,12 @@
   >
     <div class="flex items-center gap-x-6">
       <p-avatar [label]="firstUsernameLetter" size="xlarge" styleClass="w-16 h-16"></p-avatar>
-      <p-button styleClass="p-button-secondary p-button-sm">Change avatar</p-button>
+      <p-button styleClass="p-button-secondary p-button-sm">{{
+        'user.settings.account.changeAvatar' | translate
+      }}</p-button>
     </div>
     <div class="input-box">
-      <label for="username">Username</label>
+      <label for="username">{{ 'username.label' | translate }}</label>
       <input
         type="text"
         pInputText
@@ -21,18 +26,18 @@
       />
       <div *ngIf="username?.invalid && username?.touched">
         <app-validation-error *ngIf="username?.errors?.['required']">
-          Username is required
+          {{ 'username.validation.required' | translate }}
         </app-validation-error>
         <app-validation-error *ngIf="username?.errors?.['minlength']">
-          Username has to be at least 3 characters long
+          {{ 'username.validation.minLength' | translate }}
         </app-validation-error>
         <app-validation-error *ngIf="username?.errors?.['maxlength']">
-          Username has to be at most 256 characters long
+          {{ 'username.validation.maxLength' | translate }}
         </app-validation-error>
         <app-validation-error
           *ngIf="username?.errors?.['whitespace'] && !username?.errors?.['required']"
         >
-          Username cannot consist only of empty characters
+          {{ 'username.validation.blank' | translate }}
         </app-validation-error>
       </div>
     </div>
@@ -41,7 +46,7 @@
         styleClass="p-button-sm"
         type="ngSubmit"
         [loading]="isLoading"
-        label="Save account settings"
+        label="{{ 'user.settings.account.save' | translate }}"
       ></p-button>
       <div class="mt-1" *ngIf="apiError">
         <app-validation-error>{{ apiError }}</app-validation-error>

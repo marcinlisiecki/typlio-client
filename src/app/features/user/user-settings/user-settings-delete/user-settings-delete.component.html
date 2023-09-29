@@ -1,12 +1,12 @@
 <p-confirmPopup></p-confirmPopup
 ><app-user-settings-section
-  heading="Delete account"
-  subheading="This action is not reversible. All information related to this account will be deleted permanently."
+  heading="{{ 'user.settings.delete.heading' | translate }}"
+  subheading="{{ 'user.settings.delete.subheading' | translate }}"
 >
   <div>
     <p-button
       styleClass="p-button-sm p-button-danger"
-      label="Delete my account"
+      label="{{ 'user.settings.delete.deleteButton' | translate }}"
       [loading]="isLoading"
       (click)="confirmDelete($event)"
     ></p-button>

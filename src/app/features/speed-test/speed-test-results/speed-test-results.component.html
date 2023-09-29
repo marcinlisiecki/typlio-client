@@ -20,17 +20,17 @@
           <app-icon-button
             (click)="nextSpeedTest.emit()"
             icon="pi pi-angle-double-right"
-            helpText="Next speed test"
+            helpText="{{ 'speedTest.results.actions.next' | translate }}"
           ></app-icon-button>
           <app-icon-button
             (click)="repeatSameSpeedTest.emit()"
             icon="pi pi-refresh"
-            helpText="Repeat the same"
+            helpText="{{ 'speedTest.results.actions.repeat' | translate }}"
           ></app-icon-button>
           <a routerLink="/speed-test">
             <app-icon-button
               icon="pi pi-arrow-right-arrow-left"
-              helpText="Change mode"
+              helpText="{{ 'speedTest.results.actions.change' | translate }}"
             ></app-icon-button>
           </a>
         </div>

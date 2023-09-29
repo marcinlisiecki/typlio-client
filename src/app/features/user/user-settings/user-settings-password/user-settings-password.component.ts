@@ -9,6 +9,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { extractMessage } from '@core/utils/api-errors';
 import { DEFAULT_TOAST_LIFETIME } from '@core/constants/toast';
 import { MessageService } from 'primeng/api';
+import { LanguageService } from '@core/services/language/language.service';
 
 @Component({
   selector: 'app-user-settings-password',
@@ -34,6 +35,7 @@ export class UserSettingsPasswordComponent {
   constructor(
     private userService: UserService,
     private messageService: MessageService,
+    private languageService: LanguageService,
   ) {}
 
   onSubmit() {
@@ -53,7 +55,7 @@ export class UserSettingsPasswordComponent {
       next: () => {
         this.messageService.add({
           severity: 'success',
-          summary: 'Password successfully changed',
+          summary: this.languageService.instant('user.settings.password.success'),
           life: DEFAULT_TOAST_LIFETIME,
         });
         this.isLoading = false;
