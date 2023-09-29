@@ -1,7 +1,11 @@
 <nav>
   <ul class="list-none flex gap-x-8 items-center">
-    <app-header-nav-link routerLink="/speed-test">Speed Test</app-header-nav-link>
-    <app-header-nav-link routerLink="/auth/login" *ngIf="!isLoggedIn">Login</app-header-nav-link>
+    <app-header-nav-link routerLink="/speed-test">{{
+      'header.speedTest' | translate
+    }}</app-header-nav-link>
+    <app-header-nav-link routerLink="/auth/login" *ngIf="!isLoggedIn">{{
+      'header.login' | translate
+    }}</app-header-nav-link>
 
     <li class="flex items-center -mx-3" *ngIf="!isLoggedIn">
       <p-dropdown

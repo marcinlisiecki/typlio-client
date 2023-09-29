@@ -55,12 +55,12 @@ export class HeaderNavComponent implements OnInit, OnDestroy {
   handleSetUserDropdownItems() {
     this.userDropdownItems = [
       {
-        label: 'History',
+        label: this.languageService.instant('user.dropdown.history'),
         icon: 'pi pi-history',
         routerLink: `/users/${this.userId}/history`,
       },
       {
-        label: 'Settings',
+        label: this.languageService.instant('user.dropdown.settings'),
         icon: 'pi pi-cog',
         routerLink: `/users/${this.userId}/settings`,
       },
@@ -68,7 +68,7 @@ export class HeaderNavComponent implements OnInit, OnDestroy {
         separator: true,
       },
       {
-        label: 'Language',
+        label: this.languageService.instant('user.dropdown.language'),
         icon: 'pi pi-flag',
         items: LANGUAGES.map((language) => ({
           label: this.getLanguageLabel(language),
@@ -82,7 +82,7 @@ export class HeaderNavComponent implements OnInit, OnDestroy {
         separator: true,
       },
       {
-        label: 'Logout',
+        label: this.languageService.instant('user.dropdown.logout'),
         icon: 'pi pi-sign-out',
         command: (_) => {
           this.authService.logout();

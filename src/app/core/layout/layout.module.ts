@@ -12,6 +12,7 @@ import { StyleClassModule } from 'primeng/styleclass';
 import { FormsModule } from '@angular/forms';
 import { TieredMenuModule } from 'primeng/tieredmenu';
 import { SlideMenuModule } from 'primeng/slidemenu';
+import { TranslateModule } from '@ngx-translate/core';
 
 @NgModule({
   declarations: [HeaderComponent, HeaderNavComponent, HeaderNavLinkComponent],
@@ -28,6 +29,7 @@ import { SlideMenuModule } from 'primeng/slidemenu';
     TieredMenuModule,
     SlideMenuModule,
     NgOptimizedImage,
+    TranslateModule,
   ],
 })
 export class LayoutModule {}
