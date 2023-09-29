@@ -3,6 +3,10 @@ import { RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
   {
+    path: '',
+    loadChildren: () => import('@app/features/landing/landing.module').then((m) => m.LandingModule),
+  },
+  {
     path: 'auth',
     loadChildren: () => import('@app/features/auth/auth.module').then((m) => m.AuthModule),
   },

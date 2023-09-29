@@ -14,6 +14,7 @@ import { TranslateLoader, TranslateModule, TranslateService } from '@ngx-transla
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { LanguageService } from '@core/services/language/language.service';
 import { lastValueFrom } from 'rxjs';
+import { LandingModule } from './features/landing/landing.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -32,6 +33,7 @@ import { lastValueFrom } from 'rxjs';
         deps: [HttpClient],
       },
     }),
+    LandingModule,
   ],
   providers: [
     TranslateService,

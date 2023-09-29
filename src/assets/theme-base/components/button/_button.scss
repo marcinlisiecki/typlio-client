@@ -6,7 +6,7 @@
   font-size: $fontSize;
   transition: $formElementTransition;
   border-radius: $borderRadius;
-  font-weight: 500;
+  font-weight: 500 !important;
 
   &:enabled:hover {
     background: $buttonHoverBg;

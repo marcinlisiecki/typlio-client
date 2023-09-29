@@ -1,0 +1,41 @@
+<section class="h-[65vh] flex items-center justify-between w-full relative z-0">
+  <img
+    ngSrc="assets/images/decoration/decoration-1.png"
+    alt="decoration"
+    class="absolute blur-3xl opacity-40 pointer-events-none left-1/2 top-1/2 -translate-x-[250px] -translate-y-1/2"
+    height="744"
+    width="872"
+    [priority]="true"
+  />
+  <img
+    ngSrc="assets/images/decoration/decoration-2.png"
+    alt="decoration"
+    class="absolute blur-3xl opacity-40 pointer-events-none left-1/2 top-1/2 -translate-x-2/3 -translate-y-1/2"
+    height="743"
+    width="872"
+    [priority]="true"
+  />
+
+  <header class="flex flex-col gap-y-4 lg:gap-y-8 max-w-[700px] mx-auto">
+    <h1 class="font-bold text-[24px] lg:text-5xl leading-normal lg:leading-[54px] text-center">
+      {{ 'landing.heading' | translate }}<span class="text-primary-500">.</span>
+    </h1>
+    <p class="text-text-secondary font-medium lg:leading-7 max-w-[520px] text-center mx-auto">
+      {{ 'landing.subheading' | translate }}
+    </p>
+    <div class="flex items-center justify-center gap-x-4">
+      <a routerLink="/speed-test" *ngIf="isAuth"
+        ><p-button>{{ 'landing.speedTest' | translate }}</p-button></a
+      >
+      <a routerLink="/auth/register" *ngIf="!isAuth">
+        <p-button>{{ 'landing.register' | translate }}</p-button></a
+      >
+
+      <a routerLink="/"
+        ><p-button styleClass="p-button-secondary">{{
+          'landing.learnMore' | translate
+        }}</p-button></a
+      >
+    </div>
+  </header>
+</section>
