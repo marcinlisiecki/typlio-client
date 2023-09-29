@@ -1,23 +1,35 @@
 <section *ngIf="stats">
   <header>
-    <h2 class="font-medium text-lg">Statistics</h2>
+    <h2 class="font-medium text-lg">{{ 'speedTest.stats.heading' | translate }}</h2>
   </header>
 
   <div class="font-medium mt-4 mb-6 flex flex-col gap-y-1">
     <p>
       {{ timeModeFinish ? timeModeFinish - time : time }}
-      <span class="text-text-tertiary font-mono font-bold">seconds</span>
+      <span class="text-text-tertiary font-mono font-bold">{{
+        'speedTest.stats.seconds' | translate
+      }}</span>
     </p>
-    <p>{{ stats.cpm / 5 }} <span class="text-text-tertiary font-mono font-bold">wpm</span></p>
     <p>
-      {{ stats.accuracy }}% <span class="text-text-tertiary font-mono font-bold">accuracy</span>
+      {{ stats.cpm / 5 }}
+      <span class="text-text-tertiary font-mono font-bold">{{
+        'speedTest.stats.wpm' | translate
+      }}</span>
+    </p>
+    <p>
+      {{ stats.accuracy }}%
+      <span class="text-text-tertiary font-mono font-bold">{{
+        'speedTest.stats.accuracy' | translate
+      }}</span>
     </p>
   </div>
 
   <p-messages severity="info">
     <ng-template pTemplate>
       <p class="font-medium text-sm">
-        You can use <strong class="text-primary-500">ctrl + backspace</strong> to erase entire word.
+        {{ 'speedTest.backspaceTip.part1' | translate }}
+        <strong class="text-primary-500">{{ 'speedTest.backspaceTip.part2' | translate }}</strong>
+        {{ 'speedTest.backspaceTip.part3' | translate }}
       </p>
     </ng-template>
   </p-messages>

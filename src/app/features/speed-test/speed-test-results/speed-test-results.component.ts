@@ -1,8 +1,6 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { TypingStats } from '@core/interfaces/typing/typing-stats';
 import { ActivatedRoute } from '@angular/router';
-import { speedTestModeToLabel } from '@core/utils/speed-test';
-import { SpeedTestMode } from '@core/interfaces/speed-test/speed-test-mode';
 import { AuthService } from '@core/services/auth/auth.service';
 
 @Component({
@@ -20,12 +18,11 @@ export class SpeedTestResultsComponent {
   @Output() nextSpeedTest: EventEmitter<null> = new EventEmitter<null>();
   @Output() repeatSameSpeedTest: EventEmitter<null> = new EventEmitter<null>();
 
-  modeLabel!: string;
+  mode!: string;
   isAuth!: boolean;
 
   constructor(route: ActivatedRoute, authService: AuthService) {
-    const mode: SpeedTestMode = route.snapshot.params['mode'];
-    this.modeLabel = speedTestModeToLabel[mode];
+    this.mode = route.snapshot.params['mode'];
     this.isAuth = authService.isAuth();
   }
 
