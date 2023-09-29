@@ -3,7 +3,7 @@ import { UserHistoryComponent } from '@app/features/user/user-history/user-histo
 import { NgModule } from '@angular/core';
 import { UserHistoryDetailsComponent } from '@app/features/user/user-history/user-history-details/user-history-details.component';
 import { UserSettingsComponent } from '@app/features/user/user-settings/user-settings.component';
-import { isAuthGuard } from '@core/guards/is-auth/is-auth.guard';
+import { isAuthGuard } from '@core/guards/auth/is-auth.guard';
 import { isSameUserGuard } from '@core/guards/is-same-user/is-same-user.guard';
 
 const routes: Routes = [

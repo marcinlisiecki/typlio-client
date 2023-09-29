@@ -4,11 +4,12 @@ import { RegisterFormComponent } from '@app/features/auth/register-form/register
 import { ForgotPasswordComponent } from '@app/features/auth/forgot-password/forgot-password.component';
 import { ResetPasswordComponent } from '@app/features/auth/reset-password/reset-password.component';
 import { NgModule } from '@angular/core';
+import { isNotAuthGuard } from '@core/guards/auth/is-not-auth.guard';
 
 const routes: Routes = [
-  { path: 'login', component: LoginFormComponent },
-  { path: 'register', component: RegisterFormComponent },
-  { path: 'forgot-password', component: ForgotPasswordComponent },
+  { path: 'login', component: LoginFormComponent, canActivate: [isNotAuthGuard] },
+  { path: 'register', component: RegisterFormComponent, canActivate: [isNotAuthGuard] },
+  { path: 'forgot-password', component: ForgotPasswordComponent, canActivate: [isNotAuthGuard] },
   { path: 'forgot-password/:token', component: ResetPasswordComponent },
 ];
 
