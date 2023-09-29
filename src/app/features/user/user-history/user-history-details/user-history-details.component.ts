@@ -3,7 +3,6 @@ import { SpeedTest } from '@core/interfaces/speed-test/speed-test';
 import { SpeedTestService } from '@core/services/speed-test/speed-test.service';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
-import { speedTestModeToLabel } from '@core/utils/speed-test';
 import { User } from '@core/interfaces/user/user';
 import { HttpErrorResponse } from '@angular/common/http';
 import { extractMessage } from '@core/utils/api-errors';
@@ -22,7 +21,6 @@ export class UserHistoryDetailsComponent implements OnInit, OnDestroy {
 
   userId?: number;
   speedTestId?: number;
-  modeLabel?: string = '';
   error: string | null = null;
 
   constructor(
@@ -69,7 +67,6 @@ export class UserHistoryDetailsComponent implements OnInit, OnDestroy {
     this.speedTestService.getSpeedTest(this.userId, this.speedTestId).subscribe({
       next: (speedTest: SpeedTest) => {
         this.speedTest = speedTest;
-        this.modeLabel = speedTestModeToLabel[speedTest.mode];
       },
       error: (error: HttpErrorResponse) => {
         this.error = extractMessage(error);

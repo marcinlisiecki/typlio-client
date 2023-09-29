@@ -1,6 +1,6 @@
 <div class="w-full bg-light p-card rounded-lg">
   <div class="flex items-center justify-between gap-x-2">
-    <p-badge [value]="speedTestModeToLabel[speedTest.mode]"></p-badge>
+    <p-badge [value]="'speedTest.mode.' + speedTest.mode | translate"></p-badge>
     <p class="text-sm text-text-tertiary font-medium">
       {{ speedTest.createdAt | date: DISPLAY_DATE_FORMAT }}
     </p>
@@ -9,22 +9,28 @@
     <div class="flex items-center gap-x-8">
       <p class="font-medium">
         {{ speedTest.cpm / 5 | number: '1.0-0' }}
-        <span class="text-text-tertiary text-sm font-semibold">WPM</span>
+        <span class="text-text-tertiary text-sm font-semibold">{{
+          'speedTest.stats.wpm' | translate | uppercase
+        }}</span>
       </p>
 
       <p class="font-medium">
         {{ speedTest.cpm }}
-        <span class="text-text-tertiary text-sm font-semibold">CPM</span>
+        <span class="text-text-tertiary text-sm font-semibold">{{
+          'speedTest.stats.cpm' | translate | uppercase
+        }}</span>
       </p>
 
       <p class="font-medium">
         {{ speedTest.accuracy }}%
-        <span class="text-text-tertiary text-sm font-semibold">Accuracy</span>
+        <span class="text-text-tertiary text-sm font-semibold">{{
+          'speedTest.stats.accuracy' | translate | titlecase
+        }}</span>
       </p>
     </div>
 
-    <app-link routerLink="/users/{{ userId }}/speed-tests/{{ speedTest.id }}"
-      >Show details</app-link
-    >
+    <app-link routerLink="/users/{{ userId }}/speed-tests/{{ speedTest.id }}">{{
+      'user.history.showDetails' | translate
+    }}</app-link>
   </div>
 </div>

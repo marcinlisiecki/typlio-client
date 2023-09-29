@@ -25,6 +25,4 @@ export class SpeedTestResultsComponent {
     this.mode = route.snapshot.params['mode'];
     this.isAuth = authService.isAuth();
   }
-
-  protected readonly Math = Math;
 }

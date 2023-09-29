@@ -12,6 +12,7 @@ import { NgChartsModule } from 'ng2-charts';
 import { SpeedTestChartComponent } from './speed-test/speed-test-chart/speed-test-chart.component';
 import { SpeedTestBasicStatsComponent } from './speed-test/speed-test-basic-stats/speed-test-basic-stats.component';
 import { BackLinkComponent } from './back-link/back-link.component';
+import { TranslateModule } from '@ngx-translate/core';
 
 @NgModule({
   declarations: [
@@ -38,6 +39,6 @@ import { BackLinkComponent } from './back-link/back-link.component';
     SpeedTestBasicStatsComponent,
     BackLinkComponent,
   ],
-  imports: [CommonModule, RouterLink, NgChartsModule],
+  imports: [CommonModule, RouterLink, NgChartsModule, TranslateModule],
 })
 export class SharedModule {}

@@ -1,6 +1,6 @@
 <section class="mt-from-header" *ngIf="!error">
   <header *ngIf="user">
-    <app-page-heading [steps]="[user.username.toUpperCase(), 'HISTORY']">History</app-page-heading>
+    <app-page-heading>{{ 'user.history.heading' | translate }}</app-page-heading>
   </header>
   <div *ngIf="!user && !error">
     <p-skeleton width="150px" height="20px"></p-skeleton>

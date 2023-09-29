@@ -1,7 +1,9 @@
 <section class="mt-from-header" *ngIf="!error">
-  <app-back-link routerLink="/users/{{ userId }}/history"> Go back </app-back-link>
+  <app-back-link routerLink="/users/{{ userId }}/history">{{
+    'common.goBack' | translate
+  }}</app-back-link>
   <header *ngIf="user">
-    <app-page-heading>Speed test details</app-page-heading>
+    <app-page-heading>{{ 'user.history.details.heading' | translate }}</app-page-heading>
   </header>
 
   <section class="mt-20 flex gap-x-16" *ngIf="speedTest">
@@ -22,8 +24,10 @@
 
     <div class="flex-1">
       <div>
-        <p class="text-text-secondary font-bold font-mono tracking-wide pb-px">MODE</p>
-        <p>{{ modeLabel }}</p>
+        <p class="text-text-secondary font-bold font-mono tracking-wide pb-px">
+          {{ 'speedTest.mode.label' | translate }}
+        </p>
+        <p>{{ 'speedTest.mode.' + speedTest.mode | translate }}</p>
       </div>
     </div>
   </section>

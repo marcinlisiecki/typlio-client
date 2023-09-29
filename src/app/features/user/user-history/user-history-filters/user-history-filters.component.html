@@ -1,9 +1,9 @@
 <section class="w-64 h-full">
   <div>
-    <label [htmlFor]="'sort-by'">Sort by</label>
+    <label [htmlFor]="'sort-by'">{{ 'common.filter.sortBy' | translate }}</label>
     <p-dropdown
       inputId="sort-by"
-      [options]="sortByItems"
+      [options]="sortByItemsTranslated"
       (onChange)="changeSortBy.emit($event.value)"
       [ngModel]="sortBy"
       optionLabel="label"
@@ -13,7 +13,7 @@
   </div>
 
   <div class="mt-6">
-    <p>Mode</p>
+    <p>{{ 'common.speedTest.mode.label' | translate }}</p>
     <div class="flex flex-col gap-y-2 mt-1" *ngIf="modes.length === 0">
       <p-skeleton width="100px" height="20px"></p-skeleton>
       <p-skeleton width="120px" height="20px"></p-skeleton>
@@ -32,7 +32,7 @@
           [ngModel]="selectedModes"
         ></p-checkbox>
         <label class="text-text-secondary text-sm font-medium" [htmlFor]="mode">{{
-          speedTestModeToLabel[mode]
+          'speedTest.mode.' + mode | translate
         }}</label>
       </div>
     </div>

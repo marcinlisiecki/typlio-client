@@ -23,6 +23,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { PasswordModule } from 'primeng/password';
 import { ConfirmPopupModule } from 'primeng/confirmpopup';
 import { ConfirmationService } from 'primeng/api';
+import { TranslateModule } from '@ngx-translate/core';
 
 @NgModule({
   declarations: [
@@ -51,6 +52,7 @@ import { ConfirmationService } from 'primeng/api';
     ReactiveFormsModule,
     PasswordModule,
     ConfirmPopupModule,
+    TranslateModule,
   ],
   providers: [ConfirmationService],
 })
