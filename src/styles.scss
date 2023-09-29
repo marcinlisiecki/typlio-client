@@ -30,3 +30,12 @@ body {
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
+
+.p-dropdown-no-trigger .p-dropdown-trigger {
+  display: none !important;
+}
+
+.p-submenu-list {
+  right: 100% !important;
+  left: unset !important;
+}

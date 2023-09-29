@@ -16,7 +16,7 @@
     <a
       routerLink="/speed-test/{{ mode }}"
       *ngFor="let mode of availableSpeedTestModes"
-      class="border-2 border-gray-900 rounded-md shadow-md flex items-center justify-center aspect-square cursor-pointer hover:border-primary-500 transition transform hover:scale-[1.02] text-lg font-medium"
+      class="border-2 border-gray-900 rounded-md shadow-md flex items-center justify-center aspect-square cursor-pointer hover:border-primary-500 transition text-lg font-medium"
     >
       {{ 'speedTest.mode.' + mode | translate }}
     </a>

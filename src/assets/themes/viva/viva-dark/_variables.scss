@@ -54,7 +54,7 @@ $actionIconTransition:
   box-shadow $transitionDuration !default;
 $listItemTransition: box-shadow $transitionDuration !default;
 $primeIconFontSize: 1rem !default;
-$divider: 1px solid $shade600 !default;
+$divider: 2px solid $shade900 !default;
 $inlineSpacing: 0.5rem !default; //spacing between inline elements
 $disabledOpacity: 0.4 !default; //opacity of a disabled item
 $maskBg: rgba(0, 0, 0, 0.4) !default; //modal mask bg color

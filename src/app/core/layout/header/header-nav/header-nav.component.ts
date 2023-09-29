@@ -4,6 +4,8 @@ import { Subscription } from 'rxjs';
 import { JwtService } from '@core/services/auth/jwt.service';
 import { MenuItem } from 'primeng/api';
 import { LanguageService } from '@core/services/language/language.service';
+import { Language } from '@core/interfaces/common/language';
+import { LANGUAGES } from '@core/constants/languages';
 
 @Component({
   selector: 'app-header-nav',
@@ -12,6 +14,8 @@ import { LanguageService } from '@core/services/language/language.service';
 })
 export class HeaderNavComponent implements OnInit, OnDestroy {
   authSub?: Subscription;
+  langSub?: Subscription;
+
   userDropdownItems?: MenuItem[];
 
   isLoggedIn: boolean = false;
@@ -19,15 +23,29 @@ export class HeaderNavComponent implements OnInit, OnDestroy {
   userId: number | null = null;
   usernameFirstLetter: string | null = null;
 
+  languages: Language[] = LANGUAGES;
+  selectedLanguage: string;
+
   constructor(
     private authService: AuthService,
     private jwtService: JwtService,
     private languageService: LanguageService,
-  ) {}
+  ) {
+    this.selectedLanguage = languageService.currentLang;
+  }
 
   ngOnInit(): void {
     this.handleAuth();
-    this.handleSetUserDropdownItems();
+
+    this.langSub = this.languageService.onLangChange.subscribe((change) => {
+      this.selectedLanguage = change.lang;
+      this.handleSetUserDropdownItems();
+    });
+  }
+
+  ngOnDestroy(): void {
+    this.authSub?.unsubscribe();
+    this.langSub?.unsubscribe();
   }
 
   setLanguage(lang: string) {
@@ -47,6 +65,23 @@ export class HeaderNavComponent implements OnInit, OnDestroy {
         routerLink: `/users/${this.userId}/settings`,
       },
       {
+        separator: true,
+      },
+      {
+        label: 'Language',
+        icon: 'pi pi-flag',
+        items: LANGUAGES.map((language) => ({
+          label: this.getLanguageLabel(language),
+          escape: false,
+          command: () => {
+            this.setLanguage(language.lang);
+          },
+        })),
+      },
+      {
+        separator: true,
+      },
+      {
         label: 'Logout',
         icon: 'pi pi-sign-out',
         command: (_) => {
@@ -54,6 +89,15 @@ export class HeaderNavComponent implements OnInit, OnDestroy {
         },
       },
     ];
+  }
+
+  getLanguageLabel(language: Language): string {
+    return `<div class="w-6 flex items-center gap-x-2">
+              <img src="assets/images/flag/${language.lang}.png" alt="${
+                language.lang
+              }" class="w-full" />
+              <p>${this.languageService.instant(language.label)}</p>
+            </div>`;
   }
 
   handleAuth() {
@@ -79,9 +123,5 @@ export class HeaderNavComponent implements OnInit, OnDestroy {
       this.userId = null;
       this.usernameFirstLetter = null;
     }
-  }
-
-  ngOnDestroy(): void {
-    this.authSub?.unsubscribe();
   }
 }

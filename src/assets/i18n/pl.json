@@ -6,6 +6,8 @@
 	"forgotPassword.label": "Zapomniałeś hasła?",
 	"forgotPassword.sentEmailButton": "Wyślij link",
 	"forgotPassword.subheading": "Wpisz swój adres emaill, na który wyślemy link resetujący hasło",
+	"language.en.label": "Angielski",
+	"language.pl.label": "Polski",
 	"login.heading": "Witaj ponownie",
 	"login.loginButton": "Zaloguj się",
 	"login.noAccount.action": "Zarejestruj się",

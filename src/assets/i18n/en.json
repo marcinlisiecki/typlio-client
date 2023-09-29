@@ -6,6 +6,8 @@
 	"forgotPassword.label": "Forgot password?",
 	"forgotPassword.sentEmailButton": "Send link",
 	"forgotPassword.subheading": "Enter your email address to which we will send a password reset link",
+	"language.en.label": "English",
+	"language.pl.label": "Polish",
 	"login.heading": "Welcome back",
 	"login.loginButton": "Login",
 	"login.noAccount.action": "Create one",

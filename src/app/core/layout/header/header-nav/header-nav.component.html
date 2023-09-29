@@ -1,26 +1,51 @@
 <nav>
   <ul class="list-none flex gap-x-8 items-center">
-    <li (click)="setLanguage('pl')">PL</li>
-    <li (click)="setLanguage('en')">EN</li>
-
     <app-header-nav-link routerLink="/speed-test">Speed Test</app-header-nav-link>
     <app-header-nav-link routerLink="/auth/login" *ngIf="!isLoggedIn">Login</app-header-nav-link>
 
-    <li class="relative">
-      <button
-        *ngIf="isLoggedIn && username && usernameFirstLetter"
-        class="flex items-center gap-x-1"
-        (click)="userDropdown.toggle($event)"
+    <li class="flex items-center -mx-3" *ngIf="!isLoggedIn">
+      <p-dropdown
+        [options]="languages"
+        class="mt-2"
+        (onChange)="setLanguage($event.value)"
+        [ngModel]="selectedLanguage"
+        optionValue="lang"
+        styleClass="p-dropdown-no-trigger !border-0"
+        panelStyleClass="!p-0"
+        pStyleClass="!p-0"
       >
+        <ng-template pTemplate="selectedItem">
+          <div class="w-[25px] h-[18px] relative">
+            <img
+              ngSrc="assets/images/flag/{{ selectedLanguage }}.png"
+              [alt]="selectedLanguage"
+              [fill]="true"
+            />
+          </div>
+        </ng-template>
+        <ng-template pTemplate="item" let-language>
+          <div class="w-[25px] h-[18px] relative">
+            <img
+              ngSrc="assets/images/flag/{{ language.lang }}.png"
+              [alt]="language.lang"
+              [fill]="true"
+            />
+          </div>
+        </ng-template>
+      </p-dropdown>
+    </li>
+
+    <li class="relative" *ngIf="isLoggedIn && username && usernameFirstLetter">
+      <button class="flex items-center gap-x-1" (click)="userDropdown.toggle($event)">
         <p-avatar [label]="usernameFirstLetter" shape="circle" icon="pi pi-user"></p-avatar>
       </button>
       <div class="absolute right-0">
-        <p-menu
+        <p-tieredMenu
           #userDropdown
           [popup]="true"
           [model]="userDropdownItems"
           styleClass="!sticky mt-2"
-        ></p-menu>
+        ></p-tieredMenu>
       </div>
     </li>
   </ul>
