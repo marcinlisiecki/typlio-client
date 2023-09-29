@@ -1,0 +1,14 @@
+<div class="flex flex-col gap-2">
+  <div
+    *ngFor="let row of rows; index as rowIndex"
+    class="flex gap-2"
+    [style]="{ marginLeft: 30 * rowIndex + 'px' }"
+  >
+    <div
+      *ngFor="let letter of row"
+      class="w-16 h-16 flex items-center justify-center border-2 border-gray-900 rounded-lg font-medium"
+    >
+      {{ letter }}
+    </div>
+  </div>
+</div>

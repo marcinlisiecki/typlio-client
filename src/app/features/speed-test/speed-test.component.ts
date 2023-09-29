@@ -30,7 +30,7 @@ export class SpeedTestComponent implements OnInit, OnDestroy {
   mode!: SpeedTestMode;
   modeLabel!: string;
   type!: TypingType;
-  finished: boolean = false;
+  finished: boolean = true;
 
   saved: boolean = false;
   savingError: string | null = null;
@@ -67,11 +67,13 @@ export class SpeedTestComponent implements OnInit, OnDestroy {
     const time = getTimeFromModeQuery(this.mode);
     this.typingService.init(this.text, this.type, () => this.onFinish(), time);
     this.finished = false;
+    this.savingError = null;
   }
 
   repeatSameSpeedTest() {
     this.typingService.init(this.text, this.type, () => this.onFinish());
     this.finished = false;
+    this.savingError = null;
   }
 
   onFinish() {

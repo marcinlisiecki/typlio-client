@@ -13,6 +13,7 @@ import { SpeedTestChartComponent } from './speed-test/speed-test-chart/speed-tes
 import { SpeedTestBasicStatsComponent } from './speed-test/speed-test-basic-stats/speed-test-basic-stats.component';
 import { BackLinkComponent } from './back-link/back-link.component';
 import { TranslateModule } from '@ngx-translate/core';
+import { KeyboardComponent } from './keyboard/keyboard.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { TranslateModule } from '@ngx-translate/core';
     SpeedTestChartComponent,
     SpeedTestBasicStatsComponent,
     BackLinkComponent,
+    KeyboardComponent,
   ],
   exports: [
     LogoComponent,
@@ -38,6 +40,7 @@ import { TranslateModule } from '@ngx-translate/core';
     SpeedTestChartComponent,
     SpeedTestBasicStatsComponent,
     BackLinkComponent,
+    KeyboardComponent,
   ],
   imports: [CommonModule, RouterLink, NgChartsModule, TranslateModule],
 })

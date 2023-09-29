@@ -26,6 +26,7 @@ export class TypingService {
   letters: Letter[] = [];
   activeLetterIndex: number = 0;
   mistakes: Letter[] = [];
+  missClicks: Letter[] = [];
 
   onFinish?: () => void;
 
@@ -41,6 +42,7 @@ export class TypingService {
     this.time = 0;
     this.activeLetterIndex = 0;
     this.mistakes = [];
+    this.missClicks = [];
     this.text = text;
     this.stats = { ...DEFAULT_TYPING_STATS, wpmHistory: [...DEFAULT_TYPING_STATS.wpmHistory] };
     this.type = type;
@@ -127,9 +129,18 @@ export class TypingService {
     let activeLetter: Letter = this.letters[this.activeLetterIndex];
     if (letter !== activeLetter.text) {
       this.mistakes.push(activeLetter);
+      this.addMissClick(activeLetter);
     }
 
     this.activeLetterIndex++;
+  }
+
+  private addMissClick(letter: Letter) {
+    if (this.missClicks.findIndex((l) => l.index == letter.index) !== -1) {
+      return;
+    }
+
+    this.missClicks.push(letter);
   }
 
   private handleStart() {
