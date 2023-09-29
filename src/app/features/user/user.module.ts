@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, NgOptimizedImage } from '@angular/common';
 import { UserHistoryComponent } from './user-history/user-history.component';
 import { SharedModule } from '@app/shared/shared.module';
 import { SkeletonModule } from 'primeng/skeleton';
@@ -53,6 +53,7 @@ import { TranslateModule } from '@ngx-translate/core';
     PasswordModule,
     ConfirmPopupModule,
     TranslateModule,
+    NgOptimizedImage,
   ],
   providers: [ConfirmationService],
 })

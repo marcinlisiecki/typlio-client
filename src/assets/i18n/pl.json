@@ -79,6 +79,7 @@
 	"user.dropdown.settings": "Ustawienia",
 	"user.history.details.heading": "Szczegóły testu szybkości pisania",
 	"user.history.heading": "Historia",
+	"user.history.noFound": "Nie znaleziono żadnego testu szybkości",
 	"user.history.showDetails": "Pokaż szczegóły",
 	"user.settings.account.changeAvatar": "Zmień awatar",
 	"user.settings.account.heading": "konto",

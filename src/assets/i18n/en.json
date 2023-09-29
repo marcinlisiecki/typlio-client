@@ -79,6 +79,7 @@
 	"user.dropdown.settings": "Settings",
 	"user.history.details.heading": "Speed test details",
 	"user.history.heading": "History",
+	"user.history.noFound": "No speed test found",
 	"user.history.showDetails": "Show details",
 	"user.settings.account.changeAvatar": "Change avatar",
 	"user.settings.account.heading": "Account",
