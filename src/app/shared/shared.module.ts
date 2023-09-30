@@ -14,6 +14,7 @@ import { SpeedTestBasicStatsComponent } from './speed-test/speed-test-basic-stat
 import { BackLinkComponent } from './back-link/back-link.component';
 import { TranslateModule } from '@ngx-translate/core';
 import { KeyboardComponent } from './keyboard/keyboard.component';
+import { TyposMapComponent } from './typing/typos-map/typos-map.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { KeyboardComponent } from './keyboard/keyboard.component';
     SpeedTestBasicStatsComponent,
     BackLinkComponent,
     KeyboardComponent,
+    TyposMapComponent,
   ],
   exports: [
     LogoComponent,
@@ -41,6 +43,7 @@ import { KeyboardComponent } from './keyboard/keyboard.component';
     SpeedTestBasicStatsComponent,
     BackLinkComponent,
     KeyboardComponent,
+    TyposMapComponent,
   ],
   imports: [CommonModule, RouterLink, NgChartsModule, TranslateModule],
 })

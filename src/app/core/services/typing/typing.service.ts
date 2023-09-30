@@ -123,6 +123,10 @@ export class TypingService {
     const histogram: KeyHistogram[] = [];
 
     this.letters.forEach((letter) => {
+      if (letter.index > this.activeLetterIndex) {
+        return;
+      }
+
       const histogramIndex = this.getHistogramIndex(histogram, letter);
       if (histogramIndex !== -1) {
         histogram[histogramIndex].hitCount++;

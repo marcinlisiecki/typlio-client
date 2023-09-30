@@ -31,6 +31,8 @@
       </div>
     </div>
   </section>
+
+  <app-typos-map *ngIf="speedTest" [keyHistogram]="speedTest.histogram"></app-typos-map>
 </section>
 
 <app-page-error *ngIf="error">{{ error }}</app-page-error>
