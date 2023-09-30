@@ -10,5 +10,5 @@ import { Letter } from '@core/interfaces/typing/letter';
 export class SpeedTestTextComponent {
   @Input() activeLetterIndex: number = 0;
   @Input() words?: Word[];
-  @Input() mistakes?: Letter[];
+  @Input() keyErrors?: Letter[];
 }

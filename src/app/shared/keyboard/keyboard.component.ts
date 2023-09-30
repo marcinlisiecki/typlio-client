@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { DEFAULT_KEY_HEIGHT, DEFAULT_KEY_WIDTH, KEYBOARD } from '@core/constants/typing/keyboard';
-import { KeyboardMissClicks } from '@core/interfaces/typing/keyboard/mistakes';
+import { KeyHistogram, KeyHistogramMap } from '@core/interfaces/typing/key-histogram';
 
 @Component({
   selector: 'app-keyboard',
@@ -8,28 +8,44 @@ import { KeyboardMissClicks } from '@core/interfaces/typing/keyboard/mistakes';
   styleUrls: ['./keyboard.component.scss'],
 })
 export class KeyboardComponent implements OnInit {
-  @Input() missClicks?: KeyboardMissClicks;
+  @Input() histogram?: KeyHistogram[];
   @Input() totalLetters?: number;
 
+  histogramMap: KeyHistogramMap = {};
+
   ngOnInit() {
-    this.mapMissClicksToUpperCase();
+    this.generateHistogramMap();
   }
 
-  mapMissClicksToUpperCase() {
-    if (this.missClicks) {
-      this.missClicks = Object.fromEntries(
-        Object.entries(this.missClicks).map(([key, value]) => [key.toUpperCase(), value]),
-      );
+  generateHistogramMap() {
+    if (!this.histogram) {
+      return;
     }
+
+    this.histogram.forEach((item) => {
+      this.histogramMap[item.keyCode] = {
+        hitCount: item.hitCount,
+        missCount: item.missCount,
+      };
+    });
   }
 
-  generateColor(letter: string) {
-    if (this.missClicks === undefined || !this.missClicks[letter]) {
+  getHistogramIndex(code: number): number {
+    return this.histogram?.findIndex((item) => item.keyCode === code) || -1;
+  }
+
+  generateColor(code: number) {
+    if (this.histogram === undefined) {
       return 'rgb(15, 23, 42)';
     }
 
-    const mistakesCount: number = this.missClicks[letter].miss;
-    const totalLetterCount: number = this.missClicks[letter].total;
+    const histogramIndex = this.getHistogramIndex(code);
+    if (histogramIndex === -1 || this.histogram[histogramIndex].missCount === 0) {
+      return 'rgb(15, 23, 42)';
+    }
+
+    const mistakesCount: number = this.histogram[histogramIndex].missCount;
+    const totalLetterCount: number = this.histogram[histogramIndex].hitCount;
 
     const opacity = mistakesCount / totalLetterCount + 0.1;
     return `rgba(239, 68, 68, ${opacity})`;

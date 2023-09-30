@@ -9,6 +9,7 @@ import { generateWords } from '@core/utils/speed-test/speed-test-generator/word-
 import { generateLettersFromWords } from '@core/utils/speed-test/speed-test-generator/letter-generator';
 import { calculateStats } from '@core/utils/typing/typing-calculator';
 import { isTypedLetterValid } from '@core/utils/typing/typing-validator';
+import { KeyHistogram } from '@core/interfaces/typing/key-histogram';
 
 @Injectable({
   providedIn: 'root',
@@ -25,8 +26,9 @@ export class TypingService {
   words: Word[] = [];
   letters: Letter[] = [];
   activeLetterIndex: number = 0;
-  mistakes: Letter[] = [];
-  missClicks: Letter[] = [];
+  keyErrors: Letter[] = [];
+  keyMisses: Letter[] = [];
+  keyHistogram: KeyHistogram[] = [];
 
   onFinish?: () => void;
 
@@ -41,8 +43,8 @@ export class TypingService {
 
     this.time = 0;
     this.activeLetterIndex = 0;
-    this.mistakes = [];
-    this.missClicks = [];
+    this.keyErrors = [];
+    this.keyMisses = [];
     this.text = text;
     this.stats = { ...DEFAULT_TYPING_STATS, wpmHistory: [...DEFAULT_TYPING_STATS.wpmHistory] };
     this.type = type;
@@ -84,7 +86,7 @@ export class TypingService {
     this.time++;
     this.stats = calculateStats(
       this.activeLetterIndex,
-      this.mistakes.length,
+      this.keyErrors.length,
       this.time,
       this.stats.wpmHistory,
     );
@@ -104,16 +106,47 @@ export class TypingService {
   private finish() {
     this.stats = calculateStats(
       this.activeLetterIndex,
-      this.mistakes.length,
+      this.keyErrors.length,
       this.time,
       this.stats.wpmHistory,
     );
     clearInterval(this.timer);
     document.removeEventListener('keydown', this.handleKeyDown);
+    this.generateHistogram();
 
     if (this.onFinish) {
       this.onFinish();
     }
+  }
+
+  private generateHistogram() {
+    const histogram: KeyHistogram[] = [];
+
+    this.letters.forEach((letter) => {
+      const histogramIndex = this.getHistogramIndex(histogram, letter);
+      if (histogramIndex !== -1) {
+        histogram[histogramIndex].hitCount++;
+      } else {
+        histogram.push({
+          hitCount: 1,
+          keyCode: letter.text.toUpperCase().charCodeAt(0),
+          missCount: 0,
+        });
+      }
+    });
+
+    this.keyMisses.forEach((letter) => {
+      const histogramIndex = this.getHistogramIndex(histogram, letter);
+      if (histogramIndex !== -1) {
+        histogram[histogramIndex].missCount++;
+      }
+    });
+
+    this.keyHistogram = [...histogram];
+  }
+
+  private getHistogramIndex(histogram: KeyHistogram[], letter: Letter): number {
+    return histogram.findIndex((item) => item.keyCode === letter.text.toUpperCase().charCodeAt(0));
   }
 
   public quitTyping() {
@@ -128,19 +161,19 @@ export class TypingService {
 
     let activeLetter: Letter = this.letters[this.activeLetterIndex];
     if (letter !== activeLetter.text) {
-      this.mistakes.push(activeLetter);
-      this.addMissClick(activeLetter);
+      this.keyErrors.push(activeLetter);
+      this.addKeyMiss(activeLetter);
     }
 
     this.activeLetterIndex++;
   }
 
-  private addMissClick(letter: Letter) {
-    if (this.missClicks.findIndex((l) => l.index == letter.index) !== -1) {
+  private addKeyMiss(letter: Letter) {
+    if (this.keyMisses.findIndex((l) => l.index == letter.index) !== -1) {
       return;
     }
 
-    this.missClicks.push(letter);
+    this.keyMisses.push(letter);
   }
 
   private handleStart() {
@@ -149,7 +182,7 @@ export class TypingService {
   }
 
   private removeMistake(index: number) {
-    this.mistakes = this.mistakes.filter((mistake) => mistake.index !== index);
+    this.keyErrors = this.keyErrors.filter((keyError) => keyError.index !== index);
   }
 
   private handleBackspace(withCtrl: boolean = false) {
@@ -180,7 +213,7 @@ export class TypingService {
     this.activeLetterIndex--;
     const activeLetter: Letter = this.letters[this.activeLetterIndex];
 
-    if (this.mistakes.includes(activeLetter)) {
+    if (this.keyErrors.includes(activeLetter)) {
       this.removeMistake(activeLetter.index);
     }
   }

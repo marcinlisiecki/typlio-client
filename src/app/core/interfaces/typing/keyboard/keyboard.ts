@@ -7,7 +7,8 @@ export interface KeyboardRow {
 }
 
 export interface KeyboardKey {
-  value: string;
+  label: string;
+  code: number;
   width?: number;
   height?: number;
   disabled?: boolean;

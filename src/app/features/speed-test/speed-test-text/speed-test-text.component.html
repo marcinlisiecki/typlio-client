@@ -1,6 +1,6 @@
 <section
   class="font-semibold text-text-tertiary tracking-wider leading-relaxed relative"
-  *ngIf="words && mistakes"
+  *ngIf="words && keyErrors"
 >
   <div
     class="absolute bottom-0 w-full h-16 z-10 bg-gradient-to-t from-bg-dark to-transparent"
@@ -16,8 +16,8 @@
         [ngClass]="{
           'text-gray-700': activeLetterIndex > letter.index,
           'bg-white text-black': activeLetterIndex === letter.index,
-          '!text-red-500': mistakes.includes(letter),
-          '!text-transparent': letter.text === ' ' && !mistakes.includes(letter)
+          '!text-red-500': keyErrors.includes(letter),
+          '!text-transparent': letter.text === ' ' && !keyErrors.includes(letter)
         }"
         >{{ letter.text === ' ' ? '␣\u200B' : letter.text }}</span
       >

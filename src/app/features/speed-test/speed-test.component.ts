@@ -20,6 +20,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { extractMessage } from '@core/utils/api-errors';
 import { AuthService } from '@core/services/auth/auth.service';
 import { KeyboardMissClicks } from '@core/interfaces/typing/keyboard/mistakes';
+import { KeyHistogram } from '@core/interfaces/typing/key-histogram';
 
 @Component({
   selector: 'app-speed-test',
@@ -80,31 +81,10 @@ export class SpeedTestComponent implements OnInit, OnDestroy {
 
   onFinish() {
     this.finished = true;
-    this.generateKeyboardMissClicks();
 
     if (this.authService.isAuth()) {
       this.saveSpeedTest();
     }
-  }
-
-  generateKeyboardMissClicks() {
-    const missClicks = this.typingService.missClicks;
-    const keyboardMissClicks: KeyboardMissClicks = {};
-
-    missClicks.forEach((letter) => {
-      if (keyboardMissClicks[letter.text.toUpperCase()] !== undefined) {
-        keyboardMissClicks[letter.text.toUpperCase()].miss++;
-        return;
-      }
-
-      keyboardMissClicks[letter.text.toUpperCase()] = {
-        miss: 1,
-        total:
-          this.text.toUpperCase().match(new RegExp(letter.text.toUpperCase(), 'g'))?.length || 0,
-      };
-    });
-
-    this.keyboardMissClicks = keyboardMissClicks;
   }
 
   saveSpeedTest() {
@@ -113,8 +93,9 @@ export class SpeedTestComponent implements OnInit, OnDestroy {
       time: this.time,
       mode: this.mode,
       accuracy: this.stats.accuracy,
-      mistakes: this.mistakes.length,
+      keyErrors: this.keyErrors.length,
       wpmHistory: this.stats.wpmHistory,
+      histogram: this.keyHistogram,
     };
 
     this.speedTestService.saveSpeedTest(newSpeedTest).subscribe({
@@ -125,6 +106,10 @@ export class SpeedTestComponent implements OnInit, OnDestroy {
         this.savingError = extractMessage(err);
       },
     });
+  }
+
+  get keyHistogram(): KeyHistogram[] {
+    return this.typingService.keyHistogram;
   }
 
   get stats(): TypingStats {
@@ -143,7 +128,7 @@ export class SpeedTestComponent implements OnInit, OnDestroy {
     return this.typingService.activeLetterIndex;
   }
 
-  get mistakes(): Letter[] {
-    return this.typingService.mistakes;
+  get keyErrors(): Letter[] {
+    return this.typingService.keyErrors;
   }
 }

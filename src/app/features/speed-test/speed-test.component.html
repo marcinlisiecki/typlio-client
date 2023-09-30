@@ -8,7 +8,7 @@
       class="flex-[2]"
       [activeLetterIndex]="activeLetterIndex"
       [words]="words"
-      [mistakes]="mistakes"
+      [keyErrors]="keyErrors"
     ></app-speed-test-text>
     <app-speed-test-stats class="flex-1" [time]="time" [stats]="stats"></app-speed-test-stats>
   </section>
@@ -16,7 +16,7 @@
 
 <app-speed-test-results
   *ngIf="finished"
-  [missClicks]="keyboardMissClicks"
+  [keyHistogram]="keyHistogram"
   [stats]="stats"
   [time]="time"
   (nextSpeedTest)="nextSpeedTest()"

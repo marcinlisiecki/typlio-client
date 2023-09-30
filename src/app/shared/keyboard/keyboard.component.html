@@ -4,23 +4,27 @@
       *ngFor="let key of row.keys"
       class="flex items-center justify-center border-2 border-gray-900 rounded-lg font-medium text-sm relative group"
       [style]="{
-        borderColor: key.disabled ? 'rgba(15, 23, 42, 0.2)' : generateColor(key.value),
+        borderColor: key.disabled ? 'rgba(15, 23, 42, 0.2)' : generateColor(key.code),
         width: key.width ? key.width + 'px' : DEFAULT_KEY_WIDTH + 'px',
         height: key.height ? key.height + 'px' : DEFAULT_KEY_HEIGHT + 'px'
       }"
     >
       <div
-        *ngIf="missClicks"
+        *ngIf="histogram"
         class="w-48 absolute left-1/2 -top-12 transform transition -translate-x-1/2 bg-light border-gray-900 p-2 pointer-events-none rounded-md border-2 opacity-0 group-hover:opacity-100 z-10"
       >
-        <p *ngIf="missClicks[key.value]">
-          {{ 'speedTest.results.keyboard.typos' | translate }}: {{ missClicks[key.value].miss }} ({{
-            (missClicks[key.value].miss / missClicks[key.value].total) * 100 | number: '1.0-0'
+        <p *ngIf="histogramMap[key.code]">
+          {{ 'speedTest.results.keyboard.typos' | translate }}:
+          {{ histogramMap[key.code].missCount }} ({{
+            (histogramMap[key.code].missCount / histogramMap[key.code].hitCount) * 100
+              | number: '1.0-0'
           }}%)
         </p>
-        <p *ngIf="!missClicks[key.value]">{{ 'speedTest.results.keyboard.noTypos' | translate }}</p>
+        <p *ngIf="!histogramMap[key.code]">
+          {{ 'speedTest.results.keyboard.noTypos' | translate }}
+        </p>
       </div>
-      {{ key.value }}
+      {{ key.label }}
     </div>
   </div>
 </div>
