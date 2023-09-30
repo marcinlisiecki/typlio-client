@@ -2,11 +2,12 @@
   <div *ngFor="let row of KEYBOARD.rows" class="flex gap-2">
     <div
       *ngFor="let key of row.keys"
-      class="flex items-center justify-center border-2 border-gray-900 rounded-lg font-medium text-sm relative group"
+      class="flex items-center justify-center border-2 border-gray-900 rounded-lg font-medium text-sm relative group {{
+        !key.width && 'aspect-square'
+      }} {{ key.code === 17 && 'aspect-[3/2]' }}"
       [style]="{
         borderColor: key.disabled ? 'rgba(15, 23, 42, 0.2)' : generateColor(key.code),
-        width: key.width ? key.width + 'px' : DEFAULT_KEY_WIDTH + 'px',
-        height: key.height ? key.height + 'px' : DEFAULT_KEY_HEIGHT + 'px'
+        width: key.width ? key.width + '%' : DEFAULT_KEY_WIDTH + '%'
       }"
     >
       <div

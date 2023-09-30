@@ -6,8 +6,8 @@
     <app-page-heading>{{ 'user.history.details.heading' | translate }}</app-page-heading>
   </header>
 
-  <section class="mt-20 flex gap-x-16" *ngIf="speedTest">
-    <div class="flex-[2]">
+  <section class="mt-10 flex gap-x-10" *ngIf="speedTest">
+    <div class="flex-[3]">
       <app-speed-test-basic-stats
         [cpm]="speedTest.cpm"
         [accuracy]="speedTest.accuracy"
