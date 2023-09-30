@@ -19,7 +19,6 @@ import { SpeedTest } from '@core/interfaces/typing/speed-test/speed-test';
 import { HttpErrorResponse } from '@angular/common/http';
 import { extractMessage } from '@core/utils/api-errors';
 import { AuthService } from '@core/services/auth/auth.service';
-import { KeyboardMissClicks } from '@core/interfaces/typing/keyboard/mistakes';
 import { KeyHistogram } from '@core/interfaces/typing/key-histogram';
 
 @Component({
@@ -36,7 +35,6 @@ export class SpeedTestComponent implements OnInit, OnDestroy {
 
   saved: boolean = false;
   savingError: string | null = null;
-  keyboardMissClicks: KeyboardMissClicks = {};
 
   constructor(
     route: ActivatedRoute,
@@ -93,7 +91,7 @@ export class SpeedTestComponent implements OnInit, OnDestroy {
       time: this.time,
       mode: this.mode,
       accuracy: this.stats.accuracy,
-      keyErrors: this.keyErrors.length,
+      keyErrorsCount: this.keyErrors.length,
       wpmHistory: this.stats.wpmHistory,
       histogram: this.keyHistogram,
     };

@@ -5,7 +5,7 @@ export interface NewSpeedTest {
   mode: SpeedTestMode;
   time: number;
   cpm: number;
-  keyErrors: number;
+  keyErrorsCount: number;
   accuracy: number;
   wpmHistory: number[];
   histogram: KeyHistogram[];
