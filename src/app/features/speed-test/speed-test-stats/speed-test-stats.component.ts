@@ -1,6 +1,6 @@
 import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { TypingStats } from '@core/interfaces/typing/typing-stats';
-import { DEFAULT_TYPING_STATS } from '@core/constants/typing';
+import { DEFAULT_TYPING_STATS } from '@core/constants/typing/typing';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
 

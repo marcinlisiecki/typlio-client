@@ -1,7 +1,7 @@
 import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { speedTestModeToLabel } from '@core/utils/speed-test';
 import { DISPLAY_DATE_FORMAT } from '@core/constants/date';
-import { SpeedTest } from '@core/interfaces/speed-test/speed-test';
+import { SpeedTest } from '@core/interfaces/typing/speed-test/speed-test';
 import { Subscription } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
 

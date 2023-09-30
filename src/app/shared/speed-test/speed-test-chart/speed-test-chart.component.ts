@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { DEFAULT_DATASET_STYLES, DEFAULT_LINE_CHART_OPTIONS } from '@core/constants/chart';
+import { DEFAULT_DATASET_STYLES, DEFAULT_LINE_CHART_OPTIONS } from '@core/constants/typing/chart';
 import { ChartConfiguration } from 'chart.js';
 
 @Component({

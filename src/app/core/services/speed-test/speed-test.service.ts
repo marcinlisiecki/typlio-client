@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { SpeedTestMode } from '@core/interfaces/speed-test/speed-test-mode';
+import { SpeedTestMode } from '@core/interfaces/typing/speed-test/speed-test-mode';
 import { environment } from '@app/environments/environment';
-import { SpeedTest } from '@core/interfaces/speed-test/speed-test';
-import { NewSpeedTest } from '@core/interfaces/speed-test/new-speed-test';
+import { SpeedTest } from '@core/interfaces/typing/speed-test/speed-test';
+import { NewSpeedTest } from '@core/interfaces/typing/speed-test/new-speed-test';
 import { AuthService } from '@core/services/auth/auth.service';
 import { PagedResponse } from '@core/interfaces/common/paged-response';
 

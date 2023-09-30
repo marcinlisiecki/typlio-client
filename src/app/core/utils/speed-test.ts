@@ -1,4 +1,4 @@
-import { SpeedTestMode } from '@core/interfaces/speed-test/speed-test-mode';
+import { SpeedTestMode } from '@core/interfaces/typing/speed-test/speed-test-mode';
 
 export const speedTestModeToLabel = {
   [SpeedTestMode.WORDS_10]: '10 Words',

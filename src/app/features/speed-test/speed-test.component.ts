@@ -2,7 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Word } from '@core/interfaces/typing/word';
 import { Letter } from '@core/interfaces/typing/letter';
 import { ActivatedRoute } from '@angular/router';
-import { SpeedTestMode } from '@core/interfaces/speed-test/speed-test-mode';
+import { SpeedTestMode } from '@core/interfaces/typing/speed-test/speed-test-mode';
 import { TypingService } from '@core/services/typing/typing.service';
 import { TypingType } from '@core/interfaces/typing/typing-type';
 import { TypingStats } from '@core/interfaces/typing/typing-stats';
@@ -14,11 +14,12 @@ import {
   getTimeFromModeQuery,
 } from '@core/utils/speed-test/mode';
 import { SpeedTestService } from '@core/services/speed-test/speed-test.service';
-import { NewSpeedTest } from '@core/interfaces/speed-test/new-speed-test';
-import { SpeedTest } from '@core/interfaces/speed-test/speed-test';
+import { NewSpeedTest } from '@core/interfaces/typing/speed-test/new-speed-test';
+import { SpeedTest } from '@core/interfaces/typing/speed-test/speed-test';
 import { HttpErrorResponse } from '@angular/common/http';
 import { extractMessage } from '@core/utils/api-errors';
 import { AuthService } from '@core/services/auth/auth.service';
+import { KeyboardMissClicks } from '@core/interfaces/typing/keyboard/mistakes';
 
 @Component({
   selector: 'app-speed-test',
@@ -30,10 +31,11 @@ export class SpeedTestComponent implements OnInit, OnDestroy {
   mode!: SpeedTestMode;
   modeLabel!: string;
   type!: TypingType;
-  finished: boolean = true;
+  finished: boolean = false;
 
   saved: boolean = false;
   savingError: string | null = null;
+  keyboardMissClicks: KeyboardMissClicks = {};
 
   constructor(
     route: ActivatedRoute,
@@ -78,10 +80,31 @@ export class SpeedTestComponent implements OnInit, OnDestroy {
 
   onFinish() {
     this.finished = true;
+    this.generateKeyboardMissClicks();
 
     if (this.authService.isAuth()) {
       this.saveSpeedTest();
     }
+  }
+
+  generateKeyboardMissClicks() {
+    const missClicks = this.typingService.missClicks;
+    const keyboardMissClicks: KeyboardMissClicks = {};
+
+    missClicks.forEach((letter) => {
+      if (keyboardMissClicks[letter.text.toUpperCase()] !== undefined) {
+        keyboardMissClicks[letter.text.toUpperCase()].miss++;
+        return;
+      }
+
+      keyboardMissClicks[letter.text.toUpperCase()] = {
+        miss: 1,
+        total:
+          this.text.toUpperCase().match(new RegExp(letter.text.toUpperCase(), 'g'))?.length || 0,
+      };
+    });
+
+    this.keyboardMissClicks = keyboardMissClicks;
   }
 
   saveSpeedTest() {

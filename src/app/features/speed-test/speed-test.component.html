@@ -16,6 +16,7 @@
 
 <app-speed-test-results
   *ngIf="finished"
+  [missClicks]="keyboardMissClicks"
   [stats]="stats"
   [time]="time"
   (nextSpeedTest)="nextSpeedTest()"

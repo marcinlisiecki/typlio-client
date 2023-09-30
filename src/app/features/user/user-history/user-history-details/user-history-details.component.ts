@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { SpeedTest } from '@core/interfaces/speed-test/speed-test';
+import { SpeedTest } from '@core/interfaces/typing/speed-test/speed-test';
 import { SpeedTestService } from '@core/services/speed-test/speed-test.service';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';

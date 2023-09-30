@@ -1,16 +1,16 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { SpeedTestService } from '@core/services/speed-test/speed-test.service';
-import { SpeedTest } from '@core/interfaces/speed-test/speed-test';
+import { SpeedTest } from '@core/interfaces/typing/speed-test/speed-test';
 import { ActivatedRoute } from '@angular/router';
 import { HttpErrorResponse } from '@angular/common/http';
 import { extractMessage } from '@core/utils/api-errors';
 import { User } from '@core/interfaces/user/user';
 import { UserService } from '@core/services/user/user.service';
 import { first, Subscription } from 'rxjs';
-import { SpeedTestMode } from '@core/interfaces/speed-test/speed-test-mode';
+import { SpeedTestMode } from '@core/interfaces/typing/speed-test/speed-test-mode';
 import { PagedResponse } from '@core/interfaces/common/paged-response';
-import { HISTORY_SPEED_TESTS_PER_PAGE } from '@core/constants/speed-test';
-import { SpeedTestHistorySort } from '@core/interfaces/speed-test/speed-test-history-sort';
+import { HISTORY_SPEED_TESTS_PER_PAGE } from '@core/constants/typing/speed-test';
+import { SpeedTestHistorySort } from '@core/interfaces/typing/speed-test/speed-test-history-sort';
 
 @Component({
   selector: 'app-user-history',

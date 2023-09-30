@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { SpeedTestMode } from '@core/interfaces/speed-test/speed-test-mode';
+import { SpeedTestMode } from '@core/interfaces/typing/speed-test/speed-test-mode';
 import { SpeedTestService } from '@core/services/speed-test/speed-test.service';
 
 @Component({

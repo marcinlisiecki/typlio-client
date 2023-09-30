@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { TypingStats } from '@core/interfaces/typing/typing-stats';
-import { DEFAULT_TYPING_STATS } from '@core/constants/typing';
+import { DEFAULT_TYPING_STATS } from '@core/constants/typing/typing';
 import { TypingType } from '@core/interfaces/typing/typing-type';
 import { TypingState } from '@core/interfaces/typing/typing-state';
 import { Letter } from '@core/interfaces/typing/letter';

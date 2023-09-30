@@ -1,9 +1,9 @@
 import { Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
 import { speedTestModeToLabel } from '@core/utils/speed-test';
-import { SPEED_TEST_HISTORY } from '@core/constants/speed-test-history';
-import { SpeedTestMode } from '@core/interfaces/speed-test/speed-test-mode';
+import { SPEED_TEST_HISTORY } from '@core/constants/typing/speed-test-history';
+import { SpeedTestMode } from '@core/interfaces/typing/speed-test/speed-test-mode';
 import { Sort } from '@core/interfaces/common/sort';
-import { SpeedTestHistorySort } from '@core/interfaces/speed-test/speed-test-history-sort';
+import { SpeedTestHistorySort } from '@core/interfaces/typing/speed-test/speed-test-history-sort';
 import { LanguageService } from '@core/services/language/language.service';
 import { Subscription } from 'rxjs';
 

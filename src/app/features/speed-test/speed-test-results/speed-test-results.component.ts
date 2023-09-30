@@ -13,6 +13,7 @@ export class SpeedTestResultsComponent {
   @Input({ required: true }) time!: number;
   @Input({ required: true }) saved!: boolean;
   @Input({ required: true }) savingError!: string | null;
+  @Input({ required: true }) missClicks!: any;
   @Input() isHistorical: boolean = false;
 
   @Output() nextSpeedTest: EventEmitter<null> = new EventEmitter<null>();
