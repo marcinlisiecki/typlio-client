@@ -5,7 +5,7 @@ RUN npm cache clean --force
 
 COPY . .
 RUN npm install
-RUN npm run build --prod
+RUN npm run build --omit=dev
 
 FROM nginx:latest AS ngi
 
