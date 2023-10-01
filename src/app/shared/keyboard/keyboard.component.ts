@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { DEFAULT_KEY_HEIGHT, DEFAULT_KEY_WIDTH, KEYBOARD } from '@core/constants/typing/keyboard';
+import { DEFAULT_KEY_WIDTH, KEYBOARD } from '@core/constants/typing/keyboard';
 import { KeyHistogram, KeyHistogramMap } from '@core/interfaces/typing/key-histogram';
 
 @Component({
@@ -31,7 +31,11 @@ export class KeyboardComponent implements OnInit {
   }
 
   getHistogramIndex(code: number): number {
-    return this.histogram?.findIndex((item) => item.keyCode === code) || -1;
+    if (this.histogram === undefined) {
+      return -1;
+    }
+
+    return this.histogram?.findIndex((item) => item.keyCode === code);
   }
 
   generateColor(code: number) {
@@ -53,5 +57,4 @@ export class KeyboardComponent implements OnInit {
 
   protected readonly KEYBOARD = KEYBOARD;
   protected readonly DEFAULT_KEY_WIDTH = DEFAULT_KEY_WIDTH;
-  protected readonly DEFAULT_KEY_HEIGHT = DEFAULT_KEY_HEIGHT;
 }
